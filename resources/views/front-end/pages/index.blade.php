@@ -339,7 +339,7 @@ Offerte speciali per concessionari, commercianti e allestitori
 <section class="m-b-lg-50">
     <div class="blog blog-list overl">
         <div class="heading">
-            <h3>Latest News</h3>
+            <h3>Prossimi camion</h3>
         </div>
         <div class="row">
             <div class="owl" data-items="2" data-itemsDesktop="2" data-itemsDesktopSmall="1" data-itemsTablet="2"
