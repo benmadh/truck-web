@@ -48,7 +48,7 @@
 <section class="m-b-lg-50">
     <div class="blog blog-grid overl">
         <div class="heading">
-            <h3>Top Trucks</h3>
+            <h3>Prossimi camion</h3>
         </div>
         <div class="row">
             <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"

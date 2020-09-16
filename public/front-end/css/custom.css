@@ -73,3 +73,18 @@
 {
     border-bottom: none !important;
 }
+
+.d-none
+{
+    display : none;
+}
+
+.heading
+{
+    background : #ff0000;
+}
+
+.owl-theme .owl-controls .owl-buttons .owl-prev, .owl-theme .owl-controls .owl-buttons .owl-next
+{
+    background : #1a2d58;
+}
