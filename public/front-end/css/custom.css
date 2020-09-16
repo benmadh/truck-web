@@ -9,7 +9,7 @@
 .logo img
 {
     margin-top : 30px !important;
-    width : 50% !important;
+    width : 50%;
 }
 
 .footer-top
@@ -64,6 +64,11 @@
     padding: 10px;
 }
 
+.heading h3
+{
+    padding: 17px 20px 17px 9px;
+}
+
 .heading-custom
 {
     border-bottom: 2px solid #f00 !important;
@@ -88,3 +93,94 @@
 {
     background : #1a2d58;
 }
+
+
+
+
+/* responsive */
+
+@media(max-width : 321px)
+{
+    .logo img
+    {
+        position: relative;
+        left: 80px;
+    }
+
+    .footer-top .heading-1 h3
+    {
+        font-size: 12pt;
+    }
+
+    .banner-bg-8
+    {
+        padding: 0px;
+    }
+}
+
+@media(max-width : 376px) and (min-width : 321px)
+{
+    .logo img
+    {
+        position: relative;
+        left: 100px;
+        width:100px;
+    }
+
+    .banner-bg-8
+    {
+        padding: 0px;
+    }
+}
+
+@media(min-width : 375px) and (max-width : 500px)
+{
+    .logo img
+    {
+        position: relative;
+        left: 140px;
+        width:100px;
+    }
+
+    .banner-bg-8
+    {
+        padding: 0px;
+    }
+}
+
+@media(min-width : 500px) and (max-width : 600px)
+{
+    .logo img
+    {
+        position: relative;
+        left: 180px;
+        width:100px;
+    }
+
+    .banner-bg-8
+    {
+        padding: 0px;
+    }
+}
+
+
+@media (max-width : 997px)
+{
+    .logo img
+    {
+        position : relative;
+        left  : -100px;
+        width :100px;
+        top   : 30px
+    }
+
+    .banner-bg-8
+    {
+        padding: 0px;
+    }
+}
+
+
+
+
+/* end responsive */

@@ -35,12 +35,10 @@
     </div>
 </div>
 <!-- Search option -->
-<div class="search-2 d-none">
+<div class="search-2">
     <ul class="nav nav-tabs ht-tabs p-l-lg-30 p-l-xs-15 m-t-xs-30" role="tablist">
         <li role="presentation" class="active pull-left"><a href="#newcar" aria-controls="newcar" role="tab"
-                data-toggle="tab">New Car</a></li>
-        <li role="presentation" class="pull-left"><a href="#usedcar" aria-controls="usedcar" role="tab"
-                data-toggle="tab">Used Car</a></li>
+                data-toggle="tab">Ricerca</a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
@@ -55,7 +53,7 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle form-item" type="button" id="dropdownMenu1"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Body
+                                            Corpo
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                             <li>Body</li>
@@ -97,7 +95,7 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle form-item" type="button" id="dropdownMenu3"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Year
+                                            Anno
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
                                             <li>Year</li>
@@ -111,14 +109,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-5 col-md-3 col-lg-3 p-l-lg-30 p-l-sm-15 m-t-sm-5 p-l-xs-15">
+                    <!-- <div class="col-sm-5 col-md-3 col-lg-3 p-l-lg-30 p-l-sm-15 m-t-sm-5 p-l-xs-15">
                         <input type="text" disabled class="slider_amount">
                         <div class="slider-range"></div>
-                    </div>
+                    </div> -->
                     <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
                         <button type="button"
                             class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
-                                class="fa fa-search"></i> Search</button>
+                                class="fa fa-search"></i> Ricerca</button>
                     </div>
                 </div>
             </div>
@@ -206,7 +204,7 @@
 <!-- Recent cars -->
 <div class="product product-grid product-grid-2 car m-b-lg-20">
     <div class="heading">
-        <h3>Top offers used or new trucks</h3>
+        <h3>Nuovi camion</h3>
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-4">

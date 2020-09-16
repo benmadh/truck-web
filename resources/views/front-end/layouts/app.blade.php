@@ -29,6 +29,8 @@
 	<link id="boxed" rel="stylesheet" type="text/css" href="{{ asset('front-end/css/boxed.css') }}">
 
     <link id="boxed" rel="stylesheet" type="text/css" href="{{ asset('front-end/css/custom.css') }}">
+
+
 </head>
 
 <body class="bg-1">

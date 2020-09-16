@@ -2103,6 +2103,8 @@ img.mfp-img{
 		width:100px;
 		margin-top:10px;
 		margin-bottom:10px;
+		position: relative;
+		left: 30%;
 	}
 	a.logo-1{
 		height:auto;
