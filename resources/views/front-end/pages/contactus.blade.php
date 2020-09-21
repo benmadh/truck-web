@@ -1,6 +1,6 @@
 @extends('front-end.layouts.app')
 
-@section('title') {{'Contactus'}} @endsection
+@section('title') {{'Contattaci | Auto Ceylon'}} @endsection
 
 @section('content')
 <!-- Breadcrumb-->
@@ -27,10 +27,11 @@
                     <div class="content">
                         
                         <ul class="list-default">
-                            <li><i class="fa fa-clock-o"></i>123 Holding, Busan, Italia</li>
-                            <li><i class="fa fa-phone"></i>0123-456-789</li>
-                            <li><i class="fa fa-envelope-o"></i>Support@example.com</li>
-                            <li><i class="fa fa-globe"></i>www.example.com</li>
+                            <li><i class="fa fa-clock-o"></i>37069 , Dossobuono di Villafranca VR , Italia</li>
+                            <li><i class="fa fa-phone"></i>+39 327 088 39 43</li>
+                            <li><i class="fa fa-phone"></i>045 96 12 013</li>
+                            <li><i class="fa fa-envelope-o"></i>sajithradalage@yahoo.com</li>
+                            
                         </ul>
                     </div>
                 </div>

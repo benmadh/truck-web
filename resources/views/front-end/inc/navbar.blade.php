@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                <p class="f-14"><i class="fa fa-map-marker m-r-lg-5"></i><strong>resposabile vendite: </strong> SIMONE 348 2835455 | ANGELO 348 7915868</p>
+                <p class="f-14"><i class="fa fa-map-marker m-r-lg-5"></i><strong>37069 , Dossobuono di Villafranca VR , Italia . </strong> <strong> <i class="fa fa-phone"> </i> +39 327 088 39 43 </strong> </p>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
             <div class="col-md-9 col-lg-9">
                 <div class="hotline">
                     <span class="m-r-lg-10">Hai bisogno di supporto? Chiamaci : </span>
-                    <i class="fa fa-phone"></i>0123-456-789
+                    <i class="fa fa-phone"></i>045 96 12 013
                 </div>
                 <div class="clearfix"></div>
                 <!-- Menu -->

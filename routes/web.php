@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PageController@homeIndex')->name('index');
 
-Route::get('about-us', 'PageController@aboutus')->name('aboutus');
-Route::get('listing', 'PageController@listing')->name('listing');
-Route::get('contactus', 'PageController@contactus')->name('contactus');
-Route::get('truck-detail', 'PageController@truckDetail')->name('truck.detail');
+Route::get('riguardo-a-noi', 'PageController@aboutus')->name('aboutus');
+Route::get('lista-dei-camion', 'PageController@listing')->name('listing');
+Route::get('Contattaci', 'PageController@contactus')->name('contactus');
+Route::get('dettaglio-del-camion', 'PageController@truckDetail')->name('truck.detail');

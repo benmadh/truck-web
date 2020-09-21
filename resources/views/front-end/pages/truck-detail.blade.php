@@ -1,6 +1,6 @@
 @extends('front-end.layouts.app')
 
-@section('title') {{'Detail'}} @endsection
+@section('title') {{'Dettagli del camion | Auto Ceylon'}} @endsection
 
 @section('content')
 

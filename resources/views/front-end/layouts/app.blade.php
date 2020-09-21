@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Auto Ceylon SRL truck rental .Truck Rental Agency in Dossobuono di Villafranca">
+    <meta name="keywords" content="trucks ,Italy ,Used truck ITALY, Italian trucks , Truck Rental Agency ">
+
     <title>@yield('title')</title>
     <link rel="icon" href="favicon.ico">
     <!-- JqueryUI -->

@@ -1,6 +1,6 @@
 @extends('front-end.layouts.app')
 
-@section('title') {{'Home'}} @endsection
+@section('title') {{'Casa | Auto Ceylon'}} @endsection
 
 @section('content')
 <!-- Banner -->
@@ -12,22 +12,22 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="counterup-item">
-                        
+
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="counterup-item">
-                        
+
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="counterup-item">
-                        
+
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <div class="counterup-item">
-                        
+
                     </div>
                 </div>
             </div>
@@ -37,8 +37,12 @@
 <!-- Search option -->
 <div class="search-2">
     <ul class="nav nav-tabs ht-tabs p-l-lg-30 p-l-xs-15 m-t-xs-30" role="tablist">
-        <li role="presentation" class="active pull-left"><a href="#newcar" aria-controls="newcar" role="tab"
-                data-toggle="tab">Ricerca</a></li>
+        <li role="presentation" class="pull-left"><a href="#newcar" aria-controls="newcar" role="tab"
+                data-toggle="tab">Camion</a></li>
+        <li role="presentation" class="pull-left"><a href="#usedcar" aria-controls="newcar" role="tab"
+                data-toggle="tab">Furgoni</a></li>
+        <li role="presentation" class="pull-left"><a href="#newcar" aria-controls="newcar" role="tab"
+                data-toggle="tab">Auto</a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
@@ -109,10 +113,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-sm-5 col-md-3 col-lg-3 p-l-lg-30 p-l-sm-15 m-t-sm-5 p-l-xs-15">
-                        <input type="text" disabled class="slider_amount">
-                        <div class="slider-range"></div>
-                    </div> -->
+
                     <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
                         <button type="button"
                             class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
@@ -204,14 +205,15 @@
 <!-- Recent cars -->
 <div class="product product-grid product-grid-2 car m-b-lg-20">
     <div class="heading">
-        <h3>Nuovi camion</h3>
+        <h3>NUOVI Furgoni</h3>
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-4">
             <!-- Product item -->
             <div class="product-item hover-img">
                 <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella%20senza%20nome%2011/IMG_7033.JPG&w=320&h=190&zc=1" alt="image">
+                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella%20senza%20nome%2011/IMG_7033.JPG&w=320&h=190&zc=1"
+                        alt="image">
                 </a>
                 <div class="product-caption">
                     <h4 class="product-name">
@@ -230,7 +232,8 @@
             <!-- Product item -->
             <div class="product-item hover-img">
                 <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/LOTTO GREG 2OTT2019/IMG_9076.jpg&w=320&h=190&zc=1" alt="image">
+                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/LOTTO GREG 2OTT2019/IMG_9076.jpg&w=320&h=190&zc=1"
+                        alt="image">
                 </a>
                 <div class="product-caption">
                     <h4 class="product-name">
@@ -249,7 +252,8 @@
             <!-- Product item -->
             <div class="product-item hover-img">
                 <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6619.jpg&w=320&h=190&zc=1" alt="image">
+                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6619.jpg&w=320&h=190&zc=1"
+                        alt="image">
                 </a>
                 <div class="product-caption">
                     <h4 class="product-name">
@@ -268,7 +272,8 @@
             <!-- Product item -->
             <div class="product-item hover-img">
                 <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/28 GIU 2020/IMG_5375.jpg&w=320&h=190&zc=1" alt="image">
+                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/28 GIU 2020/IMG_5375.jpg&w=320&h=190&zc=1"
+                        alt="image">
                 </a>
                 <div class="product-caption">
                     <h4 class="product-name">
@@ -279,7 +284,7 @@
                     <li><i class="fa fa-clock-o"></i>IVECO</li>
                     <li><i class="fa fa-car"></i>Prima imm.: 26/08/2010</li>
                     <li><i class="fa fa-road"></i>Rif. interno: 56820
-</li>
+                    </li>
 
                 </ul>
             </div>
@@ -288,7 +293,8 @@
             <!-- Product item -->
             <div class="product-item hover-img">
                 <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/camion corse 2020/160 E6 1.jpg&w=320&h=190&zc=1" alt="image">
+                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/camion corse 2020/160 E6 1.jpg&w=320&h=190&zc=1"
+                        alt="image">
                 </a>
                 <div class="product-caption">
                     <h4 class="product-name">
@@ -307,7 +313,8 @@
             <!-- Product item -->
             <div class="product-item hover-img">
                 <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/camion corse 2020/IMG_5585.jpg&w=320&h=190&zc=1" alt="image">
+                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/camion corse 2020/IMG_5585.jpg&w=320&h=190&zc=1"
+                        alt="image">
                 </a>
                 <div class="product-caption">
                     <h4 class="product-name">
@@ -328,8 +335,8 @@
     <h3 class="f-weight-300">VEICOLI INDUSTRIALI e COMMERCIALI </h3>
     <p>CAMION IVECO USATI</p>
     <p>
-    Vendita autocarri e furgoni.
-Offerte speciali per concessionari, commercianti e allestitori
+        Vendita autocarri e furgoni.
+        Offerte speciali per concessionari, commercianti e allestitori
     </p>
 </div>
 
@@ -348,7 +355,9 @@ Offerte speciali per concessionari, commercianti e allestitori
                 <div class="col-lg-12">
                     <!-- Blog item -->
                     <div class="blog-item">
-                        <a href="#" class="hover-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6551.jpg&w=320&h=190&zc=1" alt="image"></a>
+                        <a href="#" class="hover-img"><img
+                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6551.jpg&w=320&h=190&zc=1"
+                                alt="image"></a>
                         <div class="blog-caption">
                             <!-- <ul class="blog-date">
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
@@ -365,7 +374,9 @@ Offerte speciali per concessionari, commercianti e allestitori
                 <div class="col-lg-12">
                     <!-- Blog item -->
                     <div class="blog-item">
-                        <a href="#" class="hover-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-02-01.jpg&w=320&h=190&zc=1" alt="image"></a>
+                        <a href="#" class="hover-img"><img
+                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-02-01.jpg&w=320&h=190&zc=1"
+                                alt="image"></a>
                         <div class="blog-caption">
                             <!-- <ul class="blog-date">
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
@@ -382,7 +393,9 @@ Offerte speciali per concessionari, commercianti e allestitori
                 <div class="col-lg-12">
                     <!-- blog item -->
                     <div class="blog-item">
-                        <a href="#" class="hover-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_7228.jpg&w=320&h=190&zc=1" alt="image"></a>
+                        <a href="#" class="hover-img"><img
+                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_7228.jpg&w=320&h=190&zc=1"
+                                alt="image"></a>
                         <div class="blog-caption">
                             <!-- <ul class="blog-date">
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
@@ -399,7 +412,9 @@ Offerte speciali per concessionari, commercianti e allestitori
                 <div class="col-lg-12">
                     <!-- Blog item -->
                     <div class="blog-item">
-                        <a href="#" class="hover-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-13-00.jpg&w=320&h=190&zc=1" alt="image"></a>
+                        <a href="#" class="hover-img"><img
+                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-13-00.jpg&w=320&h=190&zc=1"
+                                alt="image"></a>
                         <div class="blog-caption">
                             <!-- <ul class="blog-date">
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>

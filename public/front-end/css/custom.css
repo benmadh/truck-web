@@ -94,6 +94,24 @@
     background : #1a2d58;
 }
 
+#opening
+{
+    padding-left: 1em;
+    display:block;
+    margin: 0;
+}
+
+#opening li
+{
+    display: inline-block;
+    vertical-align: middle;
+    list-style-position: inside;
+    list-style-type: disc;
+    margin-right: 1em;
+    text-align: left;
+    white-space: nowrap;
+}
+
 
 
 

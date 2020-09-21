@@ -1,6 +1,6 @@
 @extends('front-end.layouts.app')
 
-@section('title') {{'Aboutus'}} @endsection
+@section('title') {{'Riguardo a noi | Auto Ceylon'}} @endsection
 
 @section('content')
 <!-- Breadcrumb-->
