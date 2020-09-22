@@ -1,6 +1,6 @@
 @extends('front-end.layouts.app')
 
-@section('title') {{'Casa | Auto Ceylon'}} @endsection
+@section('title') {{'Home | Auto Ceylon'}} @endsection
 
 @section('content')
 <!-- Banner -->
@@ -37,8 +37,8 @@
 <!-- Search option -->
 <div class="search-2">
     <ul class="nav nav-tabs ht-tabs p-l-lg-30 p-l-xs-15 m-t-xs-30" role="tablist">
-        <li role="presentation" class="pull-left"><a href="#newcar" aria-controls="newcar" role="tab"
-                data-toggle="tab">Camion</a></li>
+        <li role="presentation" class="pull-left active"><a href="#newcar" aria-controls="newcar" role="tab"
+                data-toggle="tab">Marca</a></li>
         <li role="presentation" class="pull-left"><a href="#usedcar" aria-controls="newcar" role="tab"
                 data-toggle="tab">Furgoni</a></li>
         <li role="presentation" class="pull-left"><a href="#newcar" aria-controls="newcar" role="tab"

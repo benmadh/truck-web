@@ -9,7 +9,7 @@
         <div class="col-lg-6">
             <ul class="ht-breadcrumb pull-left">
                 <li class="home-act"><a href="#"><i class="fa fa-home"></i></a></li>
-                <li class="active">RIGUARDO A NOI</li>
+                <li class="active">Chi siamo</li>
             </ul>
         </div>
     </div>
@@ -20,12 +20,17 @@
         <div class="row">
             <div class="col-md-7 col-lg-8 m-b-lg-50">
                 <div class="heading">
-                    <h3>RIGUARDO A NOI</h3>
+                    <h3>Chi siamo</h3>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerciStation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vo. Sunt in culpa qui
-                    officia deserunt mollit anim id est laborut non proident.</p>
+                <p>Commercianti e noleggiatori di veicoli usati multimarca.
+                    Specializzati nel noleggio e nella vendita di veicoli d'importazione provenienti da Francia, Olanda
+                    e Germania.
+                    Auto Ceylon S.R.L. nasce a Verona nel 2019.
+                    Attualmente l'azienda conta una flotta superiore ai 50 veicoli di ogni tipologia.Auto Ceylon è
+                    sempre a disposizione del cliente, dalla scelta del veicolo fino al collaudo in Italia e per quanto
+                    riguarda il noleggio dal ritiro del veicolo per tutto il periodo di locazione, fornendo assistenza
+                    per qualsiasi inconveniente.
+                </p>
                 <ul class="list-default">
                     <li><a href="#"><i class="fa fa-angle-right"></i>Lorem ipsum dolor smet, consectetur adipisicing
                             eli</a></li>
@@ -56,7 +61,9 @@
                 <div class="col-lg-12">
                     <!-- Blog item -->
                     <div class="blog-item">
-                        <a href="#" class="hover-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6551.jpg&w=320&h=190&zc=1" alt="image"></a>
+                        <a href="#" class="hover-img"><img
+                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6551.jpg&w=320&h=190&zc=1"
+                                alt="image"></a>
                         <div class="blog-caption">
                             <!-- <ul class="blog-date">
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
@@ -73,7 +80,9 @@
                 <div class="col-lg-12">
                     <!-- Blog item -->
                     <div class="blog-item">
-                        <a href="#" class="hover-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-02-01.jpg&w=320&h=190&zc=1" alt="image"></a>
+                        <a href="#" class="hover-img"><img
+                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-02-01.jpg&w=320&h=190&zc=1"
+                                alt="image"></a>
                         <div class="blog-caption">
                             <!-- <ul class="blog-date">
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
@@ -90,7 +99,9 @@
                 <div class="col-lg-12">
                     <!-- blog item -->
                     <div class="blog-item">
-                        <a href="#" class="hover-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_7228.jpg&w=320&h=190&zc=1" alt="image"></a>
+                        <a href="#" class="hover-img"><img
+                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_7228.jpg&w=320&h=190&zc=1"
+                                alt="image"></a>
                         <div class="blog-caption">
                             <!-- <ul class="blog-date">
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
@@ -107,7 +118,9 @@
                 <div class="col-lg-12">
                     <!-- Blog item -->
                     <div class="blog-item">
-                        <a href="#" class="hover-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-13-00.jpg&w=320&h=190&zc=1" alt="image"></a>
+                        <a href="#" class="hover-img"><img
+                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-13-00.jpg&w=320&h=190&zc=1"
+                                alt="image"></a>
                         <div class="blog-caption">
                             <!-- <ul class="blog-date">
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
