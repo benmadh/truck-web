@@ -22,10 +22,10 @@
                 <div class="heading">
                     <h3>Chi siamo</h3>
                 </div>
-                <p> Commercianti e noleggiatori di veicoli usati multimarca.<br>
+                <p style="text-align: justify"> Commercianti e noleggiatori di veicoli usati multimarca.<br><br>
                     Specializzati nel noleggio e nella vendita di veicoli d'importazione provenienti da Francia, Olanda
-                    e Germania.<br>
-                    Auto Ceylon S.R.L. nasce a Verona nel 2019.<br>
+                    e Germania.<br><br>
+                    Auto Ceylon S.R.L. nasce a Verona nel 2019.<br><br>
                     Attualmente l'azienda conta una flotta superiore ai 50 veicoli di ogni tipologia.Auto Ceylon è
                     sempre a disposizione del cliente, dalla scelta del veicolo fino al collaudo in Italia e per quanto
                     riguarda il noleggio dal ritiro del veicolo per tutto il periodo di locazione, fornendo assistenza
