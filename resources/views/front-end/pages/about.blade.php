@@ -105,11 +105,7 @@
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
                                 <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
                             </ul> -->
-                            <h3 class="blog-heading"><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing
-                                    elit</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incidunt ut
-                                labore et dolore magna aliqua uat iama</p>
-                            <a href="#" class="ht-btn ht-btn-default">Leggi di più</a>
+                            <h3 class="blog-heading">120E18P CUBE</h3>
                         </div>
                     </div>
                 </div>
