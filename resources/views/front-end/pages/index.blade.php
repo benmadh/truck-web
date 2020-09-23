@@ -38,7 +38,7 @@
 <div class="search-2">
     <ul class="nav nav-tabs ht-tabs p-l-lg-30 p-l-xs-15 m-t-xs-30" role="tablist">
         <li role="presentation" class="pull-left active"><a href="#newcar" aria-controls="newcar" role="tab"
-                data-toggle="tab">Marca</a></li>
+                data-toggle="tab">Camion</a></li>
         <li role="presentation" class="pull-left"><a href="#usedcar" aria-controls="newcar" role="tab"
                 data-toggle="tab">Furgoni</a></li>
         <li role="presentation" class="pull-left"><a href="#newcar" aria-controls="newcar" role="tab"
@@ -57,16 +57,12 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle form-item" type="button" id="dropdownMenu1"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Corpo
+                                            Marca
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li>Body</li>
-                                            <li>Sedan</li>
-                                            <li>SUV</li>
-                                            <li>Truck</li>
-                                            <li>Coupe</li>
-                                            <li>Minivan</li>
-                                            <li>Compact</li>
+                                            <li>Ford</li>
+                                            <li>Benz</li>
+                                            <li>Man</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -76,10 +72,9 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle form-item" type="button" id="dropdownMenu2"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Model
+                                            Modello
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <li>Model</li>
                                             <li>Versa</li>
                                             <li>Cruze</li>
                                             <li>Malibu</li>
@@ -132,16 +127,12 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle form-item" type="button" id="dropdownMenu4"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Body
+                                            Marca
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-                                            <li>Body</li>
-                                            <li>Sedan</li>
-                                            <li>SUV</li>
-                                            <li>Truck</li>
-                                            <li>Coupe</li>
-                                            <li>Minivan</li>
-                                            <li>Compact</li>
+                                            <li>Ford</li>
+                                            <li>Benz</li>
+                                            <li>Man</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -174,7 +165,7 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Year
+                                            Anno
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
                                             <li>Year</li>
@@ -187,10 +178,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-5 col-md-3 col-lg-3 p-l-lg-30 p-l-sm-15 m-t-sm-5 p-l-xs-15">
-                        <input type="text" disabled class="slider_amount">
-                        <div class="slider-range"></div>
                     </div>
                     <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
                         <button type="button"
