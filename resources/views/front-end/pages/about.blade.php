@@ -22,21 +22,15 @@
                 <div class="heading">
                     <h3>Chi siamo</h3>
                 </div>
-                <p>Commercianti e noleggiatori di veicoli usati multimarca.
+                <p> Commercianti e noleggiatori di veicoli usati multimarca.<br>
                     Specializzati nel noleggio e nella vendita di veicoli d'importazione provenienti da Francia, Olanda
-                    e Germania.
-                    Auto Ceylon S.R.L. nasce a Verona nel 2019.
+                    e Germania.<br>
+                    Auto Ceylon S.R.L. nasce a Verona nel 2019.<br>
                     Attualmente l'azienda conta una flotta superiore ai 50 veicoli di ogni tipologia.Auto Ceylon è
                     sempre a disposizione del cliente, dalla scelta del veicolo fino al collaudo in Italia e per quanto
                     riguarda il noleggio dal ritiro del veicolo per tutto il periodo di locazione, fornendo assistenza
                     per qualsiasi inconveniente.
                 </p>
-                <ul class="list-default">
-                    <li><a href="#"><i class="fa fa-angle-right"></i>Lorem ipsum dolor smet, consectetur adipisicing
-                            eli</a></li>
-                    <li><a href="#"><i class="fa fa-angle-right"></i>Lorem tetur asicing eli</a></li>
-                    <li><a href="#"><i class="fa fa-angle-right"></i>Lorem ipsum dolor sit amseing eli</a></li>
-                </ul>
             </div>
             <div class="col-sm-12 col-md-5 col-lg-4">
                 <img src="{{ asset('front-end/images/img_7.jpg') }}" class="width-100" alt="image">
@@ -65,15 +59,8 @@
                                 src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6551.jpg&w=320&h=190&zc=1"
                                 alt="image"></a>
                         <div class="blog-caption">
-                            <!-- <ul class="blog-date">
-                                <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
-                                <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
-                            </ul> -->
-                            <h3 class="blog-heading"><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing
-                                    elit</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incidunt ut
-                                labore et dolore magna aliqua uat veniama</p>
-                            <a href="#" class="ht-btn ht-btn-default">Leggi di più</a>
+        
+                            <h3 class="blog-heading">120E25P CUBE E6</h3>
                         </div>
                     </div>
                 </div>
@@ -88,11 +75,7 @@
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
                                 <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
                             </ul> -->
-                            <h3 class="blog-heading"><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing
-                                    elit</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incidunt ut
-                                labore et dolore magna aliqua uat iama</p>
-                            <a href="#" class="ht-btn ht-btn-default">Leggi di più</a>
+                            <h3 class="blog-heading">120E28P CUBE E6</h3>
                         </div>
                     </div>
                 </div>
@@ -107,11 +90,7 @@
                                 <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
                                 <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
                             </ul> -->
-                            <h3 class="blog-heading"><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing
-                                    elit</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incidunt ut
-                                labore et dolore magna aliqua uat iama</p>
-                            <a href="#" class="ht-btn ht-btn-default">Leggi di più</a>
+                            <h3 class="blog-heading">140E18 CUBE</h3>
                         </div>
                     </div>
                 </div>
