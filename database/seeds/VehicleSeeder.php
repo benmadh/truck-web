@@ -57,6 +57,15 @@ class VehicleSeeder extends Seeder
             'IMG_20200929_140044.jpg'
         ];
 
+        $images_04 = 
+        [
+            'VOR2654671600415779431.jpg',
+            'VOR2654671600415788588.jpg',
+            'VOR2654671600416083538.jpg',
+            'VOR2654671600415464567.jpg',
+            'VOR2654671600415528399.jpg'
+        ];
+
         $specs = 
         [
             'Modello' => 'WF01XXTTG1DC45530',
@@ -109,18 +118,35 @@ class VehicleSeeder extends Seeder
             'dec_2' => "Veicolo importato dalla Francia"
         ];
 
+        $specs_04 = 
+        [
+            'Modello' => 'WD89061351N746789',
+            'Data della carta di circolazione' => '30.01.2018',
+            'Chilometraggio' => '167325',
+            'Posti' => '3',
+            'Porte' => '3',
+            'carburante' => 'Gasolio',
+            'Potenza (CV)' => '143',
+            'Classe di emissione' => '6',
+            'Emissione (g CO2/Km)' => '204',
+            'Velocita' => '7',
+            'Scatola del cambio' => 'BV AUTOMATIQUE'
+        ];
+
         DB::table('vehicles')->insert([
                 [
                     'number' => "DA570TX",
                     'model_id' => 1,
                     'brand_id' => 1,
-                    'type' => 'fourgon',
+                    'type' => 'furgoni',
                     'images' => json_encode($images),
                     'specs'  => json_encode($specs)
                 ],
                 [
                     'number' => "CJ680GC",
-                    'type' => 'fourgon',
+                    'type' => 'furgoni',
+                    'model_id' => 1,
+                    'brand_id' => 1,
                     'images' => json_encode($images_01),
                     'specs'  => json_encode($specs_01)
                 ],
@@ -136,9 +162,17 @@ class VehicleSeeder extends Seeder
                     'number' => "CY932PL",
                     'model_id' => 3,
                     'brand_id' => 3,
-                    'type' => 'fourgon',
+                    'type' => 'furgoni',
                     'images' => json_encode($images_03),
                     'specs'  => json_encode($specs_03)
+                ],   
+                [
+                    'number' => "ET403SB",
+                    'model_id' => 4,
+                    'brand_id' => 3,
+                    'type' => 'furgoni',
+                    'images' => json_encode($images_04),
+                    'specs'  => json_encode($specs_04)
                 ],   
         ]);
     }

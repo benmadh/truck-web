@@ -13,7 +13,6 @@
                 <li class="active">Autocarro</li>
             </ul>
         </div>
-        
     </div>
 </div>
 <!-- Car list -->
@@ -42,7 +41,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="select-wrapper m-b-lg-15">
                     <div class="dropdown">
                         <button class="dropdown-toggle form-item" type="button" id="dropdownMenu3"
@@ -81,7 +80,7 @@
                     <label class="text-white">Peso tot. a terra</label>
                     <input type="text" class="form-control form-item">
                 </div>
-               
+
                 <!-- <div class="select-wrapper m-b-lg-15">
                     <div class="dropdown">
                         <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
@@ -98,7 +97,8 @@
                 </div>
                 <input type="text" disabled class="slider_amount m-t-lg-10">
                 <div class="slider-range"></div> -->
-                <button type="button" class="ht-btn ht-btn-default m-t-lg-30"><i class="fa fa-search"></i>Cerca ora</button>
+                <button type="button" class="ht-btn ht-btn-default m-t-lg-30"><i class="fa fa-search"></i>Cerca
+                    ora</button>
             </div>
             <div class="clearfix"></div>
             <!-- Banner -->
@@ -112,58 +112,39 @@
         <div class="col-sm-7 col-md-8 col-lg-9">
             <!-- Car -->
             <div class="product product-list car">
-               
+
                 <div class="clearfix"></div>
                 <!-- Product item -->
-                <div class="product-item hover-img">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-5 col-lg-5">
-                            <a href="{{ route('truck.detail') }}" class="product-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1.jpg&w=320&h=190&zc=1" alt="image"></a>
-                        </div>
-                        <div class="col-sm-12 col-md-7 col-lg-7">
-                            <div class="product-caption">
-                                <h4 class="product-name">
-                                    <a href="{{ route('truck.detail') }}" class="f-18">120E25P CUBE E6</a>
-                                </h4>
-                                <!-- <b class="product-price color-red">$201,000</b> -->
-                                <p class="product-txt m-t-lg-10">Veicoli in arrivo
-                                </p>
-                                <ul class="static-caption m-t-lg-20">
-                                    <li><i class="fa fa-clock-o"></i>IVECO</li>
-                                    <li><i class="fa fa-tachometer"></i>Rif. interno: IN ARRIVO
-</li>
-                                    <li><i class="fa fa-road"></i>12/06/2015</li>
+                @foreach ($vehicles as $vehicle)
+                    <div class="product-item hover-img">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5 col-lg-5">
+                                <a href="{{ route('truck.detail') }}" class="product-img"><img
+                                        src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1.jpg&w=320&h=190&zc=1"
+                                        alt="image"></a>
+                            </div>
+                            <div class="col-sm-12 col-md-7 col-lg-7">
+                                <div class="product-caption">
+                                    <h4 class="product-name">
+                                        <a href="{{ route('truck.detail') }}" class="f-18">{{ $vehicle->number }}</a>
+                                    </h4>
+                                    <!-- <b class="product-price color-red">$201,000</b> -->
+                                    <p class="product-txt m-t-lg-10" style="text-transform: uppercase">{{ $vehicle->type }}
+                                    </p>
+                                    <ul class="static-caption m-t-lg-20">
+                                        <li><i class="fa fa-clock-o"></i>
+                                            {{ $vehicle->brand->name }}
+                                        </li>
+                                        <li><i class="fa fa-tachometer"></i>Rif. interno: {{ $vehicle->model->name }}
+                                        </li>
+                                        <li><i class="fa fa-road"></i>12/06/2015</li>
 
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="product-item hover-img">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-5">
-                            <a href="{{ route('truck.detail') }}" class="product-img"><img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/1.jpg&w=320&h=190&zc=1" alt="image"></a>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-7">
-                            <div class="product-caption">
-                                <h4 class="product-name">
-                                    <a href="{{ route('truck.detail') }}" class="f-18">120E28P CUBE E6</a>
-                                </h4>
-                                <!-- <b class="product-price color-red">$201,000</b> -->
-                                <p class="product-txt m-t-lg-10">Veicoli in arrivo
-                                </p>
-                                <ul class="static-caption m-t-lg-20">
-                                    <li><i class="fa fa-clock-o"></i>IVECO</li>
-                                    <li><i class="fa fa-tachometer"></i>Rif. interno: IN ARRIVO
-</li>
-                                    <li><i class="fa fa-road"></i>Prima imm.: 01/05/2015</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
+                @endforeach
                 <nav aria-label="Page navigation">
                     <ul class="pagination ht-pagination">
                         <li>

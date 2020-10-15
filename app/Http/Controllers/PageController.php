@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vehicle;
 
 class PageController extends Controller
 {
@@ -94,9 +95,23 @@ class PageController extends Controller
     }
 
     // car listing page
-    public function listing()
+    public function listing(Request $request)
     {
-        return view('front-end.pages.listing');
+        $vehicles = Vehicle::latest()->paginate(15);
+        
+        if($request->model != "")
+        {
+            $vehicles->where('model_id', '=', $request->model);
+        }
+
+        if($request->brand != "")
+        {
+            $vehicles->where('model_id', '=', $request->model);
+        }
+        
+        return view('front-end.pages.listing')->with([
+            'vehicles' => $vehicles
+        ]);
     }
 
     public function contactus()

@@ -21,6 +21,9 @@ class ModelSeeder extends Seeder
             ],
             [
                 'name' => "Sprinter 513 CDI"
+            ],
+            [
+                'name' => "Sprinter 314 CDI CC 3T5 E6"
             ]  
         ]);
     }
