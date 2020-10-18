@@ -136,8 +136,8 @@ class VehicleSeeder extends Seeder
         DB::table('vehicles')->insert([
                 [
                     'number' => "DA570TX",
-                    'model_id' => 1,
-                    'brand_id' => 1,
+                    'model' => 1,
+                    'brand' => 1,
                     'type' => 'furgoni',
                     'images' => json_encode($images),
                     'specs'  => json_encode($specs)
@@ -145,31 +145,31 @@ class VehicleSeeder extends Seeder
                 [
                     'number' => "CJ680GC",
                     'type' => 'furgoni',
-                    'model_id' => 1,
-                    'brand_id' => 1,
+                    'model' => 1,
+                    'brand' => 1,
                     'images' => json_encode($images_01),
                     'specs'  => json_encode($specs_01)
                 ],
                 [
                     'number' => "DG882BW",
-                    'model_id' => 2,
-                    'brand_id' => 2,
+                    'model' => 2,
+                    'brand' => 2,
                     'type' => 'camion',
                     'images' => json_encode($images_02),
                     'specs'  => json_encode($specs_02)
                 ],  
                 [
                     'number' => "CY932PL",
-                    'model_id' => 3,
-                    'brand_id' => 3,
+                    'model' => 3,
+                    'brand' => 3,
                     'type' => 'furgoni',
                     'images' => json_encode($images_03),
                     'specs'  => json_encode($specs_03)
                 ],   
                 [
                     'number' => "ET403SB",
-                    'model_id' => 4,
-                    'brand_id' => 3,
+                    'model' => 4,
+                    'brand' => 3,
                     'type' => 'furgoni',
                     'images' => json_encode($images_04),
                     'specs'  => json_encode($specs_04)

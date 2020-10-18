@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vehicle;
+use App\VehicleModel;
+use App\Brand;
 
 class PageController extends Controller
 {
@@ -85,20 +87,30 @@ class PageController extends Controller
 
     public function homeIndex()
     {
-        return view('front-end.pages.index');
+        $models = VehicleModel::all();
+        $brands =  Brand::all();
+        
+        $next_trucks = Vehicle::limit(10)->get();
+
+        $vehicles =  Vehicle::latest()->limit(6)->get();
+
+        return view('front-end.pages.index',\compact(['models', 'brands','vehicles','next_trucks']));
     }
 
     // about us view
     public function aboutus()
     {
-        return view('front-end.pages.about');
+        $next_trucks = Vehicle::limit(10)->get();
+
+        return view('front-end.pages.about', \compact(['next_trucks']));
     }
 
     // car listing page
     public function listing(Request $request)
     {
-        $vehicles = Vehicle::latest()->paginate(15);
-        
+        $vehicles = Vehicle::latest()->paginate(6);
+
+    
         if($request->model != "")
         {
             $vehicles->where('model_id', '=', $request->model);
@@ -110,7 +122,7 @@ class PageController extends Controller
         }
         
         return view('front-end.pages.listing')->with([
-            'vehicles' => $vehicles
+            'vehicles' => $vehicles,
         ]);
     }
 
@@ -119,8 +131,11 @@ class PageController extends Controller
         return view('front-end.pages.contactus');
     }
 
-    public function truckDetail()
+    public function truckDetail($slug, $id)
     {
-        return view('front-end.pages.truck-detail');
+        $vehicle = Vehicle::findOrFail($id);
+
+        $truck_list = Vehicle::limit(10)->get();
+        return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list']));
     }
 }

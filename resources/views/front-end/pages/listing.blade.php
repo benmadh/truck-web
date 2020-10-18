@@ -119,7 +119,7 @@
                     <div class="product-item hover-img">
                         <div class="row">
                             <div class="col-sm-12 col-md-5 col-lg-5">
-                                <a href="{{ route('truck.detail',[$vehicle->model->name,$vehicle->brand->name,$vehicle->id]) }}" class="product-img"><img
+                                <a href="#" class="product-img"><img
                                         src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1.jpg&w=320&h=190&zc=1"
                                         alt="image"></a>
                             </div>
@@ -133,11 +133,12 @@
                                     </p>
                                     <ul class="static-caption m-t-lg-20">
                                         <li><i class="fa fa-clock-o"></i>
-                                            {{ $vehicle->brand->name }}
+                                            {{ $vehicle->modelId->modelBelongsToBrand->name }}
                                         </li>
-                                        <li><i class="fa fa-tachometer"></i>Rif. interno: {{ $vehicle->model->name }}
+                                        <li><i class="fa fa-tachometer"></i>Rif. interno: {{ $vehicle->modelId->name }}
                                         </li>
-                                        <li><i class="fa fa-road"></i>12/06/2015</li>
+                                        
+                                        <li><i class="fa fa-road"></i></li>
 
                                     </ul>
                                 </div>
@@ -145,9 +146,11 @@
                         </div>
                     </div>
                 @endforeach
+               
                 <nav aria-label="Page navigation">
                     <ul class="pagination ht-pagination">
-                        <li>
+                        {{ $vehicles->links() }}
+                        {{-- <li>
                             <a href="#" aria-label="Previous">
                                 <span aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
                             </a>
@@ -161,7 +164,7 @@
                             <a href="#" aria-label="Next">
                                 <span aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
             </div>

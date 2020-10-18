@@ -74,6 +74,8 @@
     <script src="{{ asset('front-end/js/owl-coursel/owl.carousel.js') }}"></script>
     <!-- Script -->
     <script src="{{ asset('front-end/js/script.js') }}"></script>
+
+    @yield('js')
 </body>
 
 </html>

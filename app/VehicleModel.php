@@ -12,4 +12,9 @@ class VehicleModel extends Model
         'name',
     ];
 
+    public function modelBelongsToBrand()
+    {
+        return $this->belongsTo('App\Brand','brand');
+    }
+
 }
