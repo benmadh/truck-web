@@ -108,21 +108,39 @@ class PageController extends Controller
     // car listing page
     public function listing(Request $request)
     {
-        $vehicles = Vehicle::latest()->paginate(6);
+        $vehicles = Vehicle::latest();
+        $models = VehicleModel::all();
+        $brands =  Brand::all();
 
-    
+        $type = $request->type;
         if($request->model != "")
         {
-            $vehicles->where('model_id', '=', $request->model);
+            $vehicles->where(function($query) use($request){
+                $query->where('model', '=', $request->model)
+                ->where('type', '=', $request->type );
+            });         
         }
 
         if($request->brand != "")
         {
-            $vehicles->where('model_id', '=', $request->model);
+            //dd($request->brand);
+            $vehicles->where(function($query) use($request){
+                $query->where('brand', '=', $request->brand)
+                        ->where('type', '=', $request->type );
+            });
         }
-        
+
+        if($request->brand && $request->model)
+        {
+            $vehicles->where('model','=', $request->model)
+                        ->where('brand', '=', $request->brand)
+                        ->where('type', '=', $request->type );
+        }
+       
         return view('front-end.pages.listing')->with([
-            'vehicles' => $vehicles,
+            'vehicles' => $vehicles->paginate(6),
+            'models'   => $models,
+            'brands'   => $brands
         ]);
     }
 

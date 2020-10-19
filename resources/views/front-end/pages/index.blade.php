@@ -49,7 +49,8 @@
         <!-- Tab panes item -->
         <div role="tabpanel" class="tab-pane active" id="newcar">
             <div class="search-option p-lg-30 p-b-lg-15 p-b-sm-30 p-xs-15">
-                <form>
+                <form action="{{ route('listing') }}" method="GET">
+                    @csrf
                     <div class="row">
                         <div class="col-sm-12 col-md-7 col-lg-7">
                             <div class="row">
@@ -67,7 +68,8 @@
                                                 <li value="{{ $brand->id }}">{{ $brand->name }}</li>
                                                 @endforeach
                                             </ul>
-                                            <input type="hidden" id="selected_val" name="selected_val">
+                                            <input type="hidden" id="selected_val" name="brand">
+                                            <input type="hidden" id="camion" name="type" value="{{ __('camion') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -78,18 +80,13 @@
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                 Modello
                                             </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                <li>Versa</li>
-                                                <li>Cruze</li>
-                                                <li>Malibu</li>
-                                                <li>Civic</li>
-                                                <li>Genesis</li>
-                                                <li>Pilot</li>
-                                                <li>Optima</li>
-                                                <li>CX-5</li>
-                                                <li>3 Serie</li>
-                                                <li>Atima</li>
+                                            <ul class="dropdown-menu modello" aria-labelledby="dropdownMenu2">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($models as $model)
+                                                    <li value="{{ $model->id }}">{{ $model->name }}</li>
+                                                @endforeach
                                             </ul>
+                                            <input type="hidden" id="modello-id" name="model">
                                         </div>
                                     </div>
                                 </div>
@@ -125,146 +122,145 @@
 
         <div role="tabpanel" class="tab-pane" id="usedcar">
             <div class="search-option p-lg-30 p-b-lg-15 p-b-sm-30 p-xs-15">
-                <div class="row">
-                    <div class="col-sm-12 col-md-7 col-lg-7">
-                        <div class="row">
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu4"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Marca
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-                                            <li>{{ __('-') }}</li>
-                                            @foreach ($brands as $brand)
-                                            <li value="{{ $brand->id }}">{{ $brand->name }}</li>
-                                            @endforeach
-                                        </ul>
+                <form action="{{ route('listing') }}" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-sm-12 col-md-7 col-lg-7">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu4"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Marca
+                                            </button>
+                                            <ul class="dropdown-menu furgoni-marca" aria-labelledby="dropdownMenu4">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($brands as $brand)
+                                                <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="furgoni-selected-val" name="brand">
+                                            <input type="hidden" id="furgoni" name="type" value="{{ __('furgoni') }}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Model
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                                            <li>Model</li>
-                                            <li>Versa</li>
-                                            <li>Cruze</li>
-                                            <li>Malibu</li>
-                                            <li>Civic</li>
-                                            <li>Genesis</li>
-                                            <li>Pilot</li>
-                                            <li>Optima</li>
-                                            <li>CX-5</li>
-                                            <li>3 Serie</li>
-                                            <li>Atima</li>
-                                        </ul>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Modello
+                                            </button>
+                                            <ul class="dropdown-menu furgoni-modello" aria-labelledby="dropdownMenu5">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($models as $model)
+                                                    <li value="{{ $model->id }}">{{ $model->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="furgoni-modello-id" name="model">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Anno
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
-                                            <li>Year</li>
-                                            <li>2016</li>
-                                            <li>2015</li>
-                                            <li>2014</li>
-                                            <li>2012</li>
-                                        </ul>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Anno
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
+                                                <li>Year</li>
+                                                <li>2016</li>
+                                                <li>2015</li>
+                                                <li>2014</li>
+                                                <li>2012</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
+                            <button type="submit"
+                                class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
+                                    class="fa fa-search"></i> Ricerca</button>
+                        </div>
                     </div>
-                    <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
-                        <button type="button"
-                            class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
-                                class="fa fa-search"></i> Search</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
         {{-- auto --}}
         <div role="tabpanel" class="tab-pane" id="auto">
             <div class="search-option p-lg-30 p-b-lg-15 p-b-sm-30 p-xs-15">
-                <div class="row">
-                    <div class="col-sm-12 col-md-7 col-lg-7">
-                        <div class="row">
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu4"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Marca
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-                                            <li>{{ __('-') }}</li>
-                                            @foreach ($brands as $brand)
-                                            <li value="{{ $brand->id }}">{{ $brand->name }}</li>
-                                            @endforeach
-                                        </ul>
+                <form action="{{ route('listing') }}" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-sm-12 col-md-7 col-lg-7">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu4"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Marca
+                                            </button>
+                                            <ul class="dropdown-menu auto-marca" aria-labelledby="dropdownMenu4">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($brands as $brand)
+                                                <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="auto-selected-val" name="brand">
+                                            <input type="hidden" id="auto" name="type" value="{{ __('auto') }}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Model
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                                            <li>Model</li>
-                                            <li>Versa</li>
-                                            <li>Cruze</li>
-                                            <li>Malibu</li>
-                                            <li>Civic</li>
-                                            <li>Genesis</li>
-                                            <li>Pilot</li>
-                                            <li>Optima</li>
-                                            <li>CX-5</li>
-                                            <li>3 Serie</li>
-                                            <li>Atima</li>
-                                        </ul>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Modello
+                                            </button>
+                                            <ul class="dropdown-menu auto-modello" aria-labelledby="dropdownMenu5">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($models as $model)
+                                                    <li value="{{ $model->id }}">{{ $model->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="auto-modello-id" name="model">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Anno
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
-                                            <li>Year</li>
-                                            <li>2016</li>
-                                            <li>2015</li>
-                                            <li>2014</li>
-                                            <li>2012</li>
-                                        </ul>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Anno
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
+                                                <li>Year</li>
+                                                <li>2016</li>
+                                                <li>2015</li>
+                                                <li>2014</li>
+                                                <li>2012</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
+                            <button type="submit"
+                                class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
+                                    class="fa fa-search"></i> Ricerca</button>
+                        </div>
                     </div>
-                    <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
-                        <button type="button"
-                            class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
-                                class="fa fa-search"></i> Search</button>
-                    </div>
-                </div>
+                </form>
+                
             </div>
         </div>
     </div>
@@ -347,5 +343,31 @@
         $('#selected_val').val($(this).val());
     });
 
+    $('.modello li').click(function () {
+        console.log($(this).val());
+        $('#modello-id').val($(this).val());
+    });
+
+    $('.furgoni-marca li').click(function () {
+        console.log($(this).val());
+        $('#furgoni-selected-val').val($(this).val());
+    });
+
+    $('.furgoni-modello li').click(function () {
+        console.log($(this).val());
+        $('#furgoni-modello-id').val($(this).val());
+    });
+
+    $('.auto-marca li').click(function () {
+        console.log($(this).val());
+        $('#auto-selected-val').val($(this).val());
+    });
+
+    $('.auto-modello li').click(function () {
+        console.log($(this).val());
+        $('#auto-modello-id').val($(this).val());
+    });
+
+    
 </script>
 @endsection

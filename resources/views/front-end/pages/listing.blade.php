@@ -21,93 +21,59 @@
         <div class="col-sm-5 col-md-4 col-lg-3">
             <!-- Search option -->
             <div class="search-option m-b-lg-50 p-lg-20">
-                <div class="select-wrapper m-b-lg-15">
-                    <div class="dropdown">
-                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu1"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Modello
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li>Tutti</li>
-                            <li>100E15 EUROCARGO</li>
-                            <li>100E17 TECTOR EUROCARGO</li>
-                            <li>100E17 TECTOR NEW EUROCARGO STRALIS</li>
-                            <li>100E17P TECTOR NEW EUROCARGO STRALIS</li>
-                            <li>100E18</li>
-                            <li>100E18 CUBE</li>
-                            <li>100E18 EUROCARGO</li>
-                            <li>100E18 EUROCARGO TECTOR</li>
-                            <li>100E18 TECTOR NEW EUROCARGO STRALIS</li>
-                        </ul>
+                <form action="{{ route('listing') }}" method="GET">
+                    @csrf
+                    <div class="select-wrapper m-b-lg-15">
+                        <div class="dropdown">
+                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu3"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Marca
+                            </button>
+                            <ul class="dropdown-menu marca " aria-labelledby="dropdownMenu3">
+                                <li>{{ __('-') }}</li>
+                                @foreach ($brands as $brand)
+                                    <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                @endforeach
+                            </ul>
+                            <input type="hidden" id="selected_val" name="brand">
+                        </div>
                     </div>
-                </div>
-
-                <div class="select-wrapper m-b-lg-15">
-                    <div class="dropdown">
-                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu3"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Marchio
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                            <li>ADRIA</li>
-                            <li>DAF</li>
-                            <li>FIAT</li>
-                            <li>FORD</li>
-                            <li>ISUZU</li>
-                            <li>IVECO</li>
-                            <li>MAN</li>
-                            <li>MERCEDES - BENZ</li>
-                            <li>NISSAN</li>
-                        </ul>
+    
+                    <div class="select-wrapper m-b-lg-15">
+                        <div class="dropdown">
+                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Modello
+                            </button>
+                            <ul class="dropdown-menu modello" aria-labelledby="dropdownMenu1">
+                                <li>{{ __('-') }}</li>
+                                @foreach ($models as $model)
+                                    <li value="{{ $model->id }}">{{ $model->name }}</li>
+                                @endforeach
+                            </ul>
+                            <input type="hidden" id="modello-id" name="model">
+                        </div>
                     </div>
-                </div>
-                <div class="select-wrapper m-b-lg-15">
-                    <div class="dropdown">
-                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Prima Immatr.
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                            <li>Tutti</li>
-                            <li>2016</li>
-                            <li>2015</li>
-                            <li>2014</li>
-                            <li>2012</li>
-                        </ul>
+    
+                    <div class="select-wrapper m-b-lg-15">
+                        <div class="dropdown">
+                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Genere
+                            </button>
+                            <ul class="dropdown-menu type" aria-labelledby="dropdownMenu5">
+                                <li>{{ __('-') }}</li>
+                                <li value="{{ __('furgoni') }}">{{ __('Furgoni') }}</li>
+                                <li value="{{ __('camion') }}">{{ __('Camion') }}</li>
+                                <li value="{{ __('auto') }}">{{ __('Auto') }}</li>
+                            </ul>
+                            <input type="hidden" id="type" name="type">
+                        </div>
                     </div>
-                </div>
-                <div class="m-b-lg-15">
-                    <label class="text-white">Peso tot. a terra</label>
-                    <input type="text" class="form-control form-item">
-                </div>
-
-                <!-- <div class="select-wrapper m-b-lg-15">
-                    <div class="dropdown">
-                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Tranmission
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
-                            <li>Transition</li>
-                            <li>Automatic</li>
-                            <li>Manual</li>
-                            <li>Semi-automatic</li>
-                        </ul>
-                    </div>
-                </div>
-                <input type="text" disabled class="slider_amount m-t-lg-10">
-                <div class="slider-range"></div> -->
-                <button type="button" class="ht-btn ht-btn-default m-t-lg-30"><i class="fa fa-search"></i>Cerca
-                    ora</button>
+                    <button type="submit" class="ht-btn ht-btn-default m-t-lg-30"><i class="fa fa-search"></i>Cercaora</button>
+                </form>
             </div>
             <div class="clearfix"></div>
-            <!-- Banner -->
-            <!-- <div class="banner-item banner-bg-4 banner-1x color-inher">
-                <h5>Lorem ipsum dolor</h5>
-                <h3 class="f-weight-300"><strong>Interior</strong> Accessories</h3>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel</p>
-                <a href="#" class="ht-btn ht-btn-default">Shop now</a>
-            </div> -->
         </div>
         <div class="col-sm-7 col-md-8 col-lg-9">
             <!-- Car -->
@@ -115,60 +81,72 @@
 
                 <div class="clearfix"></div>
                 <!-- Product item -->
-                @foreach ($vehicles as $vehicle)
-                    <div class="product-item hover-img">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-5 col-lg-5">
-                                <a href="#" class="product-img"><img
-                                        src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1.jpg&w=320&h=190&zc=1"
-                                        alt="image"></a>
-                            </div>
-                            <div class="col-sm-12 col-md-7 col-lg-7">
-                                <div class="product-caption">
-                                    <h4 class="product-name">
-                                        <a href="{{ route('truck.detail',[$vehicle->dealUrl(),$vehicle->id]) }}" class="f-18">{{ $vehicle->number }}</a>
-                                    </h4>
-                                    <!-- <b class="product-price color-red">$201,000</b> -->
-                                    <p class="product-txt m-t-lg-10" style="text-transform: uppercase">{{ $vehicle->type }}
-                                    </p>
-                                    <ul class="static-caption m-t-lg-20">
-                                        <li><i class="fa fa-clock-o"></i>
-                                            {{ $vehicle->modelId->modelBelongsToBrand->name }}
-                                        </li>
-                                        <li><i class="fa fa-tachometer"></i>Rif. interno: {{ $vehicle->modelId->name }}
-                                        </li>
-                                        
-                                        <li><i class="fa fa-road"></i></li>
+                @if (isset($vehicles))
+                    @foreach ($vehicles as $vehicle)
+                        <div class="product-item hover-img">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-5 col-lg-5">
+                                    <a href="#" class="product-img"><img
+                                            src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1.jpg&w=320&h=190&zc=1"
+                                            alt="image"></a>
+                                </div>
+                                <div class="col-sm-12 col-md-7 col-lg-7">
+                                    <div class="product-caption">
+                                        <h4 class="product-name">
+                                            <a href="{{ route('truck.detail',[$vehicle->dealUrl(),$vehicle->id]) }}" class="f-18">{{ $vehicle->number }}</a>
+                                        </h4>
+                                        <!-- <b class="product-price color-red">$201,000</b> -->
+                                        <p class="product-txt m-t-lg-10" style="text-transform: uppercase">{{ $vehicle->type }}
+                                        </p>
+                                        <ul class="static-caption m-t-lg-20">
+                                            <li><i class="fa fa-clock-o"></i>
+                                                {{ $vehicle->brandId->name }}
+                                            </li>
+                                            <li><i class="fa fa-tachometer"></i>Rif. interno: {{ $vehicle->modelId->name }}
+                                            </li>
+                                            
+                                            <li><i class="fa fa-road"></i></li>
 
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
+                
                
                 <nav aria-label="Page navigation">
                     <ul class="pagination ht-pagination">
-                        {{ $vehicles->links() }}
-                        {{-- <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
-                            </a>
-                        </li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
-                            </a>
-                        </li> --}}
+                        @if(isset($vehicles))
+                            {{ $vehicles->links() }}
+                        @endif
                     </ul>
                 </nav>
             </div>
         </div>
     </div>
 </section>
+@endsection
+@section('js')
+<script>
+    $('.marca li').click(function () {
+        console.log($(this).val());
+        $('#selected_val').val($(this).val());
+    });
+
+    $('.modello li').click(function () {
+        console.log($(this).val());
+        $('#modello-id').val($(this).val());
+    });
+
+    $('.type li').click(function () {
+        console.log($(this).val());
+        $('#type').val($(this).val());
+    });
+
+
+    
+
+</script>
 @endsection
