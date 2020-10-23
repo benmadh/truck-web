@@ -31,39 +31,20 @@
                     <div class="image-zoom row m-t-lg-5 m-l-lg-ab-5 m-r-lg-ab-5">
                         <div class="col-md-12 col-lg-12 p-lg-5">
                             <a
-                                href="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1.jpg&w=640&h=300&zc=1">
-                                <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1.jpg&w=640&h=300&zc=1"
+                                href="{{ asset($images[0]->url) }}">
+                                <img src="{{ asset($images[0]->url) }}"
                                     alt="image">
                             </a>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
-                            <a
-                                href="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1A.jpg">
-                                <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 1A.jpg"
-                                    alt="image">
-                            </a>
-                        </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
-                            <a
-                                href="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 2.jpg">
-                                <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 2.jpg"
-                                    alt="image">
-                            </a>
-                        </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
-                            <a
-                                href="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 3.jpg">
-                                <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 3.jpg"
-                                    alt="image">
-                            </a>
-                        </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
-                            <a
-                                href="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 6.jpg">
-                                <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/120E25P 6.jpg"
-                                    alt="image">
-                            </a>
-                        </div>
+                        @foreach ($images as $img)
+                            <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
+                                <a
+                                    href="{{ asset($img->url) }}">
+                                    <img src="{{ asset($img->url) }}"
+                                        alt="image">
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -73,32 +54,23 @@
     <div class="row m-t-lg-30 m-b-lg-50">
         <div class="col-md-8">
             <div class="m-b-lg-30">
-                <div class="heading-1 heading-custom">
-                    <h3>Caratteristiche</h3>
-                </div>
-                <div class="m-b-lg-30 bg-gray-fa bg1-gray-2 p-lg-30 p-xs-15">
-                    <p class="color1-9 text-justify">
-                        Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique
-                        ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                        posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor
-                        dignissim semper. Nulla luctus malesuada tincidunt. Nunc facilisis sagittis ullamcorper. Proin
-                        lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum
-                        ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend
-                        laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada
-                        tincidunt. Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate,
-                        tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et
-                        ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor
-                        dignissim semper. Nulla luctus malesuada tincidunt. Nunc facilisis sagittis ullamcorper. Proin
-                        lectus ipsum, gravida et mattis vulputate, tristique ut lectus.
-                    </p>
-                </div>
+                @if($vehicle->description != "")
+                    <div class="heading-1 heading-custom">
+                        <h3>Caratteristiche</h3>
+                    </div>
+                    <div class="m-b-lg-30 bg-gray-fa bg1-gray-2 p-lg-30 p-xs-15">
+                        <p class="color1-9 text-justify">
+                            {{ $vehicle->description }}
+                        </p>
+                    </div>
+                @endif
             </div>
 
             <!-- Technical Specifications -->
             <div class="m-b-lg-0">
                 <div class="bg-gray-fa bg1-gray-2 p-lg-30 p-xs-15">
                     <div class="heading-1 heading-custom">
-                        <h3 class="f-18">120E25P CUBE E6</h3>
+                        <h3 class="f-18">{{ $vehicle->number }}</h3>
                     </div>
                     <ul class="product_para-1">
                         <li><span>Riferimento interno :</span>IN ARRIVO</li>
@@ -114,22 +86,6 @@
                                 * 248 h 275 - SPONDA MONTACARICHI A BATTENTE - possibile vendita anche solo cabinato con
                                 eventuale modifica del passo per allestimenti vari</p>
                         </li>
-                    </ul>
-
-
-                    <div class="heading-1 m-t-lg-20 heading-custom">
-                        <h3 class="f-18">Pneumatici</h3>
-                    </div>
-                    <ul class="product_para-1">
-                        <li><span>CMisura anteriore :</span>245\70R19.5 possibili varie alternative</li>
-                        <li><span>Misura posteriore :</span>245\70R19.5 possibili varie alternative</li>
-                    </ul>
-                    <div class="heading-1 m-t-lg-20 heading-custom">
-                        <h3 class="f-18">Sospensioni</h3>
-                    </div>
-                    <ul class="product_para-1">
-                        <li><span>Anteriore :</span>Meccaniche</li>
-                        <li><span>Posteriore :</span>Pneumatiche</li>
                     </ul>
                 </div>
             </div>

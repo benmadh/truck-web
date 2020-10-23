@@ -51,4 +51,9 @@ class Vehicle extends Model
         return $this->belongsTo('App\Brand','brand');
     }
 
+    public function uploadFileMorph()
+    {
+        return $this->hasMany('App\UploadFileMorph','related_id');
+    }
+
 }

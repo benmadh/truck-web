@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Vehicle;
 use App\VehicleModel;
 use App\Brand;
+use App\UploadFileMorph;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -152,8 +154,13 @@ class PageController extends Controller
     public function truckDetail($slug, $id)
     {
         $vehicle = Vehicle::findOrFail($id);
-
         $truck_list = Vehicle::limit(10)->get();
-        return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list']));
+        
+        $images = DB::table('upload_file')
+                        ->join('upload_file_morph', 'upload_file.id', '=', 'upload_file_morph.upload_file_id') 
+                        ->where('upload_file_morph.related_id', '=' , $id)
+                        ->get();
+                        
+        return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images']));
     }
 }
