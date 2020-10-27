@@ -7,6 +7,7 @@ use App\Vehicle;
 use App\VehicleModel;
 use App\Brand;
 use App\UploadFileMorph;
+use App\Upcoming;
 use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
@@ -92,8 +93,11 @@ class PageController extends Controller
         $models = VehicleModel::all();
         $brands =  Brand::all();
         
-        $next_trucks = Vehicle::limit(10)->get();
-
+        $next_trucks = DB::table('upload_file')
+                        ->join('upload_file_morph', 'upload_file.id', '=', 'upload_file_morph.upload_file_id') 
+                        ->where('upload_file_morph.related_id', '=' , $id)
+                        ->get();
+        
         $vehicles =  Vehicle::latest()->limit(6)->get();
 
         return view('front-end.pages.index',\compact(['models', 'brands','vehicles','next_trucks']));
