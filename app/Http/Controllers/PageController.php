@@ -93,14 +93,16 @@ class PageController extends Controller
         $models = VehicleModel::all();
         $brands =  Brand::all();
         
-        $next_trucks = DB::table('upload_file')
-                        ->join('upload_file_morph', 'upload_file.id', '=', 'upload_file_morph.upload_file_id') 
-                        ->where('upload_file_morph.related_id', '=' , $id)
-                        ->get();
-        
+        $next_trucks = DB::table('upcomings')
+                            ->join('upload_file_morph', 'upcomings.id', '=', 'upload_file_morph.related_id')
+                            ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
+                            ->where('upload_file_morph.related_type', '=', 'upcomings')
+                            ->get();
+        $upcomings = (array) json_decode($next_trucks);
+
         $vehicles =  Vehicle::latest()->limit(6)->get();
 
-        return view('front-end.pages.index',\compact(['models', 'brands','vehicles','next_trucks']));
+        return view('front-end.pages.index',\compact(['models', 'brands','vehicles','upcomings']));
     }
 
     // about us view

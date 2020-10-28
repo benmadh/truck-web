@@ -316,16 +316,15 @@
         <div class="row">
             <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
                 data-itemsMobile="1" data-pag="false" data-buttons="true">
-                @foreach ($next_trucks as $next_truck)
+                
+                @foreach ($upcomings as $next_truck)
+                    @php $number = (array) $next_truck @endphp
                     <div class="col-lg-12">
                         <!-- Blog item -->
                         <div class="blog-item">
-                            <a href="{{ route('truck.detail',[$next_truck->dealUrl(),$next_truck->id]) }}" class="hover-img"><img
-                                    src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6551.jpg&w=320&h=190&zc=1"
-                                    alt="image"></a>
+                            <img src="{{ asset($number['url']) }}" alt="">
                             <div class="blog-caption">
-
-                                <h3 class="blog-heading">{{ $next_truck->number }}</h3>
+                                <h3 class="blog-heading">{{ $number['Number'] }}</h3>
                             </div>
                         </div>
                     </div>
