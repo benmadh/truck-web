@@ -108,9 +108,14 @@ class PageController extends Controller
     // about us view
     public function aboutus()
     {
-        $next_trucks = Vehicle::limit(10)->get();
+        $next_trucks = DB::table('upcomings')
+                            ->join('upload_file_morph', 'upcomings.id', '=', 'upload_file_morph.related_id')
+                            ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
+                            ->where('upload_file_morph.related_type', '=', 'upcomings')
+                            ->get();
+        $upcomings = (array) json_decode($next_trucks);
 
-        return view('front-end.pages.about', \compact(['next_trucks']));
+        return view('front-end.pages.about', \compact(['upcomings']));
     }
 
     // car listing page

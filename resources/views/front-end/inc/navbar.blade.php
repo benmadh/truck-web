@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6">
-                
+                <p class="f-14"><i class="fa fa-home m-r-lg-5"></i><strong>AUTO CEYLON S.R.L
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                <p class="f-14"><i class="fa fa-home m-r-lg-5"></i><strong>AUTO CEYLON S.R.L ,
-                </strong> <strong> <i class="fa fa-phone"> </i> +39 327 088 39 43 </strong> </p>
+                <p class="f-14"><i class="fa fa-map-marker"> </i><strong> Indirizzo : 
+                </strong> <strong>  37069 , Dossobuono di Villafranca VR , Italia </strong> </p>
             </div>
         </div>
     </div>
