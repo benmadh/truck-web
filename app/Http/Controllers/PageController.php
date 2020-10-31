@@ -100,7 +100,6 @@ class PageController extends Controller
                             ->get();
         $upcomings = (array) json_decode($next_trucks);
 
-        // $vehicles =  Vehicle::latest()->limit(6)->get();
 
         $vehicles = DB::table('vehicles')
                         ->join('upload_file_morph', 'vehicles.id', '=', 'upload_file_morph.related_id')
@@ -111,10 +110,10 @@ class PageController extends Controller
         
 
         $vehicle_data = [];
-        
+        dd($vehicles);
         foreach($vehicles as $vehicle)
         {
-
+            
             $modal = VehicleModel::findOrFail($vehicle->modal);
             $brand = Brand::findOrFail($vehicle->brand);
             $thumnail = json_decode($vehicle->formats);
@@ -123,7 +122,7 @@ class PageController extends Controller
 
             $vehicle_data [] = 
             [
-                'id'        => $vehicle->id,
+                'id'        => $vehicle->related_id,
                 'number'    => $vehicle->number,
                 'slud_url'  => $slug,
                 'thumbnail' => $thumnail->thumbnail->url,
