@@ -287,8 +287,8 @@
                     </div>
                     <ul class="absolute-caption">
                         <li style="text-transform: uppercase"><i class="fa fa-clock-o" ></i>{{ $vehicle->type }}</li>
-                        <li><i class="fa fa-road"></i>Marca : {{ $vehicle->modelId->modelBelongsToBrand->name }}</li>
-                        <li><i class="fa fa-car"></i>Modello : {{ $vehicle->modelId->name }}</li>
+                        <li><i class="fa fa-road"></i>Marca : @php echo (isset($vehicle->modelId) ? $vehicle->modelId->modelBelongsToBrand->name : "") @endphp </li>
+                        <li><i class="fa fa-car"></i>Modello : @php echo (isset($vehicle->modelId) ? $vehicle->modelId->name : "") @endphp </li>
                     </ul>
                 </div>
             </div>
