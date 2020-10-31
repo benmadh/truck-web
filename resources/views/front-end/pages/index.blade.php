@@ -272,6 +272,7 @@
     </div>
     <div class="row">
         @foreach ($vehicles as $vehicle)
+        
             <div class="col-sm-6 col-md-6 col-lg-4">
                 <!-- Product item -->
                 <div class="product-item hover-img">

@@ -102,6 +102,12 @@ class PageController extends Controller
 
         $vehicles =  Vehicle::latest()->limit(6)->get();
 
+        // $vehicles = DB::table('vehicles')
+        //                 ->join('upload_file_morph', 'vehicles.id', '=', 'upload_file_morph.related_id')
+        //                 ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
+        //                 ->where('upload_file_morph.related_type', '=', 'vehicles')
+        //                 ->get();
+        
         return view('front-end.pages.index',\compact(['models', 'brands','vehicles','upcomings']));
     }
 
@@ -170,7 +176,15 @@ class PageController extends Controller
         $images = DB::table('upload_file')
                         ->join('upload_file_morph', 'upload_file.id', '=', 'upload_file_morph.upload_file_id') 
                         ->where('upload_file_morph.related_id', '=' , $id)
-                        ->get();     
-        return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images']));
+                        ->get();
+
+        $next_trucks = DB::table('upcomings')
+                        ->join('upload_file_morph', 'upcomings.id', '=', 'upload_file_morph.related_id')
+                        ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
+                        ->where('upload_file_morph.related_type', '=', 'upcomings')
+                        ->get();
+    $upcomings = (array) json_decode($next_trucks);
+
+        return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images','upcomings']));
     }
 }

@@ -10,6 +10,7 @@ class VehicleModel extends Model
     
     protected $fillable = [
         'name',
+        'brand'
     ];
 
     public function modelBelongsToBrand()
