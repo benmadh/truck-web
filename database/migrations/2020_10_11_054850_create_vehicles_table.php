@@ -19,8 +19,8 @@ class CreateVehiclesTable extends Migration
             $table->json('images')->nullable();
             $table->json('specs')->nullable();
             $table->text('description')->nullable();
-            $table->unsignedInteger('model_id')->nullable();
-            $table->unsignedInteger('brand_id')->nullable();
+            $table->unsignedInteger('model')->nullable();
+            $table->unsignedInteger('brand')->nullable();
             $table->enum('type', ['camion', 'furgoni', 'auto'])->nullable();
             $table->timestamps();
         });

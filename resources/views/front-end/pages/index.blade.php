@@ -41,7 +41,7 @@
                 data-toggle="tab">Camion</a></li>
         <li role="presentation" class="pull-left"><a href="#usedcar" aria-controls="newcar" role="tab"
                 data-toggle="tab">Furgoni</a></li>
-        <li role="presentation" class="pull-left"><a href="#newcar" aria-controls="newcar" role="tab"
+        <li role="presentation" class="pull-left"><a href="#auto" aria-controls="auto" role="tab"
                 data-toggle="tab">Auto</a></li>
     </ul>
     <!-- Tab panes -->
@@ -49,142 +49,218 @@
         <!-- Tab panes item -->
         <div role="tabpanel" class="tab-pane active" id="newcar">
             <div class="search-option p-lg-30 p-b-lg-15 p-b-sm-30 p-xs-15">
-                <div class="row">
-                    <div class="col-sm-12 col-md-7 col-lg-7">
-                        <div class="row">
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu1"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Marca
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li>Ford</li>
-                                            <li>Benz</li>
-                                            <li>Man</li>
-                                        </ul>
+                <form action="{{ route('listing') }}" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-sm-12 col-md-7 col-lg-7">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu1"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Marca
+                                            </button>
+                                            <ul class="dropdown-menu marca" aria-labelledby="dropdownMenu1"
+                                                name="marca">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($brands as $brand)
+                                                <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="selected_val" name="brand">
+                                            <input type="hidden" id="camion" name="type" value="{{ __('camion') }}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu2"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Modello
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <li>Versa</li>
-                                            <li>Cruze</li>
-                                            <li>Malibu</li>
-                                            <li>Civic</li>
-                                            <li>Genesis</li>
-                                            <li>Pilot</li>
-                                            <li>Optima</li>
-                                            <li>CX-5</li>
-                                            <li>3 Serie</li>
-                                            <li>Atima</li>
-                                        </ul>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu2"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Modello
+                                            </button>
+                                            <ul class="dropdown-menu modello" aria-labelledby="dropdownMenu2">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($models as $model)
+                                                    <li value="{{ $model->id }}">{{ $model->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="modello-id" name="model">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu3"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Anno
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                                            <li>Year</li>
-                                            <li>2016</li>
-                                            <li>2015</li>
-                                            <li>2014</li>
-                                            <li>2012</li>
-                                        </ul>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu3"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Anno
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                                                <li>Year</li>
+                                                <li>2016</li>
+                                                <li>2015</li>
+                                                <li>2014</li>
+                                                <li>2012</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
-                        <button type="button"
-                            class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
-                                class="fa fa-search"></i> Ricerca</button>
+                        <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
+                            <button type="submit"
+                                class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
+                                    class="fa fa-search"></i> Ricerca</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
+
         <div role="tabpanel" class="tab-pane" id="usedcar">
             <div class="search-option p-lg-30 p-b-lg-15 p-b-sm-30 p-xs-15">
-                <div class="row">
-                    <div class="col-sm-12 col-md-7 col-lg-7">
-                        <div class="row">
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu4"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Marca
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-                                            <li>Ford</li>
-                                            <li>Benz</li>
-                                            <li>Man</li>
-                                        </ul>
+                <form action="{{ route('listing') }}" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-sm-12 col-md-7 col-lg-7">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu4"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Marca
+                                            </button>
+                                            <ul class="dropdown-menu furgoni-marca" aria-labelledby="dropdownMenu4">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($brands as $brand)
+                                                <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="furgoni-selected-val" name="brand">
+                                            <input type="hidden" id="furgoni" name="type" value="{{ __('furgoni') }}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Model
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                                            <li>Model</li>
-                                            <li>Versa</li>
-                                            <li>Cruze</li>
-                                            <li>Malibu</li>
-                                            <li>Civic</li>
-                                            <li>Genesis</li>
-                                            <li>Pilot</li>
-                                            <li>Optima</li>
-                                            <li>CX-5</li>
-                                            <li>3 Serie</li>
-                                            <li>Atima</li>
-                                        </ul>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Modello
+                                            </button>
+                                            <ul class="dropdown-menu furgoni-modello" aria-labelledby="dropdownMenu5">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($models as $model)
+                                                    <li value="{{ $model->id }}">{{ $model->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="furgoni-modello-id" name="model">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
-                                <div class="select-wrapper">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Anno
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
-                                            <li>Year</li>
-                                            <li>2016</li>
-                                            <li>2015</li>
-                                            <li>2014</li>
-                                            <li>2012</li>
-                                        </ul>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Anno
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
+                                                <li>Year</li>
+                                                <li>2016</li>
+                                                <li>2015</li>
+                                                <li>2014</li>
+                                                <li>2012</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
+                            <button type="submit"
+                                class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
+                                    class="fa fa-search"></i> Ricerca</button>
+                        </div>
                     </div>
-                    <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
-                        <button type="button"
-                            class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
-                                class="fa fa-search"></i> Search</button>
+                </form>
+            </div>
+        </div>
+
+        {{-- auto --}}
+        <div role="tabpanel" class="tab-pane" id="auto">
+            <div class="search-option p-lg-30 p-b-lg-15 p-b-sm-30 p-xs-15">
+                <form action="{{ route('listing') }}" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-sm-12 col-md-7 col-lg-7">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu4"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Marca
+                                            </button>
+                                            <ul class="dropdown-menu auto-marca" aria-labelledby="dropdownMenu4">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($brands as $brand)
+                                                <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="auto-selected-val" name="brand">
+                                            <input type="hidden" id="auto" name="type" value="{{ __('auto') }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Modello
+                                            </button>
+                                            <ul class="dropdown-menu auto-modello" aria-labelledby="dropdownMenu5">
+                                                <li>{{ __('-') }}</li>
+                                                @foreach ($models as $model)
+                                                    <li value="{{ $model->id }}">{{ $model->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <input type="hidden" id="auto-modello-id" name="model">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 m-b-lg-15 p-r-lg-0 p-r-sm-15 p-r-xs-15">
+                                    <div class="select-wrapper">
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle form-item" type="button" id="dropdownMenu6"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Anno
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
+                                                <li>Year</li>
+                                                <li>2016</li>
+                                                <li>2015</li>
+                                                <li>2014</li>
+                                                <li>2012</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-lg-2 pull-right pull-left-xs">
+                            <button type="submit"
+                                class="ht-btn ht-btn-default m-t-lg-0  m-t-sm-5 m-t-xs-20 pull-right pull-left-xs"><i
+                                    class="fa fa-search"></i> Ricerca</button>
+                        </div>
                     </div>
-                </div>
+                </form>
+                
             </div>
         </div>
     </div>
@@ -195,126 +271,27 @@
         <h3>NUOVI Furgoni</h3>
     </div>
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Product item -->
-            <div class="product-item hover-img">
-                <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella%20senza%20nome%2011/IMG_7033.JPG&w=320&h=190&zc=1"
-                        alt="image">
-                </a>
-                <div class="product-caption">
-                    <h4 class="product-name">
-                        <a href="#">Over 130 quintals</a><span class="f-18"> 140E22P CUBE</span>
-                    </h4>
+        @foreach ($vehicles as $vehicle)
+            <div class="col-sm-6 col-md-6 col-lg-4">
+                <!-- Product item -->
+                <div class="product-item hover-img">
+                    <a href="#" class="product-img">
+                        <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella%20senza%20nome%2011/IMG_7033.JPG&w=320&h=190&zc=1"
+                            alt="image">
+                    </a>
+                    <div class="product-caption">
+                        <h4 class="product-name">
+                            <a href="#">Over 130 quintals</a><span class="f-18"> {{ $vehicle->number }}</span>
+                        </h4>
+                    </div>
+                    <ul class="absolute-caption">
+                        <li style="text-transform: uppercase"><i class="fa fa-clock-o" ></i>{{ $vehicle->type }}</li>
+                        <li><i class="fa fa-road"></i>Marca : {{ $vehicle->modelId->modelBelongsToBrand->name }}</li>
+                        <li><i class="fa fa-car"></i>Modello : {{ $vehicle->modelId->name }}</li>
+                    </ul>
                 </div>
-                <ul class="absolute-caption">
-                    <li><i class="fa fa-clock-o"></i>IVECO</li>
-                    <li><i class="fa fa-car"></i>Internal ref : 5320</li>
-                    <li><i class="fa fa-road"></i>First imm : 11/09/2012</li>
-
-                </ul>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Product item -->
-            <div class="product-item hover-img">
-                <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/LOTTO GREG 2OTT2019/IMG_9076.jpg&w=320&h=190&zc=1"
-                        alt="image">
-                </a>
-                <div class="product-caption">
-                    <h4 class="product-name">
-                        <a href="#">Oncoming vehicles</a><span class="f-18"> 75E18P CUBE</span>
-                    </h4>
-                </div>
-                <ul class="absolute-caption">
-                    <li><i class="fa fa-clock-o"></i>IVECO</li>
-                    <li><i class="fa fa-car"></i>Internal ref:COMING</li>
-                    <li><i class="fa fa-road"></i>First imm :24/04/2012</li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Product item -->
-            <div class="product-item hover-img">
-                <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6619.jpg&w=320&h=190&zc=1"
-                        alt="image">
-                </a>
-                <div class="product-caption">
-                    <h4 class="product-name">
-                        <a href="#">Da 35 a 130 Q.li</a><span class="f-18"> 120E18P CUBE</span>
-                    </h4>
-                </div>
-                <ul class="absolute-caption">
-                    <li><i class="fa fa-clock-o"></i>IVECO</li>
-                    <li><i class="fa fa-car"></i>Rif. interno: 5120</li>
-                    <li><i class="fa fa-road"></i>Prima imm.: 24/06/2010</li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Product item -->
-            <div class="product-item hover-img">
-                <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/28 GIU 2020/IMG_5375.jpg&w=320&h=190&zc=1"
-                        alt="image">
-                </a>
-                <div class="product-caption">
-                    <h4 class="product-name">
-                        <a href="#">Oltre 130 Q.li</a><span class="f-18"> 140E18 CUBE</span>
-                    </h4>
-                </div>
-                <ul class="absolute-caption">
-                    <li><i class="fa fa-clock-o"></i>IVECO</li>
-                    <li><i class="fa fa-car"></i>Prima imm.: 26/08/2010</li>
-                    <li><i class="fa fa-road"></i>Rif. interno: 56820
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Product item -->
-            <div class="product-item hover-img">
-                <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/camion corse 2020/160 E6 1.jpg&w=320&h=190&zc=1"
-                        alt="image">
-                </a>
-                <div class="product-caption">
-                    <h4 class="product-name">
-                        <a href="#">Da 35 a 130 Q.li</a><span class="f-18"> 120E18P CUBE</span>
-                    </h4>
-                </div>
-                <ul class="absolute-caption">
-                    <li><i class="fa fa-clock-o"></i>IVECO</li>
-                    <li><i class="fa fa-car"></i>Prima imm.: 24/06/2010</li>
-                    <li><i class="fa fa-road"></i>Rif. interno: 5120</li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Product item -->
-            <div class="product-item hover-img">
-                <a href="#" class="product-img">
-                    <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/camion corse 2020/IMG_5585.jpg&w=320&h=190&zc=1"
-                        alt="image">
-                </a>
-                <div class="product-caption">
-                    <h4 class="product-name">
-                        <a href="#">Oltre 130 Q.li</a><span class="f-18"> 140E18 CUBE</span>
-                    </h4>
-                </div>
-                <ul class="absolute-caption">
-                    <li><i class="fa fa-clock-o"></i>IVECO</li>
-                    <li><i class="fa fa-car"></i>Rif. interno: 56820</li>
-                    <li><i class="fa fa-road"></i>Prima imm.: 26/08/2010</li>
-                </ul>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 <!-- Banner -->
@@ -339,65 +316,59 @@
         <div class="row">
             <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
                 data-itemsMobile="1" data-pag="false" data-buttons="true">
-                <div class="col-lg-12">
-                    <!-- Blog item -->
-                    <div class="blog-item">
-                        <a href="#" class="hover-img"><img
-                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6551.jpg&w=320&h=190&zc=1"
-                                alt="image"></a>
-                        <div class="blog-caption">
-        
-                            <h3 class="blog-heading">120E25P CUBE E6</h3>
+                
+                @foreach ($upcomings as $next_truck)
+                    @php $number = (array) $next_truck @endphp
+                    @foreach (json_decode($next_truck->formats) as $item)
+                        <div class="col-lg-12">
+                            <!-- Blog item -->
+                            <div class="blog-item">
+                                <img src="{{ asset($item->url) }}" alt="">
+                                <div class="blog-caption">
+                                    <h3 class="blog-heading">{{ $number['Number'] }}</h3>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <!-- Blog item -->
-                    <div class="blog-item">
-                        <a href="#" class="hover-img"><img
-                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-02-01.jpg&w=320&h=190&zc=1"
-                                alt="image"></a>
-                        <div class="blog-caption">
-                            <!-- <ul class="blog-date">
-                                <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
-                                <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
-                            </ul> -->
-                            <h3 class="blog-heading">120E28P CUBE E6</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <!-- blog item -->
-                    <div class="blog-item">
-                        <a href="#" class="hover-img"><img
-                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_7228.jpg&w=320&h=190&zc=1"
-                                alt="image"></a>
-                        <div class="blog-caption">
-                            <!-- <ul class="blog-date">
-                                <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
-                                <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
-                            </ul> -->
-                            <h3 class="blog-heading">140E18 CUBE</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <!-- Blog item -->
-                    <div class="blog-item">
-                        <a href="#" class="hover-img"><img
-                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-13-00.jpg&w=320&h=190&zc=1"
-                                alt="image"></a>
-                        <div class="blog-caption">
-                            <!-- <ul class="blog-date">
-                                <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
-                                <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
-                            </ul> -->
-                            <h3 class="blog-heading">120E18P CUBE</h3>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endforeach
+                
             </div>
         </div>
     </div>
 </section>
+@endsection
+@section('js')
+<script>
+    $('.marca li').click(function () {
+        console.log($(this).val());
+        $('#selected_val').val($(this).val());
+    });
+
+    $('.modello li').click(function () {
+        console.log($(this).val());
+        $('#modello-id').val($(this).val());
+    });
+
+    $('.furgoni-marca li').click(function () {
+        console.log($(this).val());
+        $('#furgoni-selected-val').val($(this).val());
+    });
+
+    $('.furgoni-modello li').click(function () {
+        console.log($(this).val());
+        $('#furgoni-modello-id').val($(this).val());
+    });
+
+    $('.auto-marca li').click(function () {
+        console.log($(this).val());
+        $('#auto-selected-val').val($(this).val());
+    });
+
+    $('.auto-modello li').click(function () {
+        console.log($(this).val());
+        $('#auto-modello-id').val($(this).val());
+    });
+
+    
+</script>
 @endsection

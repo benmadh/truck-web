@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vehicle;
+use App\VehicleModel;
+use App\Brand;
+use App\UploadFileMorph;
+use App\Upcoming;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -84,19 +90,71 @@ class PageController extends Controller
 
     public function homeIndex()
     {
-        return view('front-end.pages.index');
+        $models = VehicleModel::all();
+        $brands =  Brand::all();
+        
+        $next_trucks = DB::table('upcomings')
+                            ->join('upload_file_morph', 'upcomings.id', '=', 'upload_file_morph.related_id')
+                            ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
+                            ->where('upload_file_morph.related_type', '=', 'upcomings')
+                            ->get();
+        $upcomings = (array) json_decode($next_trucks);
+
+        $vehicles =  Vehicle::latest()->limit(6)->get();
+
+        return view('front-end.pages.index',\compact(['models', 'brands','vehicles','upcomings']));
     }
 
     // about us view
     public function aboutus()
     {
-        return view('front-end.pages.about');
+        $next_trucks = DB::table('upcomings')
+                            ->join('upload_file_morph', 'upcomings.id', '=', 'upload_file_morph.related_id')
+                            ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
+                            ->where('upload_file_morph.related_type', '=', 'upcomings')
+                            ->get();
+        $upcomings = (array) json_decode($next_trucks);
+
+        return view('front-end.pages.about', \compact(['upcomings']));
     }
 
     // car listing page
-    public function listing()
+    public function listing(Request $request)
     {
-        return view('front-end.pages.listing');
+        $vehicles = Vehicle::latest();
+        $models = VehicleModel::all();
+        $brands =  Brand::all();
+
+        $type = $request->type;
+        if($request->model != "")
+        {
+            $vehicles->where(function($query) use($request){
+                $query->where('model', '=', $request->model)
+                ->where('type', '=', $request->type );
+            });         
+        }
+
+        if($request->brand != "")
+        {
+            //dd($request->brand);
+            $vehicles->where(function($query) use($request){
+                $query->where('brand', '=', $request->brand)
+                        ->where('type', '=', $request->type );
+            });
+        }
+
+        if($request->brand && $request->model)
+        {
+            $vehicles->where('model','=', $request->model)
+                        ->where('brand', '=', $request->brand)
+                        ->where('type', '=', $request->type );
+        }
+       
+        return view('front-end.pages.listing')->with([
+            'vehicles' => $vehicles->paginate(6),
+            'models'   => $models,
+            'brands'   => $brands
+        ]);
     }
 
     public function contactus()
@@ -104,8 +162,15 @@ class PageController extends Controller
         return view('front-end.pages.contactus');
     }
 
-    public function truckDetail()
+    public function truckDetail($slug, $id)
     {
-        return view('front-end.pages.truck-detail');
+        $vehicle = Vehicle::findOrFail($id);
+        $truck_list = Vehicle::limit(10)->get();
+        
+        $images = DB::table('upload_file')
+                        ->join('upload_file_morph', 'upload_file.id', '=', 'upload_file_morph.upload_file_id') 
+                        ->where('upload_file_morph.related_id', '=' , $id)
+                        ->get();     
+        return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images']));
     }
 }

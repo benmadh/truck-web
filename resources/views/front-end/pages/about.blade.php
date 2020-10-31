@@ -43,7 +43,6 @@
         </div> -->
     </div>
 </section>
-<!-- Last news -->
 <section class="m-b-lg-50">
     <div class="blog blog-grid overl">
         <div class="heading">
@@ -52,63 +51,22 @@
         <div class="row">
             <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
                 data-itemsMobile="1" data-pag="false" data-buttons="true">
-                <div class="col-lg-12">
-                    <!-- Blog item -->
-                    <div class="blog-item">
-                        <a href="#" class="hover-img"><img
-                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_6551.jpg&w=320&h=190&zc=1"
-                                alt="image"></a>
-                        <div class="blog-caption">
-        
-                            <h3 class="blog-heading">120E25P CUBE E6</h3>
+                
+                @foreach ($upcomings as $next_truck)
+                    @php $number = (array) $next_truck @endphp
+                    @foreach (json_decode($next_truck->formats) as $item)
+                        <div class="col-lg-12">
+                            <!-- Blog item -->
+                            <div class="blog-item">
+                                <img src="{{ asset($item->url) }}" alt="">
+                                <div class="blog-caption">
+                                    <h3 class="blog-heading">{{ $number['Number'] }}</h3>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <!-- Blog item -->
-                    <div class="blog-item">
-                        <a href="#" class="hover-img"><img
-                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-02-01.jpg&w=320&h=190&zc=1"
-                                alt="image"></a>
-                        <div class="blog-caption">
-                            <!-- <ul class="blog-date">
-                                <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
-                                <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
-                            </ul> -->
-                            <h3 class="blog-heading">120E28P CUBE E6</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <!-- blog item -->
-                    <div class="blog-item">
-                        <a href="#" class="hover-img"><img
-                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/IMG_7228.jpg&w=320&h=190&zc=1"
-                                alt="image"></a>
-                        <div class="blog-caption">
-                            <!-- <ul class="blog-date">
-                                <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
-                                <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
-                            </ul> -->
-                            <h3 class="blog-heading">140E18 CUBE</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <!-- Blog item -->
-                    <div class="blog-item">
-                        <a href="#" class="hover-img"><img
-                                src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella senza nome 11/PHOTO-2020-09-10-12-13-00.jpg&w=320&h=190&zc=1"
-                                alt="image"></a>
-                        <div class="blog-caption">
-                            <!-- <ul class="blog-date">
-                                <li><a href="#"><i class="fa fa-calendar"></i>25th May 2016</a></li>
-                                <li><a href="#"><i class="fa fa-comment"></i>3 comment</a></li>
-                            </ul> -->
-                            <h3 class="blog-heading">120E18P CUBE</h3>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endforeach
+                
             </div>
         </div>
     </div>

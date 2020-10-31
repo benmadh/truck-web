@@ -57,88 +57,132 @@ class VehicleSeeder extends Seeder
             'IMG_20200929_140044.jpg'
         ];
 
+        $images_04 = 
+        [
+            'VOR2654671600415779431.jpg',
+            'VOR2654671600415788588.jpg',
+            'VOR2654671600416083538.jpg',
+            'VOR2654671600415464567.jpg',
+            'VOR2654671600415528399.jpg'
+        ];
+
         $specs = 
         [
-            'Modello' => 'WF01XXTTG1DC45530',
-            'Data della carta di circolazione' => '26.11.2013',
-            'Chilometraggio' => '253616',
-            'Posti' => '9',
-            'Porte' => '4',
-            'Carburante' => 'Gasolio',
-            'Potenza(CV)' => '125',
-            'Classe di emissione' => '5',
-            'Emissione(g CO2/km)' => '168',
-            'Velocita' => '6',
-            'Scatola del cambio' => 'MECANIQUE',
+            [
+                'Modello' => 'WF01XXTTG1DC45530',
+                'Data della carta di circolazione' => '26.11.2013',
+                'Chilometraggio' => '253616',
+                'Posti' => '9',
+                'Porte' => '4',
+                'Carburante' => 'Gasolio',
+                'Potenza(CV)' => '125',
+                'Classe di emissione' => '5',
+                'Emissione(g CO2/km)' => '168',
+                'Velocita' => '6',
+                'Scatola del cambio' => 'MECANIQUE',
+            ]
         ];
 
         $specs_01 = 
         [
-            'Iveco Eurocargo ' => '120e18',
-            'Prima immatricolazione' => '07/2012',
-            'Normativa antinquinamento' => 'Euro 5B',
-            'Chilometri percorsi' => '250.840',
-            'Sponda caricatrice retrattile' => 'Dhollandia',
-            'des_01' => 'Veicolo già collaudato',
-            'des' => 'Veicolo importato dalla Francia'
+            [
+                'Iveco Eurocargo ' => '120e18',
+                'Prima immatricolazione' => '07/2012',
+                'Normativa antinquinamento' => 'Euro 5B',
+                'Chilometri percorsi' => '250.840',
+                'Sponda caricatrice retrattile' => 'Dhollandia',
+                'des_01' => 'Veicolo già collaudato',
+                'des' => 'Veicolo importato dalla Francia'
+            ]
         ];
 
         $specs_02 = 
         [
-            'Modello' => 'ZCFA1ED1402620551',
-            'Data della carta di circolazione' => '26.05.2014',
-            'Chilometraggio' => '212013',
-            'Posti' => '2',
-            'Porte' => '2',
-            'Carburante' => 'Gasolio',
-            'Potenza(CV)' => '182',
-            'Classe di emissione' => '5',
-            'Emissione(g CO2/km)' => '-',
-            'Velocita' => '6',
-            'Scatola del cambio' => 'ROBOTISeE',
-            'Carrozzeria' => 'Fourgon'
+            [
+                'Modello' => 'ZCFA1ED1402620551',
+                'Data della carta di circolazione' => '26.05.2014',
+                'Chilometraggio' => '212013',
+                'Posti' => '2',
+                'Porte' => '2',
+                'Carburante' => 'Gasolio',
+                'Potenza(CV)' => '182',
+                'Classe di emissione' => '5',
+                'Emissione(g CO2/km)' => '-',
+                'Velocita' => '6',
+                'Scatola del cambio' => 'ROBOTISeE',
+                'Carrozzeria' => 'Fourgon'
+            ]
         ];
 
         $specs_03 = 
         [
-            'Prima immatricolazione' => "09/2013",
-            'Normativa antinquinamento' => "Euro 5",
-            'Chilometri percorsi' => "217.000",
-            'Sponda caricatrice battente ' => "MBB Palfinger",
-            'dec' => "Veicolo già collaudato",
-            'dec_2' => "Veicolo importato dalla Francia"
+            [
+                'Prima immatricolazione' => "09/2013",
+                'Normativa antinquinamento' => "Euro 5",
+                'Chilometri percorsi' => "217.000",
+                'Sponda caricatrice battente ' => "MBB Palfinger",
+                'dec' => "Veicolo già collaudato",
+                'dec_2' => "Veicolo importato dalla Francia"
+            ]
+        ];
+
+        $specs_04 = 
+        [
+            [
+                'Modello' => 'WD89061351N746789',
+                'Data della carta di circolazione' => '30.01.2018',
+                'Chilometraggio' => '167325',
+                'Posti' => '3',
+                'Porte' => '3',
+                'carburante' => 'Gasolio',
+                'Potenza (CV)' => '143',
+                'Classe di emissione' => '6',
+                'Emissione (g CO2/Km)' => '204',
+                'Velocita' => '7',
+                'Scatola del cambio' => 'BV AUTOMATIQUE'
+            ]
         ];
 
         DB::table('vehicles')->insert([
                 [
                     'number' => "DA570TX",
-                    'model_id' => 1,
-                    'brand_id' => 1,
-                    'type' => 'fourgon',
+                    'model' => 1,
+                    'brand' => 1,
+                    'type' => 'furgoni',
                     'images' => json_encode($images),
                     'specs'  => json_encode($specs)
                 ],
                 [
                     'number' => "CJ680GC",
-                    'type' => 'fourgon',
+                    'type' => 'furgoni',
+                    'model' => 1,
+                    'brand' => 1,
                     'images' => json_encode($images_01),
                     'specs'  => json_encode($specs_01)
                 ],
                 [
                     'number' => "DG882BW",
-                    'model_id' => 2,
-                    'brand_id' => 2,
+                    'model' => 2,
+                    'brand' => 2,
                     'type' => 'camion',
                     'images' => json_encode($images_02),
                     'specs'  => json_encode($specs_02)
                 ],  
                 [
                     'number' => "CY932PL",
-                    'model_id' => 3,
-                    'brand_id' => 3,
-                    'type' => 'fourgon',
+                    'model' => 3,
+                    'brand' => 3,
+                    'type' => 'furgoni',
                     'images' => json_encode($images_03),
                     'specs'  => json_encode($specs_03)
+                ],   
+                [
+                    'number' => "ET403SB",
+                    'model' => 4,
+                    'brand' => 3,
+                    'type' => 'furgoni',
+                    'images' => json_encode($images_04),
+                    'specs'  => json_encode($specs_04)
                 ],   
         ]);
     }

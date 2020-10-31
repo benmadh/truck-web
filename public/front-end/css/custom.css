@@ -1,108 +1,91 @@
-.product-grid-2 .product-item .product-caption .product-name span::after
-{
+.product-grid-2 .product-item .product-caption .product-name span::after {
     border-top-color: #1a2d58 !important;
-	border-left-color: #1a2d58 !important;
-	border-right-color:rgba(0,0,0,0) !important;
-	border-bottom-color:rgba(0,0,0,0) !important;
+    border-left-color: #1a2d58 !important;
+    border-right-color: rgba(0, 0, 0, 0) !important;
+    border-bottom-color: rgba(0, 0, 0, 0) !important;
 }
 
-.logo img
-{
-    margin-top : 30px !important;
-    width : 50%;
+.logo img {
+    margin-top: 30px !important;
+    width: 50%;
 }
 
-.footer-top
-{
+.footer-top {
     background-image: url('https://www.belcamion.com/templates/belcamion/images/footer.jpg');
 }
 
-.bg-gray-1
-{
-    background : #1a2d58 !important;
+.bg-gray-1 {
+    background: #1a2d58 !important;
 }
 
-.product-grid-2 .product-item
-{
+.product-grid-2 .product-item {
     background: #dadada !important;
 }
 
-.footer-top .heading-1 h3
-{
-    border-bottom : 2px solid #f5f5f5 !important;
+.footer-top .heading-1 h3 {
+    border-bottom: 2px solid #f5f5f5 !important;
 }
 
-.footer-top .heading-1
-{
-    border-bottom : 2px solid #f5f5f5 !important;
+.footer-top .heading-1 {
+    border-bottom: 2px solid #f5f5f5 !important;
 }
 
-.footer-top .list-default li, .footer-top p
-{
-    color : #dadada !important;
+.footer-top .list-default li,
+.footer-top p {
+    color: #dadada !important;
 }
 
-.bg-gray-0c
-{
+.bg-gray-0c {
     background: #303540 !important;
 }
 
-.text-white
-{
-    color : #fff !important;
+.text-white {
+    color: #fff !important;
 }
 
-.text-justify
-{
-    text-align : justify;
+.text-justify {
+    text-align: justify;
 }
 
-.heading-1 h3::before
-{
+.heading-1 h3::before {
     content: '';
     border-bottom: 10px solid #ff0000;
     padding: 10px;
 }
 
-.heading h3
-{
+.heading h3 {
     padding: 17px 20px 17px 9px;
 }
 
-.heading-custom
-{
+.heading-custom {
     border-bottom: 2px solid #f00 !important;
 }
 
-.heading-1 h3, .heading-1 h4
-{
+.heading-1 h3,
+.heading-1 h4 {
     border-bottom: none !important;
 }
 
-.d-none
-{
-    display : none;
+.d-none {
+    display: none;
 }
 
-.heading
-{
-    background : #ff0000;
+.heading {
+    background: #ff0000;
 }
 
-.owl-theme .owl-controls .owl-buttons .owl-prev, .owl-theme .owl-controls .owl-buttons .owl-next
-{
-    background : #1a2d58;
+.owl-theme .owl-controls .owl-buttons .owl-prev,
+.owl-theme .owl-controls .owl-buttons .owl-next {
+    background: #1a2d58;
 }
 
-#opening
-{
+#opening {
     padding-left: 1em;
-    display:block;
+    display: block;
     margin: 0;
 }
 
-#opening li
-{
+#opening li {
     display: inline-block;
     vertical-align: middle;
     list-style-position: inside;
@@ -112,93 +95,104 @@
     white-space: nowrap;
 }
 
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    background: #d11717 !important;
+	color:#fff;
+	border-color: #d11717 !important;
+	height: 40px;
+    width: 40px;
+    font-size : 17px;
+    font-weight: 800;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span
+{
+    background : #eee;
+    color : #333;
+    height:40px;
+	width:40px;
+	text-align:center;
+	padding:10px;
+	margin-right:2px;
+    border:none;
+    font-weight: 900;
+}
+
 
 
 
 /* responsive */
 
-@media(max-width : 321px)
-{
-    .logo img
-    {
+@media(max-width : 321px) {
+    .logo img {
         position: relative;
         left: 80px;
     }
 
-    .footer-top .heading-1 h3
-    {
+    .footer-top .heading-1 h3 {
         font-size: 12pt;
     }
 
-    .banner-bg-8
-    {
+    .banner-bg-8 {
         padding: 0px;
     }
 }
 
-@media(max-width : 376px) and (min-width : 321px)
-{
-    .logo img
-    {
+@media(max-width : 376px) and (min-width : 321px) {
+    .logo img {
         position: relative;
         left: 100px;
-        width:100px;
+        width: 100px;
     }
 
-    .banner-bg-8
-    {
+    .banner-bg-8 {
         padding: 0px;
     }
 
-    .footer-top .heading-1 h3
-    {
+    .footer-top .heading-1 h3 {
         font-size: 12pt;
     }
 }
 
-@media(min-width : 375px) and (max-width : 500px)
-{
-    .logo img
-    {
+@media(min-width : 375px) and (max-width : 500px) {
+    .logo img {
         position: relative;
         left: 140px;
-        width:100px;
+        width: 100px;
     }
 
-    .banner-bg-8
-    {
+    .banner-bg-8 {
         padding: 0px;
     }
 }
 
-@media(min-width : 500px) and (max-width : 600px)
-{
-    .logo img
-    {
+@media(min-width : 500px) and (max-width : 600px) {
+    .logo img {
         position: relative;
         left: 180px;
-        width:100px;
+        width: 100px;
     }
 
-    .banner-bg-8
-    {
+    .banner-bg-8 {
         padding: 0px;
     }
 }
 
 
-@media (max-width : 997px) and (min-width : 700px)
-{
-    .logo img
-    {
-        position : relative;
-        left  : -100px;
-        width :100px;
-        top   : 30px
+@media (max-width : 997px) and (min-width : 700px) {
+    .logo img {
+        position: relative;
+        left: -100px;
+        width: 100px;
+        top: 30px
     }
 
-    .banner-bg-8
-    {
+    .banner-bg-8 {
         padding: 0px;
     }
 }

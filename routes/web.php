@@ -18,4 +18,4 @@ Route::get('/', 'PageController@homeIndex')->name('index');
 Route::get('chi-siamo', 'PageController@aboutus')->name('aboutus');
 Route::get('veicoli', 'PageController@listing')->name('listing');
 Route::get('contattaci', 'PageController@contactus')->name('contactus');
-Route::get('veicoli/single', 'PageController@truckDetail')->name('truck.detail');
+Route::get('veicoli/{slug}/{id}', 'PageController@truckDetail')->name('truck.detail');
