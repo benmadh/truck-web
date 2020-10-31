@@ -275,13 +275,13 @@
             <div class="col-sm-6 col-md-6 col-lg-4">
                 <!-- Product item -->
                 <div class="product-item hover-img">
-                    <a href="#" class="product-img">
+                    <a href="{{ route('truck.detail',[$vehicle->dealUrl(),$vehicle->id]) }}" class="product-img">
                         <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/cartella%20senza%20nome%2011/IMG_7033.JPG&w=320&h=190&zc=1"
                             alt="image">
                     </a>
                     <div class="product-caption">
                         <h4 class="product-name">
-                            <a href="#">Over 130 quintals</a><span class="f-18"> {{ $vehicle->number }}</span>
+                            <a href="{{ route('truck.detail',[$vehicle->dealUrl(),$vehicle->id]) }}">Over 130 quintals</a><span class="f-18"> {{ $vehicle->number }}</span>
                         </h4>
                     </div>
                     <ul class="absolute-caption">
