@@ -100,15 +100,41 @@ class PageController extends Controller
                             ->get();
         $upcomings = (array) json_decode($next_trucks);
 
-        $vehicles =  Vehicle::latest()->limit(6)->get();
+        // $vehicles =  Vehicle::latest()->limit(6)->get();
 
-        // $vehicles = DB::table('vehicles')
-        //                 ->join('upload_file_morph', 'vehicles.id', '=', 'upload_file_morph.related_id')
-        //                 ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
-        //                 ->where('upload_file_morph.related_type', '=', 'vehicles')
-        //                 ->get();
+        $vehicles = DB::table('vehicles')
+                        ->join('upload_file_morph', 'vehicles.id', '=', 'upload_file_morph.related_id')
+                        ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
+                        ->where('upload_file_morph.related_type', '=', 'vehicles')
+                        ->get();
+
         
-        return view('front-end.pages.index',\compact(['models', 'brands','vehicles','upcomings']));
+
+        $vehicle_data = [];
+        
+        foreach($vehicles as $vehicle)
+        {
+
+            $modal = VehicleModel::findOrFail($vehicle->modal);
+            $brand = Brand::findOrFail($vehicle->brand);
+            $thumnail = json_decode($vehicle->formats);
+            
+            $slug =  $this->dealUrl($modal->name,$brand->name);
+
+            $vehicle_data [] = 
+            [
+                'id'        => $vehicle->id,
+                'number'    => $vehicle->number,
+                'slud_url'  => $slug,
+                'thumbnail' => $thumnail->thumbnail->url,
+                'type'      => $vehicle->type,
+                'modal'     => $modal->name,
+                'brand'     => $brand->name
+            ];
+        }
+
+        
+        return view('front-end.pages.index',\compact(['models', 'brands','vehicle_data','upcomings']));
     }
 
     // about us view
@@ -187,4 +213,28 @@ class PageController extends Controller
 
         return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images','upcomings']));
     }
+
+    public function dealUrl($modal_name,$brand_name) {
+        // replace non letter or digits by -
+         $text = preg_replace('~[^\\pL\d]+~u', '-', $modal_name.'-'.$brand_name);
+
+         // trim
+         $text = trim($text, '-');
+
+         // transliterate
+         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+         // lowercase
+         $text = strtolower($text);
+
+         // remove unwanted characters
+         $text = preg_replace('~[^-\w]+~', '', $text);
+
+         if (empty($text))
+         {
+           return 'n-a';
+         }
+
+         return $text;
+   }
 }
