@@ -170,8 +170,7 @@ class PageController extends Controller
         $images = DB::table('upload_file')
                         ->join('upload_file_morph', 'upload_file.id', '=', 'upload_file_morph.upload_file_id') 
                         ->where('upload_file_morph.related_id', '=' , $id)
-                        ->get();
-                        
+                        ->get();     
         return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images']));
     }
 }

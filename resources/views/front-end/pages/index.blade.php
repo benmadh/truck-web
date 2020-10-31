@@ -319,15 +319,17 @@
                 
                 @foreach ($upcomings as $next_truck)
                     @php $number = (array) $next_truck @endphp
-                    <div class="col-lg-12">
-                        <!-- Blog item -->
-                        <div class="blog-item">
-                            <img src="{{ asset($number['url']) }}" alt="">
-                            <div class="blog-caption">
-                                <h3 class="blog-heading">{{ $number['Number'] }}</h3>
+                    @foreach (json_decode($next_truck->formats) as $item)
+                        <div class="col-lg-12">
+                            <!-- Blog item -->
+                            <div class="blog-item">
+                                <img src="{{ asset($item->url) }}" alt="">
+                                <div class="blog-caption">
+                                    <h3 class="blog-heading">{{ $number['Number'] }}</h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 @endforeach
                 
             </div>

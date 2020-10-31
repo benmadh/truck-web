@@ -30,17 +30,24 @@
                 <div class="product-img-lg bg-gray-f5 bg1-gray-15">
                     <div class="image-zoom row m-t-lg-5 m-l-lg-ab-5 m-r-lg-ab-5">
                         <div class="col-md-12 col-lg-12 p-lg-5">
+                            @php
+                                $img_path = json_decode($images[0]->formats);
+                            @endphp
                             <a
-                                href="{{ asset($images[0]->url) }}">
-                                <img src="{{ asset($images[0]->url) }}"
-                                    alt="image">
+                            href="{{ asset($img_path->large->url) }}">
+                                <img 
+                                src="{{ asset($img_path->large->url) }}"
+                                alt="image">
                             </a>
                         </div>
                         @foreach ($images as $img)
+                            @php 
+                                $large = json_decode($img->formats);
+                            @endphp
                             <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
                                 <a
-                                    href="{{ asset($img->url) }}">
-                                    <img src="{{ asset($img->url) }}"
+                                    href="{{ asset($large->thumbnail->url) }}">
+                                    <img src="{{ asset($large->thumbnail->url) }}"
                                         alt="image">
                                 </a>
                             </div>
