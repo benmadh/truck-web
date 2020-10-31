@@ -43,7 +43,7 @@ class Vehicle extends Model
 
     public function modelId()
     {
-        return $this->belongsTo('App\VehicleModel','model');
+        return $this->belongsTo('App\VehicleModel','modal');
     }
 
     public function brandId()
