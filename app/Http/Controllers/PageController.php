@@ -8,6 +8,7 @@ use App\VehicleModel;
 use App\Brand;
 use App\UploadFileMorph;
 use App\Upcoming;
+use App\UploadFile;
 use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
@@ -102,37 +103,52 @@ class PageController extends Controller
         $upcomings = (array) json_decode($next_trucks);
 
 
-        $vehicles = DB::table('vehicles')
-                        ->join('upload_file_morph', 'upload_file_morph.related_id', '=', 'vehicles.id')
-                        ->join('upload_file','upload_file.id', '=', 'upload_file_morph.upload_file_id')
-                        ->where('upload_file_morph.related_type', '=', 'vehicles')
-                        ->get();
+        // $vehicles = DB::table('vehicles')
+        //                 ->join('upload_file_morph', 'upload_file_morph.related_id', '=', 'vehicles.id')
+        //                 ->join('upload_file','upload_file.id', '=', 'upload_file_morph.upload_file_id')
+        //                 ->where('upload_file_morph.related_type', '=', 'vehicles')
+        //                 ->get();
 
-
+        $vehicles =  Vehicle::all();
 
         $vehicle_data = [];
-        // dd($vehicles->groupBy());
+
         foreach($vehicles as $vehicle)
         {
+            $file_morph = UploadFileMorph::where('related_id', '=', $vehicle->id)
+                                           ->where('related_type', '=', 'vehicles')
+                                            ->get();
+            $files = "";
+
+            foreach($file_morph as $fileMorph)
+            {
+                $upload_files =  UploadFile::where('id', '=', $fileMorph->upload_file_id )
+                                        ->get();
+                foreach($upload_files as $upload_file)
+                {
+                    $files = json_decode($upload_file->formats);
+                }
+                
+            }
             
             $modal = VehicleModel::findOrFail($vehicle->modal);
             $brand = Brand::findOrFail($vehicle->brand);
-            $thumnail = json_decode($vehicle->formats);
-            
+
             $slug =  $this->dealUrl($modal->name,$brand->name);
 
             $vehicle_data [] = 
             [
-                'id'        => $vehicle->related_id,
+                'id'        => $vehicle->id,
                 'number'    => $vehicle->number,
                 'slud_url'  => $slug,
-                'thumbnail' => $thumnail->thumbnail->url,
                 'type'      => $vehicle->type,
                 'modal'     => $modal->name,
-                'brand'     => $brand->name
+                'brand'     => $brand->name,
+                'files'     => $files
             ];
         }
 
+         //dd($vehicle_data);
         
         return view('front-end.pages.index',\compact(['models', 'brands','vehicle_data','upcomings']));
     }

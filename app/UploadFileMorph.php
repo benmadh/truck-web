@@ -21,8 +21,4 @@ class UploadFileMorph extends Model
         return $this->belongsTo('App\Vehicle','related_id');
     }
 
-    public function commentable()
-    {
-        return $this->morphTo();
-    }
 }
