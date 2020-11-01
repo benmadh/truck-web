@@ -98,19 +98,20 @@ class PageController extends Controller
                             ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
                             ->where('upload_file_morph.related_type', '=', 'upcomings')
                             ->get();
+
         $upcomings = (array) json_decode($next_trucks);
 
 
         $vehicles = DB::table('vehicles')
-                        ->join('upload_file_morph', 'vehicles.id', '=', 'upload_file_morph.related_id')
-                        ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
+                        ->join('upload_file_morph', 'upload_file_morph.related_id', '=', 'vehicles.id')
+                        ->join('upload_file','upload_file.id', '=', 'upload_file_morph.upload_file_id')
                         ->where('upload_file_morph.related_type', '=', 'vehicles')
                         ->get();
 
-        
+
 
         $vehicle_data = [];
-        dd($vehicles);
+        // dd($vehicles->groupBy());
         foreach($vehicles as $vehicle)
         {
             
@@ -144,6 +145,7 @@ class PageController extends Controller
                             ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
                             ->where('upload_file_morph.related_type', '=', 'upcomings')
                             ->get();
+
         $upcomings = (array) json_decode($next_trucks);
 
         return view('front-end.pages.about', \compact(['upcomings']));
