@@ -210,11 +210,14 @@ class PageController extends Controller
         $models = VehicleModel::all();
         $brands =  Brand::all();
 
+        $vehicle_data = [];
+
         $type = $request->type;
+
         if($request->model != "")
         {
             $vehicles->where(function($query) use($request){
-                $query->where('model', '=', $request->model)
+                $query->where('modal', '=', $request->model)
                 ->where('type', '=', $request->type );
             });         
         }
@@ -230,7 +233,7 @@ class PageController extends Controller
 
         if($request->brand && $request->model)
         {
-            $vehicles->where('model','=', $request->model)
+            $vehicles->where('modal','=', $request->model)
                         ->where('brand', '=', $request->brand)
                         ->where('type', '=', $request->type );
         }
@@ -238,7 +241,8 @@ class PageController extends Controller
         return view('front-end.pages.listing')->with([
             'vehicles' => $vehicles->paginate(6),
             'models'   => $models,
-            'brands'   => $brands
+            'brands'   => $brands,
+            'vehicle_data' => $vehicle_data
         ]);
     }
 

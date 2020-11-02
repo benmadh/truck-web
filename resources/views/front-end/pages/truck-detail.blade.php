@@ -79,7 +79,6 @@
                     <div class="heading-1 heading-custom">
                         <h3 class="f-18">{{ $vehicle->number }}</h3>
                     </div>
-                    
                     <ul class="product_para-1">
                         <li><span>Riferimento interno :</span>IN ARRIVO</li>
                         <li><span>Prima Immatricolazione :</span>12/06/2015</li>
