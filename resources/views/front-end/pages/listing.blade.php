@@ -93,16 +93,16 @@
                                 <div class="col-sm-12 col-md-7 col-lg-7">
                                     <div class="product-caption">
                                         <h4 class="product-name">
-                                            <a href="{{ route('truck.detail',[$vehicle->dealUrl(),$vehicle->id]) }}" class="f-18">{{ $vehicle->number }}</a>
+                                            <a href="#" class="f-18">{{ $vehicle->number }}</a>
                                         </h4>
                                         <!-- <b class="product-price color-red">$201,000</b> -->
                                         <p class="product-txt m-t-lg-10" style="text-transform: uppercase">{{ $vehicle->type }}
                                         </p>
                                         <ul class="static-caption m-t-lg-20">
                                             <li><i class="fa fa-clock-o"></i>
-                                                {{ $vehicle->brandId->name }}
+                                                {{ "Bran Name" }}
                                             </li>
-                                            <li><i class="fa fa-tachometer"></i>Rif. interno: {{ $vehicle->modelId->name }}
+                                            <li><i class="fa fa-tachometer"></i>Rif. interno: {{ "Model Name" }}
                                             </li>
                                             
                                             <li><i class="fa fa-road"></i></li>

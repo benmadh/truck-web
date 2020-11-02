@@ -34,9 +34,9 @@
                                 $img_path = json_decode($images[0]->formats);
                             @endphp
                             <a
-                            href="{{ asset($img_path->large->url) }}">
+                            href="{{ asset($img_path->medium->url) }}">
                                 <img 
-                                src="{{ asset($img_path->large->url) }}"
+                                src="{{ asset($img_path->medium->url) }}"
                                 alt="image">
                             </a>
                         </div>
@@ -46,7 +46,7 @@
                             @endphp
                             <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
                                 <a
-                                    href="{{ asset($large->thumbnail->url) }}">
+                                    href="{{ asset($large->large->url) }}">
                                     <img src="{{ asset($large->thumbnail->url) }}"
                                         alt="image">
                                 </a>
