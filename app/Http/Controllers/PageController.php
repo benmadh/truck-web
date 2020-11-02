@@ -89,6 +89,7 @@ class PageController extends Controller
         //
     }
 
+
     public function homeIndex()
     {
         $models = VehicleModel::all();
@@ -100,17 +101,35 @@ class PageController extends Controller
                             ->where('upload_file_morph.related_type', '=', 'upcomings')
                             ->get();
 
-        $upcomings = (array) json_decode($next_trucks);
+        $upcomings =  Upcoming::all();
+        $upcoming_data = [];
 
+        foreach($upcomings as $upcoming)
+        {
+            $upcoming_files = UploadFileMorph::where('related_id', '=', $upcoming->id)
+                                           ->where('related_type', '=', 'upcomings')
+                                           ->get();
+            $upload_file = "";
 
-        // $vehicles = DB::table('vehicles')
-        //                 ->join('upload_file_morph', 'upload_file_morph.related_id', '=', 'vehicles.id')
-        //                 ->join('upload_file','upload_file.id', '=', 'upload_file_morph.upload_file_id')
-        //                 ->where('upload_file_morph.related_type', '=', 'vehicles')
-        //                 ->get();
+            foreach($upcoming_files as $files)
+            {
+                $thumb_images =  UploadFile::where('id', '=', $files->upload_file_id )
+                                        ->get();
+                foreach($thumb_images as $thumb_image)
+                {
+                    $upload_file = json_decode($thumb_image->formats);
+                }
+            }
+
+            $upcoming_data [] = 
+            [
+                'number'    => $upcoming->Number,
+                'files'     => $upload_file
+            ];
+        }
+
 
         $vehicles =  Vehicle::all();
-
         $vehicle_data = [];
 
         foreach($vehicles as $vehicle)
@@ -150,8 +169,9 @@ class PageController extends Controller
 
          //dd($vehicle_data);
         
-        return view('front-end.pages.index',\compact(['models', 'brands','vehicle_data','upcomings']));
+        return view('front-end.pages.index',\compact(['models', 'brands','vehicle_data','upcoming_data']));
     }
+
 
     // about us view
     public function aboutus()
@@ -166,6 +186,7 @@ class PageController extends Controller
 
         return view('front-end.pages.about', \compact(['upcomings']));
     }
+
 
     // car listing page
     public function listing(Request $request)
@@ -206,10 +227,14 @@ class PageController extends Controller
         ]);
     }
 
+
+
     public function contactus()
     {
         return view('front-end.pages.contactus');
     }
+
+
 
     public function truckDetail($slug, $id)
     {
@@ -226,12 +251,16 @@ class PageController extends Controller
                         ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
                         ->where('upload_file_morph.related_type', '=', 'upcomings')
                         ->get();
+
     $upcomings = (array) json_decode($next_trucks);
 
         return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images','upcomings']));
     }
 
-    public function dealUrl($modal_name,$brand_name) {
+
+
+    public function dealUrl($modal_name,$brand_name) 
+    {
         // replace non letter or digits by -
          $text = preg_replace('~[^\\pL\d]+~u', '-', $modal_name.'-'.$brand_name);
 
