@@ -79,20 +79,14 @@
                     <div class="heading-1 heading-custom">
                         <h3 class="f-18">{{ $vehicle->number }}</h3>
                     </div>
+                    @php 
+                        $specs = json_decode($vehicle->specs);
+                        $specs_array  = (array) $specs;
+                    @endphp
                     <ul class="product_para-1">
-                        <li><span>Riferimento interno :</span>IN ARRIVO</li>
-                        <li><span>Prima Immatricolazione :</span>12/06/2015</li>
-                        <li><span>Peso totale a terra :</span>119,90 Q.li - possibile omologazione 115 Q.li</li>
-                        <li><span>Horespower :</span>Mileage</li>
-                        <li><span>Normativa inquinamento :</span>6</li>
-                        <li><span>Motore :</span>6 cilindri common rail - 6728 cc - 250 Cv</li>
-                        <li><span>Cambio :</span>Automatico e sequenziale</li>
-                        <li><span>Passo :</span>5670 - possibile adeguamento 3105 - 3690 - 4185</li>
-                        <li><span>Allestimento :</span>
-                            <p class="text-justify">CASSONE FISSO CON CENTINA FISSA ALLA FRANCESE - dimensioni utili 800
-                                * 248 h 275 - SPONDA MONTACARICHI A BATTENTE - possibile vendita anche solo cabinato con
-                          eventuale modifica del passo per allestimenti vari</p>
-                        </li>
+                        @foreach($specs_array as $key=>$spec)
+                          <li><span>{{ $key }} :</span>{{ $spec }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
