@@ -19,3 +19,5 @@ Route::get('chi-siamo', 'PageController@aboutus')->name('aboutus');
 Route::get('veicoli', 'PageController@listing')->name('listing');
 Route::get('contattaci', 'PageController@contactus')->name('contactus');
 Route::get('veicoli/{slug}/{id}', 'PageController@truckDetail')->name('truck.detail');
+
+Route::post('contattaci/submit', 'PageController@submitContactForm')->name('contact.submit');

@@ -10,6 +10,8 @@ use App\UploadFileMorph;
 use App\Upcoming;
 use App\UploadFile;
 use Illuminate\Support\Facades\DB;
+use App\Mail\ContactForm;
+use Mail;
 
 class PageController extends Controller
 {
@@ -94,13 +96,7 @@ class PageController extends Controller
     {
         $models = VehicleModel::all();
         $brands =  Brand::all();
-        
-        $next_trucks = DB::table('upcomings')
-                            ->join('upload_file_morph', 'upcomings.id', '=', 'upload_file_morph.related_id')
-                            ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
-                            ->where('upload_file_morph.related_type', '=', 'upcomings')
-                            ->get();
-
+    
         $upcomings =  Upcoming::all();
         $upcoming_data = [];
 
@@ -176,15 +172,34 @@ class PageController extends Controller
     // about us view
     public function aboutus()
     {
-        $next_trucks = DB::table('upcomings')
-                            ->join('upload_file_morph', 'upcomings.id', '=', 'upload_file_morph.related_id')
-                            ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
-                            ->where('upload_file_morph.related_type', '=', 'upcomings')
-                            ->get();
+        $upcoming_data = [];
+        $upcomings =  Upcoming::all();
 
-        $upcomings = (array) json_decode($next_trucks);
+        foreach($upcomings as $upcoming)
+        {
+            $upcoming_files = UploadFileMorph::where('related_id', '=', $upcoming->id)
+                                           ->where('related_type', '=', 'upcomings')
+                                           ->get();
+            $upload_file = "";
 
-        return view('front-end.pages.about', \compact(['upcomings']));
+            foreach($upcoming_files as $files)
+            {
+                $thumb_images =  UploadFile::where('id', '=', $files->upload_file_id )
+                                        ->get();
+                foreach($thumb_images as $thumb_image)
+                {
+                    $upload_file = json_decode($thumb_image->formats);
+                }
+            }
+
+            $upcoming_data [] = 
+            [
+                'number'    => $upcoming->Number,
+                'files'     => $upload_file
+            ];
+        }
+
+        return view('front-end.pages.about', \compact(['upcoming_data']));
     }
 
 
@@ -282,5 +297,21 @@ class PageController extends Controller
          }
 
          return $text;
+   }
+
+   public function submitContactForm(Request $request)
+   {
+        $form_data = 
+        [
+            'email'     => $request->email,
+            'telephone' => $request->telefono,
+            'address'   => $request->address,
+            'message'   => $request->message 
+        ];
+
+        Mail::to('sajithradalage@yahoo.com')->send(new ContactForm($form_data));
+
+        session()->flash('success','Abbiamo ricevuto la tua richiesta, un membro del nostro team ti contatterà');
+        return redirect()->back();
    }
 }
