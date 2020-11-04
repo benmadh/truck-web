@@ -108,19 +108,21 @@
                     <h3><i class="fa fa-envelope-o"></i>Invia Messaggio</h3>
                 </div>
                 <div class="bg-gray-fa bg1-gray-2 p-lg-20">
-                    <form>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control form-item" placeholder="Email">
+                            <input type="email" class="form-control form-item" name="email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-item" placeholder="Telefono">
+                            <input type="text" class="form-control form-item" name="telefono" placeholder="Telefono" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-item" placeholder="Indirizzo">
+                            <input type="text" class="form-control form-item" name="address" placeholder="Indirizzo" required>
                         </div>
-                        <textarea class="form-control form-item h-200 m-b-lg-10" placeholder="Messaggio"
-                            rows="3"></textarea>
+                        <textarea class="form-control form-item h-200 m-b-lg-10" name="message" placeholder="Messaggio" 
+                            rows="3" required></textarea>
                         <button type="submit" class="ht-btn ht-btn-default">Inviare</button>
+                        <input type="hidden" name="url" value="{{ Request::url() }}">
                     </form>
                 </div>
             </div>

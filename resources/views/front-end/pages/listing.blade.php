@@ -88,7 +88,7 @@
                             $thumbnail = "";
                             $file_morphs = \App\UploadFileMorph::where('related_id', $vehicle->id)
                                                                  ->where('related_type', '=', 'vehicles')
-                                                                 ->orderBy('order','asc')
+                                                                 ->orderBy('order','desc')
                                                                  ->get();
                                 
                             $file = "";
@@ -98,7 +98,8 @@
                             {
 
                                 $file_uploads = \App\UploadFile::where('id', $file_morph->upload_file_id)
-                                                                 ->get();
+                                                                ->orderBy('created_by','desc')
+                                                                ->get();
 
                                 foreach ($file_uploads as $key => $file_upload) 
                                 {

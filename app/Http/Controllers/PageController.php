@@ -353,8 +353,10 @@ class PageController extends Controller
             'email'     => $request->email,
             'telephone' => $request->telefono,
             'address'   => $request->address,
-            'message'   => $request->message 
+            'message'   => $request->message ,
+            'url'       => $request->url
         ];
+        
 
         Mail::to('sajithradalage@yahoo.com')->send(new ContactForm($form_data));
 
