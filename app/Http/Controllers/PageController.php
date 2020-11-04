@@ -110,7 +110,8 @@ class PageController extends Controller
             foreach($upcoming_files as $files)
             {
                 $thumb_images =  UploadFile::where('id', '=', $files->upload_file_id )
-                                        ->get();
+                                            ->get();
+
                 foreach($thumb_images as $thumb_image)
                 {
                     $upload_file = json_decode($thumb_image->formats);
@@ -124,21 +125,23 @@ class PageController extends Controller
             ];
         }
 
-
-        $vehicles =  Vehicle::all();
+        $vehicles =  Vehicle::latest()->limit(12)->get();
         $vehicle_data = [];
 
         foreach($vehicles as $vehicle)
         {
             $file_morph = UploadFileMorph::where('related_id', '=', $vehicle->id)
-                                           ->where('related_type', '=', 'vehicles')
+                                            ->where('related_type', '=', 'vehicles')
+                                            ->orderby('order','desc')
                                             ->get();
             $files = "";
-
+           
             foreach($file_morph as $fileMorph)
             {
                 $upload_files =  UploadFile::where('id', '=', $fileMorph->upload_file_id )
-                                        ->get();
+                                            ->orderBy('created_at','desc')
+                                            ->get();
+                
                 foreach($upload_files as $upload_file)
                 {
                     $files = json_decode($upload_file->formats);
@@ -258,29 +261,71 @@ class PageController extends Controller
         $vehicle = Vehicle::findOrFail($id);
         $truck_list = Vehicle::limit(10)->get();
         
-        $images = DB::table('upload_file')
-                        ->join('upload_file_morph', 'upload_file.id', '=', 'upload_file_morph.upload_file_id') 
-                        ->where('upload_file_morph.related_id', '=' , $id)
-                        ->get();
+         //get upcomings trucks
+        $upcoming_data = [];
+        $upcomings =  Upcoming::all();
 
-        $next_trucks = DB::table('upcomings')
-                        ->join('upload_file_morph', 'upcomings.id', '=', 'upload_file_morph.related_id')
-                        ->join('upload_file', 'upload_file_morph.upload_file_id', '=', 'upload_file.id')
-                        ->where('upload_file_morph.related_type', '=', 'upcomings')
-                        ->get();
+        $images = [];
 
-    $upcomings = (array) json_decode($next_trucks);
+        //get images
+        $upload_file_morphs = UploadFileMorph::where('related_id', $vehicle->id)
+                                        ->where('related_type', 'vehicles')
+                                        ->orderBy('order','desc')
+                                        ->get();
 
-        return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images','upcomings']));
+        foreach($upload_file_morphs as $upload_file_morph)
+        {
+            $upload_files = UploadFile::where('id',$upload_file_morph->upload_file_id)
+                                        ->orderBy('created_at','desc')
+                                        ->get();
+            //dd($upload_files);
+            foreach($upload_files as $upload_file)
+            {   
+                $images[] = $upload_file;
+            }
+        }
+
+        foreach($upcomings as $upcoming)
+        {
+            $upcoming_files = UploadFileMorph::where('related_id', '=', $upcoming->id)
+                                           ->where('related_type', '=', 'upcomings')
+                                           ->get();
+            $upload_file = "";
+            foreach($upcoming_files as $files)
+            {
+                $thumb_images =  UploadFile::where('id', '=', $files->upload_file_id )
+                                        ->get();
+                foreach($thumb_images as $thumb_image)
+                {
+                    $upload_file = json_decode($thumb_image->formats);
+                }
+            }
+            $upcoming_data [] = 
+            [
+                'number'    => $upcoming->Number,
+                'files'     => $upload_file
+            ];
+        }
+        
+        $main_image = "";
+
+        foreach($images as $image)
+        {
+            $main_image = $image;
+        }
+
+        //dd($main_image);
+        return view('front-end.pages.truck-detail', \compact(['vehicle', 'truck_list','images','upcoming_data','main_image']));
     }
 
 
 
     public function dealUrl($modal_name,$brand_name) 
-    {
+    {   
+       
         // replace non letter or digits by -
          $text = preg_replace('~[^\\pL\d]+~u', '-', $modal_name.'-'.$brand_name);
-
+         
          // trim
          $text = trim($text, '-');
 

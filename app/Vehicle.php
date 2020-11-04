@@ -11,19 +11,20 @@ class Vehicle extends Model
         'images',
         'specs',
         'description',
-        'model_id',
-        'brand_id',
+        'modal',
+        'brand',
         'type',
         'slug'
     ];
 
-    public function dealUrl() {
+    public function dealUrl($modalName) {
+        
         // replace non letter or digits by -
-         $text = preg_replace('~[^\\pL\d]+~u', '-', isset($this->modelId) ? $this->modelId->name : "" .'-'. isset($this->modelId) ? $this->modelId->modelBelongsToBrand->name : "");
-
+         $text = preg_replace('~[^\\pL\d]+~u', '-', $modalName.'-'.isset($this->brandId) ? $this->brandId->name : "");
+        
          // trim
          $text = trim($text, '-');
-
+        
          // transliterate
          $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
 
@@ -37,13 +38,14 @@ class Vehicle extends Model
          {
            return 'n-a';
          }
-
+         
          return $text;
-   }
+         
+   }    
 
     public function modelId()
     {
-        return $this->belongsTo('App\VehicleModel','modal');
+        return $this->belongsTo('App\VehicleModel', 'modal');
     }
 
     public function brandId()

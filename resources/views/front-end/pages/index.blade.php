@@ -274,13 +274,12 @@
         
         @if(count($vehicle_data) > 0)
             @foreach ($vehicle_data as $vehicle)
-                
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <!-- Product item -->
                     <div class="product-item hover-img">
                         <a href="{{ route('truck.detail',[$vehicle['slud_url'],$vehicle['id']]) }}" class="product-img">
-                            <img src="{{ $vehicle['files']->thumbnail->url }}"
-                                alt="{{ $vehicle['number'] }}">
+                            <img src="{{ asset($vehicle['files']->thumbnail->url) }}"
+                                alt="{{ $vehicle['slud_url'] }}">
                         </a>
                         <div class="product-caption">
                             <h4 class="product-name">

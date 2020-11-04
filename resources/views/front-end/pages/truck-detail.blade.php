@@ -1,4 +1,20 @@
+@php
+    $img_path = json_decode($main_image->formats);
+@endphp
 @extends('front-end.layouts.app')
+
+@section('meta-data')
+<!-- Required Open Graph data -->
+<meta property="og:title" content="{{ $vehicle->number }}" />
+<meta property="og:type" content="{{ $vehicle->type }}" />
+<meta property="og:image" content="{{ $images[0]->name }}" />
+<meta property="og:url" content="{{ Request::url() }}" />
+<!-- Optional Open Graph data -->
+<meta property="og:description" content="{{ $vehicle->description }}" />
+<meta property="og:site_name" content="AUTO CEYLON S.R.L" />
+
+
+@endsection
 
 @section('title') {{'Dettagli del camion | Auto Ceylon'}} @endsection
 
@@ -9,7 +25,7 @@
     <div class="row">
         <div class="col-lg-6">
             <ul class="ht-breadcrumb pull-left">
-                <li class="home-act"><a href="#"><i class="fa fa-home"></i></a></li>
+                <li class="home-act"><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
                 <li class="home-act"><a href="#">Veicolo</a></li>
                 <li class="home-act" style="text-transform: uppercase"><a href="#">{{ $vehicle->type }}</a></li>
                 <li class="active">{{ $vehicle->number }}</li>
@@ -30,28 +46,21 @@
                 <div class="product-img-lg bg-gray-f5 bg1-gray-15">
                     <div class="image-zoom row m-t-lg-5 m-l-lg-ab-5 m-r-lg-ab-5">
                         <div class="col-md-12 col-lg-12 p-lg-5">
-                            @php
-                                $img_path = json_decode($images[0]->formats);
-                            @endphp
-                            <a
-                            href="{{ asset($img_path->medium->url) }}">
-                                <img 
-                                src="{{ asset($img_path->medium->url) }}"
-                                alt="image">
+                            <a href="{{ asset($img_path->medium->url) }}">
+                                <img src="{{ asset($img_path->medium->url) }}" alt="image">
                             </a>
                         </div>
                         @foreach ($images as $img)
-                            @php 
-                                $large = json_decode($img->formats);
-                            @endphp
-                            <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
-                                <a
-                                    href="{{ asset($large->large->url) }}">
-                                    <img src="{{ asset($large->thumbnail->url) }}"
-                                        alt="image">
-                                </a>
-                            </div>
+                        @php
+                        $large = json_decode($img->formats);
+                        @endphp
+                        <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
+                            <a href="{{ asset($large->large->url) }}">
+                                <img src="{{ asset($large->thumbnail->url) }}" alt="image">
+                            </a>
+                        </div>
                         @endforeach
+                    
                     </div>
                 </div>
             </div>
@@ -62,14 +71,14 @@
         <div class="col-md-8">
             <div class="m-b-lg-30">
                 @if($vehicle->description != "")
-                    <div class="heading-1 heading-custom">
-                        <h3>Caratteristiche</h3>
-                    </div>
-                    <div class="m-b-lg-30 bg-gray-fa bg1-gray-2 p-lg-30 p-xs-15">
-                        <p class="color1-9 text-justify">
-                            {{ $vehicle->description }}
-                        </p>
-                    </div>
+                <div class="heading-1 heading-custom">
+                    <h3>Caratteristiche</h3>
+                </div>
+                <div class="m-b-lg-30 bg-gray-fa bg1-gray-2 p-lg-30 p-xs-15">
+                    <p class="color1-9 text-justify">
+                        {{ $vehicle->description }}
+                    </p>
+                </div>
                 @endif
             </div>
 
@@ -79,13 +88,13 @@
                     <div class="heading-1 heading-custom">
                         <h3 class="f-18">{{ $vehicle->number }}</h3>
                     </div>
-                    @php 
-                        $specs = json_decode($vehicle->specs);
-                        $specs_array  = (array) $specs;
+                    @php
+                    $specs = json_decode($vehicle->specs);
+                    $specs_array = (array) $specs;
                     @endphp
                     <ul class="product_para-1">
                         @foreach($specs_array as $key=>$spec)
-                          <li><span>{{ $key }} :</span>{{ $spec }}</li>
+                        <li><span>{{ $key }} :</span>{{ $spec }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -117,40 +126,6 @@
             </div>
         </div>
     </div>
-    <!-- Other cars -->
-    {{-- <div class="product product-grid product-grid-2 car m-b-lg-15">
-        <div class="heading">
-            <h3>Altri camion</h3>
-        </div>
-        <div class="row">
-            <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
-                data-itemsMobile="1" data-pag="false" data-buttons="true">
-                @foreach ($truck_list as $truck)
-                <div class="col-lg-12">
-                    <!-- Product item -->
-                    <div class="product-item hover-img">
-                        <a href="{{ route('truck.detail',[$truck->dealUrl(),$truck->id]) }}" class="product-img">
-                            <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/1.jpg&w=320&h=190&zc=1"
-                                alt="image">
-                        </a>
-                        <div class="product-caption">
-                            <h4 class="product-name" style="text-transform: uppercase">
-                                <a href="#">{{ $truck->type }}</a><span class="f-18">
-                                    {{ $truck->number }}</span>
-                            </h4>
-                        </div>
-                        <ul class="absolute-caption">
-                            <li style="text-transform: uppercase"><i class="fa fa-clock-o"></i>{{ $truck->type }}</li>
-                            <li><i class="fa fa-road"></i>Marca : {{ $truck->modelId->modelBelongsToBrand->name }}
-                            </li>
-                            <li><i class="fa fa-car"></i>Modello : {{ $truck->modelId->name }}</li>
-                        </ul>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div> --}}
 
     <section class="m-b-lg-50">
         <div class="blog blog-grid overl">
@@ -161,19 +136,16 @@
                 <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
                     data-itemsMobile="1" data-pag="false" data-buttons="true">
                     
-                    @foreach ($upcomings as $next_truck)
-                        @php $number = (array) $next_truck @endphp
-                        @foreach (json_decode($next_truck->formats) as $item)
-                            <div class="col-lg-12">
-                                <!-- Blog item -->
-                                <div class="blog-item">
-                                    <img src="{{ asset($item->url) }}" alt="">
-                                    <div class="blog-caption">
-                                        <h3 class="blog-heading">{{ $number['Number'] }}</h3>
-                                    </div>
+                    @foreach ($upcoming_data as $upcoming)
+                        <div class="col-lg-12">
+                            <!-- Blog item -->
+                            <div class="blog-item">
+                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="">
+                                <div class="blog-caption">
+                                    <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
                     @endforeach
                     
                 </div>
