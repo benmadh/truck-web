@@ -210,8 +210,7 @@ class PageController extends Controller
         $models = VehicleModel::all();
         $brands =  Brand::all();
 
-        $vehicle_data = [];
-
+    
         $type = $request->type;
 
         if($request->model != "")
@@ -242,7 +241,6 @@ class PageController extends Controller
             'vehicles' => $vehicles->paginate(6),
             'models'   => $models,
             'brands'   => $brands,
-            'vehicle_data' => $vehicle_data
         ]);
     }
 

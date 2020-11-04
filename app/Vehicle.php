@@ -19,7 +19,7 @@ class Vehicle extends Model
 
     public function dealUrl() {
         // replace non letter or digits by -
-         $text = preg_replace('~[^\\pL\d]+~u', '-', $this->modelId->name.'-'.$this->modelId->modelBelongsToBrand->name);
+         $text = preg_replace('~[^\\pL\d]+~u', '-', isset($this->modelId) ? $this->modelId->name : "" .'-'. isset($this->modelId) ? $this->modelId->modelBelongsToBrand->name : "");
 
          // trim
          $text = trim($text, '-');
@@ -43,7 +43,7 @@ class Vehicle extends Model
 
     public function modelId()
     {
-        return $this->belongsTo('App\VehicleModel','modal_id');
+        return $this->belongsTo('App\VehicleModel','modal');
     }
 
     public function brandId()
