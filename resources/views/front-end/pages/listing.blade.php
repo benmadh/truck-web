@@ -117,7 +117,7 @@
 
                             
                              // replace non letter or digits by -
-                            $slug = preg_replace('~[^\\pL\d]+~u', '-',$modal->name.'-'.$brand->name);
+                            $slug = preg_replace('~[^\\pL\d]+~u', '-', $vehicle->type.'-'.$modal->name.'-'.$brand->name);
                             
                             // trim
                             $slug = trim($slug, '-');
