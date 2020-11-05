@@ -1,4 +1,20 @@
+@php
+    $img_path = json_decode($main_image->formats);
+@endphp
 @extends('front-end.layouts.app')
+
+@section('meta-data')
+<!-- Required Open Graph data -->
+<meta property="og:title" content="{{ $vehicle->number }}" />
+<meta property="og:type" content="{{ $vehicle->type }}" />
+<meta property="og:image" content="{{ $images[0]->name }}" />
+<meta property="og:url" content="{{ Request::url() }}" />
+<!-- Optional Open Graph data -->
+<meta property="og:description" content="{{ $vehicle->description }}" />
+<meta property="og:site_name" content="AUTO CEYLON S.R.L" />
+
+
+@endsection
 
 @section('title') {{'Dettagli del camion | Auto Ceylon'}} @endsection
 
@@ -9,7 +25,7 @@
     <div class="row">
         <div class="col-lg-6">
             <ul class="ht-breadcrumb pull-left">
-                <li class="home-act"><a href="#"><i class="fa fa-home"></i></a></li>
+                <li class="home-act"><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
                 <li class="home-act"><a href="#">Veicolo</a></li>
                 <li class="home-act" style="text-transform: uppercase"><a href="#">{{ $vehicle->type }}</a></li>
                 <li class="active">{{ $vehicle->number }}</li>
@@ -30,28 +46,21 @@
                 <div class="product-img-lg bg-gray-f5 bg1-gray-15">
                     <div class="image-zoom row m-t-lg-5 m-l-lg-ab-5 m-r-lg-ab-5">
                         <div class="col-md-12 col-lg-12 p-lg-5">
-                            @php
-                                $img_path = json_decode($images[0]->formats);
-                            @endphp
-                            <a
-                            href="{{ asset($img_path->large->url) }}">
-                                <img 
-                                src="{{ asset($img_path->large->url) }}"
-                                alt="image">
+                            <a href="{{ asset($img_path->medium->url) }}">
+                                <img src="{{ asset($img_path->medium->url) }}" alt="image">
                             </a>
                         </div>
                         @foreach ($images as $img)
-                            @php 
-                                $large = json_decode($img->formats);
-                            @endphp
-                            <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
-                                <a
-                                    href="{{ asset($large->thumbnail->url) }}">
-                                    <img src="{{ asset($large->thumbnail->url) }}"
-                                        alt="image">
-                                </a>
-                            </div>
+                        @php
+                        $large = json_decode($img->formats);
+                        @endphp
+                        <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
+                            <a href="{{ asset($large->large->url) }}">
+                                <img src="{{ asset($large->thumbnail->url) }}" alt="image">
+                            </a>
+                        </div>
                         @endforeach
+                    
                     </div>
                 </div>
             </div>
@@ -62,14 +71,14 @@
         <div class="col-md-8">
             <div class="m-b-lg-30">
                 @if($vehicle->description != "")
-                    <div class="heading-1 heading-custom">
-                        <h3>Caratteristiche</h3>
-                    </div>
-                    <div class="m-b-lg-30 bg-gray-fa bg1-gray-2 p-lg-30 p-xs-15">
-                        <p class="color1-9 text-justify">
-                            {{ $vehicle->description }}
-                        </p>
-                    </div>
+                <div class="heading-1 heading-custom">
+                    <h3>Caratteristiche</h3>
+                </div>
+                <div class="m-b-lg-30 bg-gray-fa bg1-gray-2 p-lg-30 p-xs-15">
+                    <p class="color1-9 text-justify">
+                        {{ $vehicle->description }}
+                    </p>
+                </div>
                 @endif
             </div>
 
@@ -79,21 +88,14 @@
                     <div class="heading-1 heading-custom">
                         <h3 class="f-18">{{ $vehicle->number }}</h3>
                     </div>
-                    
+                    @php
+                    $specs = json_decode($vehicle->specs);
+                    $specs_array = (array) $specs;
+                    @endphp
                     <ul class="product_para-1">
-                        <li><span>Riferimento interno :</span>IN ARRIVO</li>
-                        <li><span>Prima Immatricolazione :</span>12/06/2015</li>
-                        <li><span>Peso totale a terra :</span>119,90 Q.li - possibile omologazione 115 Q.li</li>
-                        <li><span>Horespower :</span>Mileage</li>
-                        <li><span>Normativa inquinamento :</span>6</li>
-                        <li><span>Motore :</span>6 cilindri common rail - 6728 cc - 250 Cv</li>
-                        <li><span>Cambio :</span>Automatico e sequenziale</li>
-                        <li><span>Passo :</span>5670 - possibile adeguamento 3105 - 3690 - 4185</li>
-                        <li><span>Allestimento :</span>
-                            <p class="text-justify">CASSONE FISSO CON CENTINA FISSA ALLA FRANCESE - dimensioni utili 800
-                                * 248 h 275 - SPONDA MONTACARICHI A BATTENTE - possibile vendita anche solo cabinato con
-                          eventuale modifica del passo per allestimenti vari</p>
-                        </li>
+                        @foreach($specs_array as $key=>$spec)
+                        <li><span>{{ $key }} :</span>{{ $spec }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -106,57 +108,51 @@
                     <h3><i class="fa fa-envelope-o"></i>Invia Messaggio</h3>
                 </div>
                 <div class="bg-gray-fa bg1-gray-2 p-lg-20">
-                    <form>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control form-item" placeholder="Email">
+                            <input type="email" class="form-control form-item" name="email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-item" placeholder="Telefono">
+                            <input type="text" class="form-control form-item" name="telefono" placeholder="Telefono" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-item" placeholder="Indirizzo">
+                            <input type="text" class="form-control form-item" name="address" placeholder="Indirizzo" required>
                         </div>
-                        <textarea class="form-control form-item h-200 m-b-lg-10" placeholder="Messaggio"
-                            rows="3"></textarea>
+                        <textarea class="form-control form-item h-200 m-b-lg-10" name="message" placeholder="Messaggio" 
+                            rows="3" required></textarea>
                         <button type="submit" class="ht-btn ht-btn-default">Inviare</button>
+                        <input type="hidden" name="url" value="{{ Request::url() }}">
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Other cars -->
-    <div class="product product-grid product-grid-2 car m-b-lg-15">
-        <div class="heading">
-            <h3>Altri camion</h3>
-        </div>
-        <div class="row">
-            <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
-                data-itemsMobile="1" data-pag="false" data-buttons="true">
-                @foreach ($truck_list as $truck)
-                <div class="col-lg-12">
-                    <!-- Product item -->
-                    <div class="product-item hover-img">
-                        <a href="{{ route('truck.detail',[$truck->dealUrl(),$truck->id]) }}" class="product-img">
-                            <img src="https://www.belcamion.com/includes/phpThumb/phpThumb.php?src=http://www.belcamion.com/uploads/NUOVE/1.jpg&w=320&h=190&zc=1"
-                                alt="image">
-                        </a>
-                        <div class="product-caption">
-                            <h4 class="product-name" style="text-transform: uppercase">
-                                <a href="#">{{ $truck->type }}</a><span class="f-18">
-                                    {{ $truck->number }}</span>
-                            </h4>
+
+    <section class="m-b-lg-50">
+        <div class="blog blog-grid overl">
+            <div class="heading">
+                <h3>Prossimi camion</h3>
+            </div>
+            <div class="row">
+                <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
+                    data-itemsMobile="1" data-pag="false" data-buttons="true">
+                    
+                    @foreach ($upcoming_data as $upcoming)
+                        <div class="col-lg-12">
+                            <!-- Blog item -->
+                            <div class="blog-item">
+                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="">
+                                <div class="blog-caption">
+                                    <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
+                                </div>
+                            </div>
                         </div>
-                        <ul class="absolute-caption">
-                            <li style="text-transform: uppercase"><i class="fa fa-clock-o"></i>{{ $truck->type }}</li>
-                            <li><i class="fa fa-road"></i>Marca : {{ $truck->modelId->modelBelongsToBrand->name }}
-                            </li>
-                            <li><i class="fa fa-car"></i>Modello : {{ $truck->modelId->name }}</li>
-                        </ul>
-                    </div>
+                    @endforeach
+                    
                 </div>
-                @endforeach
             </div>
         </div>
-    </div>
+    </section>
 </section>
 @endsection

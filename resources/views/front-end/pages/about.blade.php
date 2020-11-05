@@ -52,19 +52,16 @@
             <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
                 data-itemsMobile="1" data-pag="false" data-buttons="true">
                 
-                @foreach ($upcomings as $next_truck)
-                    @php $number = (array) $next_truck @endphp
-                    @foreach (json_decode($next_truck->formats) as $item)
-                        <div class="col-lg-12">
-                            <!-- Blog item -->
-                            <div class="blog-item">
-                                <img src="{{ asset($item->url) }}" alt="">
-                                <div class="blog-caption">
-                                    <h3 class="blog-heading">{{ $number['Number'] }}</h3>
-                                </div>
+                @foreach ($upcoming_data as $upcoming)
+                    <div class="col-lg-12">
+                        <!-- Blog item -->
+                        <div class="blog-item">
+                            <img src="{{ $upcoming['files']->thumbnail->url }}" alt="">
+                            <div class="blog-caption">
+                                <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 @endforeach
                 
             </div>

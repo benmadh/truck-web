@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class VehicleModel extends Model
 {
-    protected $table = "models";
+    protected $table = 'modals';
     
     protected $fillable = [
         'name',
+        'brand'
     ];
 
     public function modelBelongsToBrand()

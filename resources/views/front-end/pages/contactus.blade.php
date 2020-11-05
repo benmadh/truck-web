@@ -42,21 +42,29 @@
                     <h3>Modulo Di Contatto</h3>
                 </div>
                 <div class="contact-form p-lg-30 p-xs-15 bg-gray-fa bg1-gray-2">
-                    <form>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control form-item" placeholder="Email">
+                            <input type="email" class="form-control form-item" name="email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-item" placeholder="Telefono">
+                            <input type="text" class="form-control form-item" name="telefono" placeholder="Telefono" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-item" placeholder="Indirizzo">
+                            <input type="text" class="form-control form-item" name="address" placeholder="Indirizzo" required>
                         </div>
-                        <textarea class="form-control form-item h-200 m-b-lg-10" placeholder="Messaggio"
-                            rows="3"></textarea>
+                        <textarea class="form-control form-item h-200 m-b-lg-10" name="message" placeholder="Messaggio" 
+                            rows="3" required></textarea>
                         <button type="submit" class="ht-btn ht-btn-default">Presentare</button>
                     </form>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                @if(session('success'))
+                    <div class="alert alert-success text-center">{{ session('success') }}</div>
+                @endif
             </div>
         </div>
     </div>
