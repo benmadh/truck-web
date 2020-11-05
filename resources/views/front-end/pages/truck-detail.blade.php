@@ -7,7 +7,7 @@
 <!-- Required Open Graph data -->
 <meta property="og:title" content="{{ $vehicle->number }}" />
 <meta property="og:type" content="{{ $vehicle->type }}" />
-<meta property="og:image" content="{{ asset($images[0]->url) }}" />
+<meta property="og:image" content="{{ asset($img_path->medium->url) }}" />
 <meta property="og:url" content="{{ Request::url() }}" />
 <!-- Optional Open Graph data -->
 <meta property="og:description" content="{{ $vehicle->description }}" />
@@ -19,7 +19,7 @@
 <meta name="twitter:site" content="AUTO CEYLON S.R.L">
 <meta name="twitter:title" content="{{ $vehicle->number }}">
 <meta name="twitter:description" content="{{ $vehicle->description }}">
-<meta name="twitter:image" content="{{ asset($images[0]->url) }}">
+<meta name="twitter:image" content="{{ asset($img_path->medium->url) }}">
 
 
 @endsection
@@ -48,6 +48,7 @@
         <!-- Car name -->
         <h3 class="product-name color1-f">{{ $vehicle->number }}
         </h3>
+        
         <div class="row">
             <div class="col-md-12 col-lg-12">
                 <!-- Car image gallery -->
@@ -55,7 +56,7 @@
                     <div class="image-zoom row m-t-lg-5 m-l-lg-ab-5 m-r-lg-ab-5">
                         <div class="col-md-12 col-lg-12 p-lg-5">
                             <a href="{{ asset($img_path->medium->url) }}">
-                                <img src="{{ asset($img_path->medium->url) }}" alt="image">
+                                <img src="{{ asset($img_path->medium->url) }}" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
                             </a>
                         </div>
                         @foreach ($images as $img)
@@ -64,7 +65,7 @@
                         @endphp
                         <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
                             <a href="{{ asset($large->large->url) }}">
-                                <img src="{{ asset($large->thumbnail->url) }}" alt="image">
+                                <img src="{{ asset($large->thumbnail->url) }}" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
                             </a>
                         </div>
                         @endforeach
