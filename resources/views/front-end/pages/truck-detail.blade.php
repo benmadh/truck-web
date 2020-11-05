@@ -7,11 +7,19 @@
 <!-- Required Open Graph data -->
 <meta property="og:title" content="{{ $vehicle->number }}" />
 <meta property="og:type" content="{{ $vehicle->type }}" />
-<meta property="og:image" content="{{ $images[0]->name }}" />
+<meta property="og:image" content="{{ asset($images[0]->url) }}" />
 <meta property="og:url" content="{{ Request::url() }}" />
 <!-- Optional Open Graph data -->
 <meta property="og:description" content="{{ $vehicle->description }}" />
 <meta property="og:site_name" content="AUTO CEYLON S.R.L" />
+<meta property="og:locale" content="IT" />
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="AUTO CEYLON S.R.L">
+<meta name="twitter:title" content="{{ $vehicle->number }}">
+<meta name="twitter:description" content="{{ $vehicle->description }}">
+<meta name="twitter:image" content="{{ asset($images[0]->url) }}">
 
 
 @endsection

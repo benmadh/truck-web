@@ -152,7 +152,7 @@ class PageController extends Controller
             $modal = VehicleModel::findOrFail($vehicle->modal);
             $brand = Brand::findOrFail($vehicle->brand);
 
-            $slug =  $this->dealUrl($modal->name,$brand->name);
+            $slug =  $this->dealUrl($vehicle->type,$modal->name,$brand->name);
 
             $vehicle_data [] = 
             [
@@ -320,11 +320,11 @@ class PageController extends Controller
 
 
 
-    public function dealUrl($modal_name,$brand_name) 
+    public function dealUrl($vehicle_type, $modal_name, $brand_name) 
     {   
        
         // replace non letter or digits by -
-         $text = preg_replace('~[^\\pL\d]+~u', '-', $modal_name.'-'.$brand_name);
+         $text = preg_replace('~[^\\pL\d]+~u', '-', $vehicle_type.'-'.$modal_name.'-'.$brand_name);
          
          // trim
          $text = trim($text, '-');
