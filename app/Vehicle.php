@@ -17,10 +17,10 @@ class Vehicle extends Model
         'slug'
     ];
 
-    public function dealUrl($modalName) {
+    public function dealUrl($type ,$model, $brand ) {
         
         // replace non letter or digits by -
-         $text = preg_replace('~[^\\pL\d]+~u', '-', $modalName.'-'.isset($this->brandId) ? $this->brandId->name : "");
+         $text = preg_replace('~[^\\pL\d]+~u', '-',$type.'-'.$model.'-'.$brand);
         
          // trim
          $text = trim($text, '-');
