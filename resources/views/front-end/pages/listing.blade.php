@@ -23,6 +23,7 @@
             <div class="search-option m-b-lg-50 p-lg-20">
                 <form action="{{ route('listing') }}" method="GET">
                     @csrf
+                    
                     <div class="select-wrapper m-b-lg-15">
                         <div class="dropdown">
                             <button class="dropdown-toggle form-item" type="button" id="dropdownMenu3"
@@ -32,7 +33,12 @@
                             <ul class="dropdown-menu marca " aria-labelledby="dropdownMenu3">
                                 <li>{{ __('-') }}</li>
                                 @foreach ($brands as $brand)
-                                    <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                    @if(Request::get('brand') == $brand->id)
+                                        <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                        @else
+                                        <li value="{{ $brand->id }}">{{ $brand->name }}</li>
+                                    @endif
+                                    
                                 @endforeach
                             </ul>
                             <input type="hidden" id="selected_val" name="brand">
@@ -59,7 +65,7 @@
                         <div class="dropdown">
                             <button class="dropdown-toggle form-item" type="button" id="dropdownMenu5"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Genere
+                                Categoria
                             </button>
                             <ul class="dropdown-menu type" aria-labelledby="dropdownMenu5">
                                 <li>{{ __('-') }}</li>
@@ -154,7 +160,7 @@
                                         <p class="product-txt m-t-lg-10" style="text-transform: uppercase">{{ $vehicle->type }}
                                         </p>
                                         <ul class="static-caption m-t-lg-20">
-                                            <li><i class="fa fa-clock-o"></i>
+                                            <li><i class="fa fa-truck"></i>
                                                {{ __('Marca : ') }} @php echo isset($vehicle->brandId) ? $vehicle->brandId->name : "" @endphp
                                             </li>
                                             <li><i class="fa fa-tachometer"></i>{{ __('Modello :') }} @php echo isset($vehicle->modelId) ? $vehicle->modelId->name : "" @endphp
@@ -194,8 +200,8 @@
     });
 
     $('.type li').click(function () {
-        console.log($(this).val());
-        $('#type').val($(this).val());
+        console.log($(this).text());
+        $('#type').val($(this).text());
     });
 
 

@@ -287,7 +287,7 @@
                             </h4>
                         </div>
                         <ul class="absolute-caption">
-                            <li style="text-transform: uppercase"><i class="fa fa-clock-o" ></i>{{ $vehicle['type'] }}</li>
+                            <li style="text-transform: uppercase"><i class="fa fa-truck" ></i>{{ $vehicle['type'] }}</li>
                             <li><i class="fa fa-road"></i>Marca : {{ $vehicle['brand'] }} </li>
                             <li><i class="fa fa-car"></i>Modello : {{ $vehicle['modal'] }} </li>
                         </ul>
@@ -314,7 +314,7 @@
 <section class="m-b-lg-50">
     <div class="blog blog-grid overl">
         <div class="heading">
-            <h3>Prossimi camion</h3>
+            <h3>Veicoli in arrivo</h3>
         </div>
         <div class="row">
             <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"

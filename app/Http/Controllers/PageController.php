@@ -215,6 +215,7 @@ class PageController extends Controller
 
         $type = $request->type;
 
+        
         if($type != "")
         {
             $vehicles->where('type', '=', $type);  
@@ -234,8 +235,7 @@ class PageController extends Controller
         if($request->brand && $request->model)
         {
             $vehicles->where('modal','=', $request->model)
-                        ->where('brand', '=', $request->brand)
-                        ->where('type', '=', $request->type );
+                     ->where('brand', '=', $request->brand);
         }
        
         return view('front-end.pages.listing')->with([
