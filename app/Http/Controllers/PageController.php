@@ -213,24 +213,22 @@ class PageController extends Controller
         $models = VehicleModel::all();
         $brands =  Brand::all();
 
-    
         $type = $request->type;
+
+        if($type != "")
+        {
+            $vehicles->where('type', '=', $type);  
+        }
 
         if($request->model != "")
         {
-            $vehicles->where(function($query) use($request){
-                $query->where('modal', '=', $request->model)
-                ->where('type', '=', $request->type );
-            });         
+            $vehicles->where('modal', '=', $request->model);         
         }
 
         if($request->brand != "")
         {
             //dd($request->brand);
-            $vehicles->where(function($query) use($request){
-                $query->where('brand', '=', $request->brand)
-                        ->where('type', '=', $request->type );
-            });
+            $vehicles->where('brand', '=', $request->brand);
         }
 
         if($request->brand && $request->model)

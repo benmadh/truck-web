@@ -132,6 +132,7 @@
     .logo img {
         position: relative;
         left: 80px;
+        z-index: 9999;
     }
 
     .footer-top .heading-1 h3 {
@@ -140,6 +141,11 @@
 
     .banner-bg-8 {
         padding: 0px;
+    }
+
+    .f-14
+    {
+        text-align: center;
     }
 }
 
@@ -148,6 +154,7 @@
         position: relative;
         left: 100px;
         width: 100px;
+        z-index: 9999;
     }
 
     .banner-bg-8 {
@@ -157,6 +164,11 @@
     .footer-top .heading-1 h3 {
         font-size: 12pt;
     }
+
+    .f-14
+    {
+        text-align: center;
+    }
 }
 
 @media(min-width : 375px) and (max-width : 500px) {
@@ -164,10 +176,16 @@
         position: relative;
         left: 140px;
         width: 100px;
+        z-index: 9999;
     }
 
     .banner-bg-8 {
         padding: 0px;
+    }
+
+    .f-14
+    {
+        text-align: center;
     }
 }
 
@@ -180,6 +198,11 @@
 
     .banner-bg-8 {
         padding: 0px;
+    }
+
+    .f-14
+    {
+        text-align: center;
     }
 }
 
