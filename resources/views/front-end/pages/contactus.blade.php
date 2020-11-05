@@ -27,7 +27,7 @@
                     <div class="content">
                         
                         <ul class="list-default">
-                            <li><i class="fa fa-clock-o"></i>37069 , Dossobuono di Villafranca VR , Italia</li>
+                            <li><i class="fa fa-map-marker"></i>37069 , Dossobuono di Villafranca VR , Italia</li>
                             <li><i class="fa fa-phone"></i>+39 327 088 39 43</li>
                             <li><i class="fa fa-phone"></i>045 96 12 013</li>
                             <li><i class="fa fa-envelope-o"></i>sajithradalage@yahoo.com</li>

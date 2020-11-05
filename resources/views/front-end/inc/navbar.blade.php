@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6">
-                <p class="f-14"><i class="fa fa-home m-r-lg-5"></i><strong>AUTO CEYLON S.R.L
+                <p class="f-14"><strong>AUTO CEYLON S.R.L
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs text-right">
                 <p class="f-14"><i class="fa fa-map-marker"> </i><strong> Indirizzo : 
