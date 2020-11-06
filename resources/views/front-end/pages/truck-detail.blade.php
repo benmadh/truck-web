@@ -33,7 +33,7 @@
 
 @endsection
 
-@section('title') {{'Auto Ceylon |'}} {{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }} @endsection
+@section('title') @php echo(ucfirst(str_replace('-', ' ' ,$vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name))) ) @endphp {{' | Auto Ceylon'}} @endsection
 
 @section('content')
 <!-- Breadcrumb-->
