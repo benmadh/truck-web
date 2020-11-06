@@ -14,4 +14,42 @@ class Upcoming extends Model
         'created_by',
         'updated_by'
     ];
+
+    public function dealUrl($model, $brand ) {
+        
+        // replace non letter or digits by -
+         $text = preg_replace('~[^\\pL\d]+~u', '-',$type.'-'.$model.'-'.$brand);
+        
+         // trim
+         $text = trim($text, '-');
+        
+         // transliterate
+         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+         // lowercase
+         $text = strtolower($text);
+
+         // remove unwanted characters
+         $text = preg_replace('~[^-\w]+~', '', $text);
+
+         if (empty($text))
+         {
+           return 'n-a';
+         }
+         
+         return $text;
+         
+   }    
+
+
+
+    public function modelId()
+    {
+        return $this->belongsTo('App\VehicleModel', 'modal');
+    }
+
+    public function brandId()
+    {
+        return $this->belongsTo('App\Brand','brand');
+    }
 }

@@ -1,5 +1,9 @@
 @extends('front-end.layouts.app')
 
+@section('meta-content')
+ <meta name="description" content="Auto Ceylon S.R.L. nasce a Verona nel 2019.Attualmente l'azienda conta una flotta superiore ai 50 veicoli di ogni tipologia">
+@endsection
+
 @section('title') {{'Contattaci | Auto Ceylon'}} @endsection
 
 @section('content')
