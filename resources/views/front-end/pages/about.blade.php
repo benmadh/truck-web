@@ -1,5 +1,9 @@
 @extends('front-end.layouts.app')
 
+@section('meta-content')
+    <meta name="description" content="Auto Ceylon S.R.L. nasce a Verona nel 2019.Attualmente l'azienda conta una flotta superiore ai 50 veicoli di ogni tipologia">
+@endsection
+
 @section('title') {{'Chi siamo | Auto Ceylon'}} @endsection
 
 @section('content')
@@ -56,7 +60,7 @@
                     <div class="col-lg-12">
                         <!-- Blog item -->
                         <div class="blog-item">
-                            <img src="{{ $upcoming['files']->thumbnail->url }}" alt="">
+                            <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming->dealUrl($upcoming->modelId->name,$upcoming->brandId->name) }}">
                             <div class="blog-caption">
                                 <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
                             </div>

@@ -156,7 +156,7 @@
                         <div class="col-lg-12">
                             <!-- Blog item -->
                             <div class="blog-item">
-                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="">
+                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming->dealUrl($upcoming->modelId->name,$upcoming->brandId->name) }} ">
                                 <div class="blog-caption">
                                     <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
                                 </div>
