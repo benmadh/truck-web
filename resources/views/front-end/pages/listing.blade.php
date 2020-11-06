@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-6">
             <ul class="ht-breadcrumb pull-left">
-                <li class="home-act"><a href="#"><i class="fa fa-home"></i></a></li>
+                <li class="home-act"><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
                 <li class="home-act"><a href="#">Veicolo</a></li>
                 <li class="active">Autocarro</li>
             </ul>
@@ -147,7 +147,7 @@
                         <div class="product-item hover-img">
                             <div class="row">
                                 <div class="col-sm-12 col-md-5 col-lg-5">
-                                    <a href="#" class="product-img"><img
+                                    <a href="{{ route('truck.detail',[$slug, $vehicle->id]) }}" class="product-img"><img
                                             src="{{ asset($file->thumbnail->url) }}"
                                             alt="{{ $slug }}"></a>
                                 </div>

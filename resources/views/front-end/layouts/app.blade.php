@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @yield('meta-content')
     <meta name="description" content="Auto Ceylon S.R.L. nasce a Verona nel 2019.Attualmente l'azienda conta una flotta superiore ai 50 veicoli di ogni tipologia">
     <meta name="keywords" content="trucks ,Italy ,Used truck ITALY, Italian trucks , Truck Rental Agency , Marca ,Furgoni,Auto,Camion, Furgoni, Auto, vendita, parma,italia, usato, veicoli usati, veicoli industriali, iveco, ribaltabili, eurocargo, autocarri">
     @yield('meta-data')
