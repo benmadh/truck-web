@@ -19,7 +19,7 @@
 <meta property="og:image" content="{{ asset($img_path->medium->url) }}" />
 <meta property="og:url" content="{{ Request::url() }}" />
 <!-- Optional Open Graph data -->
-<meta property="og:description" content="{{ $vehicle->description }}" />
+<meta property="og:description" content="{{ $vehicle->description }} {{ $meta_keyword }} {{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }} " />
 <meta property="og:site_name" content="AUTO CEYLON S.R.L" />
 <meta property="og:locale" content="IT" />
 
