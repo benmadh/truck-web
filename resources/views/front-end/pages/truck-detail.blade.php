@@ -1,7 +1,16 @@
 @php
     $img_path = json_decode($main_image->formats);
+
+    $specs = json_decode($vehicle->specs);
+    $specs_array = (array) $specs;
+    $meta_keyword = implode(",",$specs_array);
+
 @endphp
 @extends('front-end.layouts.app')
+
+@section('meta-content')
+<meta name="description" content="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }} {{ $meta_keyword }}">
+@endsection
 
 @section('meta-data')
 <!-- Required Open Graph data -->
@@ -24,17 +33,16 @@
 
 @endsection
 
-@section('title') {{'Dettagli del camion | Auto Ceylon'}} @endsection
+@section('title') {{'Auto Ceylon |'}} {{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }} @endsection
 
 @section('content')
-
 <!-- Breadcrumb-->
 <div class="hidden-xs">
     <div class="row">
         <div class="col-lg-6">
             <ul class="ht-breadcrumb pull-left">
                 <li class="home-act"><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
-                <li class="home-act"><a href="#">Veicolo</a></li>
+                <li class="home-act"><a href="{{ route('listing') }}">Veicolo</a></li>
                 <li class="home-act" style="text-transform: uppercase"><a href="#">{{ $vehicle->type }}</a></li>
                 <li class="active">{{ $vehicle->number }}</li>
             </ul>
@@ -97,10 +105,7 @@
                     <div class="heading-1 heading-custom">
                         <h3 class="f-18">{{ $vehicle->number }}</h3>
                     </div>
-                    @php
-                    $specs = json_decode($vehicle->specs);
-                    $specs_array = (array) $specs;
-                    @endphp
+                    
                     <ul class="product_para-1">
                         @foreach($specs_array as $key=>$spec)
                         <li><span>{{ $key }} :</span>{{ $spec }}</li>
@@ -141,7 +146,7 @@
     <section class="m-b-lg-50">
         <div class="blog blog-grid overl">
             <div class="heading">
-                <h3>Veicoli in arrivo</h3>
+                <h3>ultimi veicoli</h3>
             </div>
             <div class="row">
                 <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
