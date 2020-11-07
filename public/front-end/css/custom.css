@@ -147,6 +147,13 @@
     {
         text-align: center;
     }
+
+    #mob-menu
+    {
+        width: 93%;
+        position: relative;
+        left: 13px;
+    }
 }
 
 @media(max-width : 376px) and (min-width : 321px) {
@@ -169,6 +176,13 @@
     {
         text-align: center;
     }
+
+    #mob-menu
+    {
+        width: 93%;
+        position: relative;
+        left: 13px;
+    }
 }
 
 @media(min-width : 375px) and (max-width : 500px) {
@@ -187,6 +201,13 @@
     {
         text-align: center;
     }
+
+    #mob-menu
+    {
+        width: 93%;
+        position: relative;
+        left: 13px;
+    }
 }
 
 @media(min-width : 500px) and (max-width : 600px) {
@@ -203,6 +224,13 @@
     .f-14
     {
         text-align: center;
+    }
+
+    #mob-menu
+    {
+        width: 93%;
+        position: relative;
+        left: 13px;
     }
 }
 
