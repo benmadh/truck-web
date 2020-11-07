@@ -21,3 +21,5 @@ Route::get('contattaci', 'PageController@contactus')->name('contactus');
 Route::get('veicoli/{slug}/{id}', 'PageController@truckDetail')->name('truck.detail');
 
 Route::post('contattaci/submit', 'PageController@submitContactForm')->name('contact.submit');
+
+Route::get('categoria','PageController@getCategory');
