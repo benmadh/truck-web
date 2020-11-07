@@ -19,7 +19,7 @@
             <div class="col-md-3 col-lg-3">
                 <a href="{{ route('index') }}" class="logo"><img src="{{ asset('front-end/images/logo/site-logo.png') }}" alt="AUTO CEYLON S.R.L"></a>
             </div>
-            <div class="col-md-9 col-lg-9">
+            <div class="col-md-9 col-lg-9" id="mob-menu">
                 <div class="hotline">
                     <span class="m-r-lg-10">Hai bisogno di supporto? Chiamaci : </span>
                     <i class="fa fa-phone"></i>045 96 12 013
