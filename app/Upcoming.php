@@ -18,7 +18,7 @@ class Upcoming extends Model
     public function dealUrl($model, $brand ) {
         
         // replace non letter or digits by -
-         $text = preg_replace('~[^\\pL\d]+~u', '-',$type.'-'.$model.'-'.$brand);
+         $text = preg_replace('~[^\\pL\d]+~u', '-',$model.'-'.$brand);
         
          // trim
          $text = trim($text, '-');

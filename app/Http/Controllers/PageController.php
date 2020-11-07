@@ -105,6 +105,12 @@ class PageController extends Controller
             $upcoming_files = UploadFileMorph::where('related_id', '=', $upcoming->id)
                                            ->where('related_type', '=', 'upcomings')
                                            ->get();
+
+            $brand = Brand::where('id', $upcoming->brand)->first();
+            $modal = VehicleModel::where('id', $upcoming->modal)->first();
+
+            $slug = $upcoming->dealUrl($modal->name, $brand->name);
+
             $upload_file = "";
 
             foreach($upcoming_files as $files)
@@ -121,7 +127,8 @@ class PageController extends Controller
             $upcoming_data [] = 
             [
                 'number'    => $upcoming->Number,
-                'files'     => $upload_file
+                'files'     => $upload_file,
+                'slug'      => $slug
             ];
         }
 
@@ -180,6 +187,11 @@ class PageController extends Controller
 
         foreach($upcomings as $upcoming)
         {
+            $brand = Brand::where('id', $upcoming->brand)->first();
+            $modal = VehicleModel::where('id', $upcoming->modal)->first();
+
+            $slug = $upcoming->dealUrl($modal->name, $brand->name);
+
             $upcoming_files = UploadFileMorph::where('related_id', '=', $upcoming->id)
                                            ->where('related_type', '=', 'upcomings')
                                            ->get();
@@ -198,7 +210,8 @@ class PageController extends Controller
             $upcoming_data [] = 
             [
                 'number'    => $upcoming->Number,
-                'files'     => $upload_file
+                'files'     => $upload_file,
+                'slug'      => $slug
             ];
         }
 
@@ -298,10 +311,18 @@ class PageController extends Controller
                     $upload_file = json_decode($thumb_image->formats);
                 }
             }
+
+            $brand = Brand::where('id', $upcoming->brand)->first();
+            $modal = VehicleModel::where('id', $upcoming->modal)->first();
+
+            
+            $slug = $upcoming->dealUrl($modal->name, $brand->name);
+           
             $upcoming_data [] = 
             [
                 'number'    => $upcoming->Number,
-                'files'     => $upload_file
+                'files'     => $upload_file,
+                'slug'      => $slug
             ];
         }
         

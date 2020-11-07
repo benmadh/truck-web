@@ -56,18 +56,19 @@
             <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
                 data-itemsMobile="1" data-pag="false" data-buttons="true">
                 
-                @foreach ($upcoming_data as $upcoming)
-                    <div class="col-lg-12">
-                        <!-- Blog item -->
-                        <div class="blog-item">
-                            <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming->dealUrl($upcoming->modelId->name,$upcoming->brandId->name) }}">
-                            <div class="blog-caption">
-                                <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
+                @if(count($upcoming_data) > 0)
+                    @foreach ($upcoming_data as $upcoming)
+                        <div class="col-lg-12">
+                            <!-- Blog item -->
+                            <div class="blog-item">
+                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming['slug'] }}">
+                                <div class="blog-caption">
+                                    <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-                
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
