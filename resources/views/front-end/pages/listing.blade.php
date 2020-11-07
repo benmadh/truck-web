@@ -25,8 +25,6 @@
             <!-- Search option -->
             <div class="search-option m-b-lg-50 p-lg-20">
                 <form action="{{ route('listing') }}" method="GET">
-                    @csrf
-                    
                     <div class="select-wrapper m-b-lg-15">
                         <div class="dropdown">
                             <button class="dropdown-toggle form-item" type="button" id="dropdownMenu3"
@@ -206,9 +204,6 @@
         console.log($(this).text());
         $('#type').val($(this).text());
     });
-
-
-    
 
 </script>
 @endsection

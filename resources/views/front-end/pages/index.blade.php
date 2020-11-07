@@ -54,7 +54,6 @@
         <div role="tabpanel" class="tab-pane active" id="newcar">
             <div class="search-option p-lg-30 p-b-lg-15 p-b-sm-30 p-xs-15">
                 <form action="{{ route('listing') }}" method="GET">
-                    @csrf
                     <div class="row">
                         <div class="col-sm-12 col-md-7 col-lg-7">
                             <div class="row">
