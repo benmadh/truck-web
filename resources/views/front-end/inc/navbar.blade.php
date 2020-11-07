@@ -47,8 +47,14 @@
                                         <li>
                                             <a href="{{ route('aboutus') }}">Azienda</a>
                                         </li>
-                                        <li>
-                                            <a href="{{ route('listing') }}">Veicoli</a>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Veicoli</a>
+                                            <ul class="dropdown-menu">
+                                                <li> <a href="{{ route('listing') }}">Tutti i veicoli</a> </li>
+                                                <li> <a href="{{ url('categoria?type=camion') }}">Camion</a> </li>
+                                                <li> <a href="{{ url('categoria?type=furgoni') }}">Furgoni</a> </li>
+                                                <li> <a href="{{ url('categoria?type=auto') }}">Auto</a> </li>
+                                            </ul>
                                         </li>
                                         <!-- <li>
                                             <a href="#">Servizi</a>

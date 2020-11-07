@@ -382,4 +382,41 @@ class PageController extends Controller
         session()->flash('success','Abbiamo ricevuto la tua richiesta, un membro del nostro team ti contatterà');
         return redirect()->back();
    }
+
+   public function getCategory(Request $request)
+   {
+        
+        $vehicles = Vehicle::latest();
+        $models = VehicleModel::all();
+        $brands =  Brand::all();
+
+        $type = $request->input('type');
+        
+        if($type != "")
+        {
+            $vehicles->where('type', '=', $type);  
+        }
+
+        if($request->model != "")
+        {
+            $vehicles->where('modal', '=', $request->model);         
+        }
+
+        if($request->brand != "")
+        {
+            $vehicles->where('brand', '=', $request->brand);
+        }
+
+        if($request->brand && $request->model)
+        {
+            $vehicles->where('modal','=', $request->model)
+                     ->where('brand', '=', $request->brand);
+        }
+       
+        return view('front-end.pages.category')->with([
+            'vehicles' => $vehicles->paginate(10),
+            'models'   => $models,
+            'brands'   => $brands,
+        ]);
+   }
 }
