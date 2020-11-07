@@ -383,18 +383,16 @@ class PageController extends Controller
         return redirect()->back();
    }
 
-   public function getCategory(Request $request)
+   public function getCategory(Request $request, $name)
    {
-        
         $vehicles = Vehicle::latest();
         $models = VehicleModel::all();
         $brands =  Brand::all();
 
-        $type = $request->input('type');
         
-        if($type != "")
+        if($name != "")
         {
-            $vehicles->where('type', '=', $type);  
+            $vehicles->where('type', '=', $name);  
         }
 
         if($request->model != "")
