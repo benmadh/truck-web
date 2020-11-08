@@ -10,6 +10,7 @@
     @yield('meta-data')
 
     <title>@yield('title')</title>
+    @include('feed::links')
     <link rel="icon" href="favicon.ico">
     <!-- JqueryUI -->
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/css/jquery-ui.css') }}">
