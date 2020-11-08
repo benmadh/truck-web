@@ -188,7 +188,7 @@
 @media(min-width : 375px) and (max-width : 500px) {
     .logo img {
         position: relative;
-        left: 140px;
+        left: 120px;
         width: 100px;
         z-index: 9999;
     }

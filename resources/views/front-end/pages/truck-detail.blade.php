@@ -14,7 +14,7 @@
 
 @section('meta-data')
 <!-- Required Open Graph data -->
-<meta property="og:title" content="{{ $vehicle->number }}" />
+<meta property="og:title" content=" @php echo(ucfirst($vehicle->brandId->name . $vehicle->modelId->name . $vehicle->number)) @endphp" />
 <meta property="og:type" content="{{ $vehicle->type }}" />
 <meta property="og:image" content="{{ asset($img_path->medium->url) }}" />
 <meta property="og:url" content="{{ Request::url() }}" />

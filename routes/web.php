@@ -23,3 +23,6 @@ Route::get('veicoli/{slug}/{id}', 'PageController@truckDetail')->name('truck.det
 Route::post('contattaci/submit', 'PageController@submitContactForm')->name('contact.submit');
 
 Route::get('categoria/{type}','PageController@getCategory')->name('categoria.get');
+
+Route::get('vehicles/{vehicle}', 'PageController@show')->name('vehicle.show');
+Route::feeds();
