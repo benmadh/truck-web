@@ -5,6 +5,23 @@
     $specs_array = (array) $specs;
     $meta_keyword = implode(",",$specs_array);
 
+    $single_img = "";
+    $class = "";
+
+    if(isset($img_path->medium) || !empty($img_path->medium))
+    {
+        $single_img = $img_path->medium->url;
+
+    } else if(isset($img_path->large) || !empty($img_path->large))
+    {
+        $single_img = $img_path->large->url;
+
+    } else if(isset($img_path->thumbnail) || !empty($img_path->thumbnail))
+    {
+        $single_img = $img_path->thumbnail->url;
+        $class = "d-none";
+    }
+
 @endphp
 @extends('front-end.layouts.app')
 
@@ -62,9 +79,9 @@
                 <!-- Car image gallery -->
                 <div class="product-img-lg bg-gray-f5 bg1-gray-15">
                     <div class="image-zoom row m-t-lg-5 m-l-lg-ab-5 m-r-lg-ab-5">
-                        <div class="col-md-12 col-lg-12 p-lg-5">
-                            <a href="@php echo (!empty($img_path->medium) ? asset($img_path->medium->url) : !empty($img_path->thumbnail) ? asset($img_path->thumbnail->url) : "") @endphp">
-                                <img src="@php echo (!empty($img_path->medium) ? asset($img_path->medium->url) : !empty($img_path->thumbnail) ? asset($img_path->thumbnail->url) : "") @endphp" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
+                        <div class="col-md-12 col-lg-12 p-lg-5 @php echo($class) @endphp">
+                            <a href="{{ asset($single_img) }}">
+                                <img src="{{ asset($single_img) }}" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
                             </a>
                         </div>
                         @foreach ($images as $img)
@@ -86,7 +103,6 @@
                             $img_url = $large->thumbnail->url;
                         }
                         @endphp
-                        
                         <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
                             <a href="{{ $img_url }}">
                                 <img src="{{ asset($large->thumbnail->url) }}" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
