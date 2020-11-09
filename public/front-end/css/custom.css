@@ -102,27 +102,33 @@
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
     background: #d11717 !important;
-	color:#fff;
-	border-color: #d11717 !important;
-	height: 40px;
+    color: #fff;
+    border-color: #d11717 !important;
+    height: 40px;
     width: 40px;
-    font-size : 17px;
+    font-size: 17px;
     font-weight: 800;
 }
 
-.pagination>li:first-child>a, .pagination>li:first-child>span
-{
-    background : #eee;
-    color : #333;
-    height:40px;
-	width:40px;
-	text-align:center;
-	padding:10px;
-	margin-right:2px;
-    border:none;
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+    background: #eee;
+    color: #333;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    padding: 10px;
+    margin-right: 2px;
+    border: none;
     font-weight: 900;
 }
 
+.alert-warning {
+    color: #ff0000 !important;
+    background-color : #eeeeee !important;
+    border-color : #eeeeee !important;
+    text-transform: uppercase;
+}
 
 
 
@@ -143,13 +149,11 @@
         padding: 0px;
     }
 
-    .f-14
-    {
+    .f-14 {
         text-align: center;
     }
 
-    #mob-menu
-    {
+    #mob-menu {
         width: 93%;
         position: relative;
         left: 13px;
@@ -172,13 +176,11 @@
         font-size: 12pt;
     }
 
-    .f-14
-    {
+    .f-14 {
         text-align: center;
     }
 
-    #mob-menu
-    {
+    #mob-menu {
         width: 93%;
         position: relative;
         left: 13px;
@@ -197,13 +199,11 @@
         padding: 0px;
     }
 
-    .f-14
-    {
+    .f-14 {
         text-align: center;
     }
 
-    #mob-menu
-    {
+    #mob-menu {
         width: 93%;
         position: relative;
         left: 13px;
@@ -221,13 +221,11 @@
         padding: 0px;
     }
 
-    .f-14
-    {
+    .f-14 {
         text-align: center;
     }
 
-    #mob-menu
-    {
+    #mob-menu {
         width: 93%;
         position: relative;
         left: 13px;
@@ -248,8 +246,7 @@
     }
 }
 
-.alert-success
-{
+.alert-success {
     color: #ffffff !important;
     background-color: #1a2d58 !important;
     border-color: #1a2d58 !important;

@@ -16,7 +16,7 @@
 <!-- Required Open Graph data -->
 <meta property="og:title" content=" @php echo(ucfirst($vehicle->brandId->name . $vehicle->modelId->name . $vehicle->number)) @endphp" />
 <meta property="og:type" content="{{ $vehicle->type }}" />
-<meta property="og:image" content="{{ asset($img_path->medium->url) }}" />
+<meta property="og:image" content="@php echo(isset($img_path) ? asset($img_path->medium->url) : "") @endphp " />
 <meta property="og:url" content="{{ Request::url() }}" />
 <!-- Optional Open Graph data -->
 <meta property="og:description" content="{{ $vehicle->description }} {{ $meta_keyword }} {{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }} " />
@@ -28,7 +28,7 @@
 <meta name="twitter:site" content="AUTO CEYLON S.R.L">
 <meta name="twitter:title" content="{{ $vehicle->number }}">
 <meta name="twitter:description" content="{{ $vehicle->description }}">
-<meta name="twitter:image" content="{{ asset($img_path->medium->url) }}">
+<meta name="twitter:image" content="@isset($img_path) {{ asset($img_path->medium->url) }} @endisset">
 
 
 @endsection
@@ -36,6 +36,7 @@
 @section('title') @php echo(ucfirst(str_replace('-', ' ' ,$vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name))) ) @endphp {{' | Auto Ceylon'}} @endsection
 
 @section('content')
+
 <!-- Breadcrumb-->
 <div class="hidden-xs">
     <div class="row">

@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs text-right">
                 <p class="f-14"><i class="fa fa-map-marker"> </i><strong> Indirizzo : 
-                </strong> <strong>  37069 , Dossobuono di Villafranca VR , Italia </strong> </p>
+                </strong> <strong>Via Staffali 11/D 37062,Dossobuono, Villafranca di, Verona. </strong> </p>
             </div>
         </div>
     </div>
