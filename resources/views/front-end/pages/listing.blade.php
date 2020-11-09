@@ -13,7 +13,9 @@
             <ul class="ht-breadcrumb pull-left">
                 <li class="home-act"><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
                 <li class="home-act"><a href="#">Veicolo</a></li>
-                <li class="active">Autocarro</li>
+                @if(Request::get('brand') || Request::get('model') || Request::get('type'))
+                    <li class="active"> cerca</li>
+                @endif
             </ul>
         </div>
     </div>
@@ -178,7 +180,7 @@
                     @else
                         <div class="col-md-12 col-sm-12">
                             <div class="alert alert-warning  text-center">
-                                 {{ __('scusa.. nessun veicolo da visualizzare') }}
+                                 {{ __('Nessun risultato') }}
                             </div>
                         </div>
                 @endif
