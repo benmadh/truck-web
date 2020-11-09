@@ -72,7 +72,7 @@
                         $large = json_decode($img->formats);
                         @endphp
                         <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
-                            <a href="{{ asset($large->large->url) }}">
+                            <a href="@php echo (!empty($large->medium) ? asset($large->medium->url) : !empty($large->thumbnail) ? asset($large->thumbnail->url) : !empty($large->large)  ?  $large->large->url : "") @endphp">
                                 <img src="{{ asset($large->thumbnail->url) }}" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
                             </a>
                         </div>
