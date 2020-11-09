@@ -13,7 +13,9 @@
             <ul class="ht-breadcrumb pull-left">
                 <li class="home-act"><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
                 <li class="home-act"><a href="#">Veicolo</a></li>
-                <li class="active">Categoria</li>
+                @if(Request::get('brand') || Request::get('model') || Request::get('type'))
+                    <li class="active"> cerca</li>
+                @endif
             </ul>
         </div>
     </div>

@@ -13,7 +13,17 @@
             <ul class="ht-breadcrumb pull-left">
                 <li class="home-act"><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
                 <li class="home-act"><a href="{{ route('listing') }}">Veicolo</a></li>
-                <li class="active">Autocarro</li>
+                @if(Request::path() == "categoria/camion")
+                    <li class="active">Camion</li>
+                @endif
+
+                @if(Request::path() == "categoria/furgoni")
+                    <li class="active">Furgoni</li>
+                @endif
+
+                @if(Request::path() == "categoria/auto")
+                    <li class="active">Auto</li>
+                @endif
             </ul>
         </div>
     </div>
