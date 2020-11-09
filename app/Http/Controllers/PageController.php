@@ -377,7 +377,9 @@ class PageController extends Controller
         ];
         
 
-        Mail::to('sajithradalage@yahoo.com')->send(new ContactForm($form_data));
+        Mail::to('autoceylon@yahoo.com')
+              ->cc('info.autoceylon@gmail.com')
+              ->send(new ContactForm($form_data));
 
         session()->flash('success','Abbiamo ricevuto la tua richiesta, un membro del nostro team ti contatterà');
         return redirect()->back();
