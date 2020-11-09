@@ -70,9 +70,25 @@
                         @foreach ($images as $img)
                         @php
                         $large = json_decode($img->formats);
+
+                        $img_url = "";
+
+                        if(isset($large->medium) || !empty($large->medium))
+                        {
+                            $img_url = $large->medium->url;
+
+                        } else if(isset($large->large) || !empty($large->large))
+                        {
+                            $img_url = $large->large->url;
+
+                        } else if(isset($large->thumbnail) || !empty($large->thumbnail))
+                        {
+                            $img_url = $large->thumbnail->url;
+                        }
                         @endphp
+                        
                         <div class="col-sm-3 col-md-3 col-lg-3 p-lg-5">
-                            <a href="@php echo (!empty($large->medium) ? asset($large->medium->url) : !empty($large->thumbnail) ? asset($large->thumbnail->url) : !empty($large->large)  ?  $large->large->url : "") @endphp">
+                            <a href="{{ $img_url }}">
                                 <img src="{{ asset($large->thumbnail->url) }}" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
                             </a>
                         </div>
