@@ -57,15 +57,14 @@
         <!-- Car name -->
         <h3 class="product-name color1-f">{{ $vehicle->number }}
         </h3>
-        
         <div class="row">
             <div class="col-md-12 col-lg-12">
                 <!-- Car image gallery -->
                 <div class="product-img-lg bg-gray-f5 bg1-gray-15">
                     <div class="image-zoom row m-t-lg-5 m-l-lg-ab-5 m-r-lg-ab-5">
                         <div class="col-md-12 col-lg-12 p-lg-5">
-                            <a href="{{ asset($img_path->medium->url) }}">
-                                <img src="{{ asset($img_path->medium->url) }}" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
+                            <a href="@php echo (!empty($img_path->medium) ? asset($img_path->medium->url) : !empty($img_path->thumbnail) ? asset($img_path->thumbnail->url) : "") @endphp">
+                                <img src="@php echo (!empty($img_path->medium) ? asset($img_path->medium->url) : !empty($img_path->thumbnail) ? asset($img_path->thumbnail->url) : "") @endphp" alt="{{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }}">
                             </a>
                         </div>
                         @foreach ($images as $img)
