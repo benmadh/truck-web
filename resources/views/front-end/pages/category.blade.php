@@ -90,94 +90,101 @@
 
                 <div class="clearfix"></div>
                 <!-- Product item -->
-                @if (isset($vehicles))
-                    @foreach ($vehicles as $vehicle)
-                        
-                        @php 
-                            $thumbnail = "";
-                            $file_morphs = \App\UploadFileMorph::where('related_id', $vehicle->id)
-                                                                 ->where('related_type', '=', 'vehicles')
-                                                                 ->orderBy('order','desc')
-                                                                 ->get();
-                                
-                            $file = "";
+                @if(count($vehicles) > 0)
+                    @if (isset($vehicles))
+                        @foreach ($vehicles as $vehicle)
+                            
+                            @php 
+                                $thumbnail = "";
+                                $file_morphs = \App\UploadFileMorph::where('related_id', $vehicle->id)
+                                                                    ->where('related_type', '=', 'vehicles')
+                                                                    ->orderBy('order','desc')
+                                                                    ->get();
+                                    
+                                $file = "";
 
 
-                            foreach ($file_morphs as $key => $file_morph) 
-                            {
-
-                                $file_uploads = \App\UploadFile::where('id', $file_morph->upload_file_id)
-                                                                ->orderBy('created_by','desc')
-                                                                ->get();
-
-                                foreach ($file_uploads as $key => $file_upload) 
+                                foreach ($file_morphs as $key => $file_morph) 
                                 {
-                                    $file = json_decode($file_upload->formats);
+
+                                    $file_uploads = \App\UploadFile::where('id', $file_morph->upload_file_id)
+                                                                    ->orderBy('created_by','desc')
+                                                                    ->get();
+
+                                    foreach ($file_uploads as $key => $file_upload) 
+                                    {
+                                        $file = json_decode($file_upload->formats);
+                                    }
+                    
+                                };
+
+
+                                $modal = App\VehicleModel::where('id', '=', $vehicle->modal)
+                                                        ->first();
+
+                                $brand = App\Brand::where('id', '=', $vehicle->brand)
+                                                    ->first();
+
+                                
+                                // replace non letter or digits by -
+                                $slug = preg_replace('~[^\\pL\d]+~u', '-', $vehicle->type.'-'.$modal->name.'-'.$brand->name);
+                                
+                                // trim
+                                $slug = trim($slug, '-');
+                            
+                                // transliterate
+                                $slug = iconv('utf-8', 'us-ascii//TRANSLIT', $slug);
+
+                                // lowercase
+                                $slug = strtolower($slug);
+
+                                // remove unwanted characters
+                                $slug = preg_replace('~[^-\w]+~', '', $slug);
+
+                                if (empty($slug))
+                                {
+                                return 'n-a';
                                 }
-                
-                            };
-
-
-                            $modal = App\VehicleModel::where('id', '=', $vehicle->modal)
-                                                      ->first();
-
-                            $brand = App\Brand::where('id', '=', $vehicle->brand)
-                                                ->first();
-
-                            
-                             // replace non letter or digits by -
-                            $slug = preg_replace('~[^\\pL\d]+~u', '-', $vehicle->type.'-'.$modal->name.'-'.$brand->name);
-                            
-                            // trim
-                            $slug = trim($slug, '-');
-                        
-                            // transliterate
-                            $slug = iconv('utf-8', 'us-ascii//TRANSLIT', $slug);
-
-                            // lowercase
-                            $slug = strtolower($slug);
-
-                            // remove unwanted characters
-                            $slug = preg_replace('~[^-\w]+~', '', $slug);
-
-                            if (empty($slug))
-                            {
-                            return 'n-a';
-                            }
-                            
-                        @endphp
-                
-                        <div class="product-item hover-img">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-5 col-lg-5">
-                                    <a href="{{ route('truck.detail',[$slug, $vehicle->id]) }}" class="product-img"><img
-                                            src="{{ asset($file->thumbnail->url) }}"
-                                            alt="{{ $slug }}"></a>
-                                </div>
-                                <div class="col-sm-12 col-md-7 col-lg-7">
-                                    <div class="product-caption">
-                                        <h4 class="product-name">
-                                            <a href="{{ route('truck.detail',[$slug, $vehicle->id]) }}" class="f-18">{{ $vehicle->number }}</a>
-                                        </h4>
-                                        <!-- <b class="product-price color-red">$201,000</b> -->
-                                        <p class="product-txt m-t-lg-10" style="text-transform: uppercase">{{ $vehicle->type }}
-                                        </p>
-                                        <ul class="static-caption m-t-lg-20">
-                                            <li><i class="fa fa-truck"></i>
-                                               {{ __('Marca : ') }} @php echo isset($vehicle->brandId) ? $vehicle->brandId->name : "" @endphp
-                                            </li>
-                                            <li><i class="fa fa-tachometer"></i>{{ __('Modello :') }} @php echo isset($vehicle->modelId) ? $vehicle->modelId->name : "" @endphp
-                                            </li>
-                                            
-                                        </ul>
+                                
+                            @endphp
+                    
+                            <div class="product-item hover-img">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-5 col-lg-5">
+                                        <a href="{{ route('truck.detail',[$slug, $vehicle->id]) }}" class="product-img"><img
+                                                src="{{ asset($file->thumbnail->url) }}"
+                                                alt="{{ $slug }}"></a>
+                                    </div>
+                                    <div class="col-sm-12 col-md-7 col-lg-7">
+                                        <div class="product-caption">
+                                            <h4 class="product-name">
+                                                <a href="{{ route('truck.detail',[$slug, $vehicle->id]) }}" class="f-18">{{ $vehicle->number }}</a>
+                                            </h4>
+                                            <!-- <b class="product-price color-red">$201,000</b> -->
+                                            <p class="product-txt m-t-lg-10" style="text-transform: uppercase">{{ $vehicle->type }}
+                                            </p>
+                                            <ul class="static-caption m-t-lg-20">
+                                                <li><i class="fa fa-truck"></i>
+                                                {{ __('Marca : ') }} @php echo isset($vehicle->brandId) ? $vehicle->brandId->name : "" @endphp
+                                                </li>
+                                                <li><i class="fa fa-tachometer"></i>{{ __('Modello :') }} @php echo isset($vehicle->modelId) ? $vehicle->modelId->name : "" @endphp
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        @endforeach
+                    @endif
+                @else
+                    <div class="col-md-12 col-sm-12">
+                        <div class="alert alert-warning  text-center">
+                            {{ __('scusa.. nessun veicolo da visualizzare') }}
                         </div>
-                    @endforeach
+                    </div>
                 @endif
                 
-               
                 <nav aria-label="Page navigation">
                     <ul class="pagination ht-pagination">
                         @if(isset($vehicles))
