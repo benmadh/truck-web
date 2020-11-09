@@ -13,7 +13,7 @@
             <ul class="ht-breadcrumb pull-left">
                 <li class="home-act"><a href="{{ route('index') }}"><i class="fa fa-home"></i></a></li>
                 <li class="home-act"><a href="#">Veicolo</a></li>
-                <li class="active">Autocarro</li>
+                <li class="active">Categoria</li>
             </ul>
         </div>
     </div>
