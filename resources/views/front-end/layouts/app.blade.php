@@ -35,7 +35,8 @@
 
     <link id="boxed" rel="stylesheet" type="text/css" href="{{ asset('front-end/css/custom.css') }}">
 
-
+    {{-- light box css --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/css/ekko-lightbox.css') }}">
 </head>
 
 <body class="bg-1">
@@ -75,6 +76,10 @@
     <script src="{{ asset('front-end/js/owl-coursel/owl.carousel.js') }}"></script>
     <!-- Script -->
     <script src="{{ asset('front-end/js/script.js') }}"></script>
+
+    {{-- light box --}}
+    <script src="{{ asset('front-end/js/ekko-lightbox.min.js') }}"></script>
+    <script src="{{ asset('front-end/js/ekko-lightbox.min.js.map') }}"></script>
 
     @yield('js')
 </body>

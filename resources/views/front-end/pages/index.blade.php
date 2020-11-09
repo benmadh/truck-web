@@ -327,7 +327,10 @@
                     <div class="col-lg-12">
                         <!-- Blog item -->
                         <div class="blog-item">
-                            <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming['slug'] }}">
+                            <a href="{{ $upcoming['files']->thumbnail->url }}" data-toggle="lightbox">
+                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming['slug'] }}">
+                            </a>
+                            
                             <div class="blog-caption">
                                 <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
                             </div>
@@ -341,6 +344,12 @@
 </section>
 @endsection
 @section('js')
+<script>
+    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+</script>
 <script>
     $('.marca li').click(function () {
         console.log($(this).val());
