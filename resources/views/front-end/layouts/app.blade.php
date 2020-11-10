@@ -36,8 +36,8 @@
     <link id="boxed" rel="stylesheet" type="text/css" href="{{ asset('front-end/css/custom.css') }}">
 
     {{-- light box css --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/css/ekko-lightbox.css') }}">
-</head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/css/lightbox.css') }}">
+
 
 <body class="bg-1">
     <div class="preloader">
@@ -65,6 +65,9 @@
     <script src="{{ asset('front-end/js/jquery/jquery-2.2.4.min.js') }}"></script>
     <!-- JqueryUI -->
     <script src="{{ asset('front-end/js/jquery/jquery-ui.js') }}"></script>
+    {{-- light box --}}
+    <script src="{{ asset('front-end/js/lightbox.js') }}"></script>
+    
     <!-- Bootstrap -->
     <script src="{{ asset('front-end/js/bootstrap/bootstrap.min.js') }}"></script>
     <!--magnific popup-->
@@ -77,9 +80,7 @@
     <!-- Script -->
     <script src="{{ asset('front-end/js/script.js') }}"></script>
 
-    {{-- light box --}}
-    <script src="{{ asset('front-end/js/ekko-lightbox.min.js') }}"></script>
-    <script src="{{ asset('front-end/js/ekko-lightbox.min.js.map') }}"></script>
+    
 
     @yield('js')
 </body>

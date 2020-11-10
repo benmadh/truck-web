@@ -130,6 +130,11 @@
     text-transform: uppercase;
 }
 
+.blog-item img
+{
+    height: 230px !important;
+}
+
 
 
 /* responsive */
