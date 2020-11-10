@@ -175,6 +175,13 @@
         </div>
     </div>
 
+    @if(session('success'))
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            swal("Grazie!","{{ session('success') }}", "success");
+        </script>
+    @endif
+    
     <section class="m-b-lg-50">
         <div class="blog blog-grid overl">
             <div class="heading">

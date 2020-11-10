@@ -327,8 +327,8 @@
                     <div class="col-lg-12">
                         <!-- Blog item -->
                         <div class="blog-item">
-                            <a href="{{ $upcoming['files']->thumbnail->url }}" data-toggle="lightbox">
-                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming['slug'] }}">
+                            <a href="{{ asset($upcoming['files']->medium->url) }}" data-lightbox="roadtrip">
+                                <img src="{{ asset($upcoming['files']->thumbnail->url) }}" alt="{{ $upcoming['slug'] }}">
                             </a>
                             
                             <div class="blog-caption">
@@ -345,10 +345,10 @@
 @endsection
 @section('js')
 <script>
-    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-      event.preventDefault();
-      $(this).ekkoLightbox();
-    });
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
 </script>
 <script>
     $('.marca li').click(function () {

@@ -68,10 +68,18 @@
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 @if(session('success'))
-                    <div class="alert alert-success text-center">{{ session('success') }}</div>
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                        swal("Grazie!","{{ session('success') }}", "success");
+                    </script>
                 @endif
             </div>
         </div>
     </div>
 </section>
+@endsection
+
+@section('js')
+    {{-- alert --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection

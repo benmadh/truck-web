@@ -132,7 +132,7 @@
 
 .blog-item img
 {
-    height: 250px;
+    height: 230px !important;
 }
 
 
