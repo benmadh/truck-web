@@ -56,21 +56,32 @@
             <div class="owl" data-items="3" data-itemsDesktop="3" data-itemsDesktopSmall="2" data-itemsTablet="2"
                 data-itemsMobile="1" data-pag="false" data-buttons="true">
                 
-                @if(count($upcoming_data) > 0)
-                    @foreach ($upcoming_data as $upcoming)
-                        <div class="col-lg-12">
-                            <!-- Blog item -->
-                            <div class="blog-item">
-                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming['slug'] }}">
-                                <div class="blog-caption">
-                                    <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
-                                </div>
+                @foreach ($upcoming_data as $upcoming)
+                    <div class="col-lg-12">
+                        <!-- Blog item -->
+                        <div class="blog-item">
+                            <a href="{{ asset($upcoming['files']->medium->url) }}" data-lightbox="roadtrip">
+                                <img src="{{ asset($upcoming['files']->thumbnail->url) }}" alt="{{ $upcoming['slug'] }}">
+                            </a>
+                            
+                            <div class="blog-caption">
+                                <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
                             </div>
                         </div>
-                    @endforeach
-                @endif
+                    </div>
+                @endforeach
+                
             </div>
         </div>
     </div>
 </section>
+@endsection
+
+@section('js')
+<script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+</script>
 @endsection
