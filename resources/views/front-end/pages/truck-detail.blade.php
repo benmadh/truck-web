@@ -195,7 +195,10 @@
                         <div class="col-lg-12">
                             <!-- Blog item -->
                             <div class="blog-item">
-                                <img src="{{ $upcoming['files']->thumbnail->url }}" alt="{{ $upcoming['slug'] }} ">
+                                <a href="{{ asset($upcoming['files']->medium->url) }}" data-lightbox="roadtrip">
+                                    <img src="{{ asset($upcoming['files']->thumbnail->url) }}" alt="{{ $upcoming['slug'] }}">
+                                </a>
+                                
                                 <div class="blog-caption">
                                     <h3 class="blog-heading">{{ $upcoming['number'] }}</h3>
                                 </div>
@@ -208,4 +211,13 @@
         </div>
     </section>
 </section>
+@endsection
+
+@section('js')
+<script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+</script>
 @endsection
