@@ -19,15 +19,27 @@ class Vehicle extends Model implements Feedable
         'slug'
     ];
 
+    
+
     public function toFeedItem()
     {
         return FeedItem::create()
-            ->id($this->id)
-            ->title($this->number)
-            ->summary($this->modelId->name.' '.$this->brandId->name)
+            ->id($this->number)
+            ->title($this->brandId->name . $this->modelId->name . $this->number)
+            ->summary(isset($this->description).$this->keywords().$this->dealUrl($this->type,$this->modelId->name,$this->brandId->name))
             ->updated($this->updated_at)
-            ->link($this->link)
-            ->author($this->type);
+            ->link(\config('app.url').'/veicoli/'.$this->dealUrl($this->brandId->name , $this->modelId->name , $this->number).'/'.$this->id)
+            ->author("AUTO CEYLON S.R.L");
+    }
+
+    public function keywords()
+    {
+        $specs = json_decode($this->specs);
+        $specs_array = (array) $specs;
+        $meta_keyword = implode(",",$specs_array);
+
+        return $meta_keyword;
+
     }
 
     public function dealUrl($type ,$model, $brand ) {
