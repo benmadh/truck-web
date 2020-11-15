@@ -36,8 +36,8 @@ class Vehicle extends Model implements Feedable
     {
         $specs = json_decode($this->specs);
         $specs_array = (array) $specs;
-        $meta_keyword = implode(",",$specs_array);
-
+        $meta_keyword = implode(":",$specs_array);
+        
         return $meta_keyword;
 
     }
