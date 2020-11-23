@@ -37,7 +37,7 @@
                 </p>
             </div>
             <div class="col-sm-12 col-md-5 col-lg-4">
-                <img src="{{ asset('front-end/images/img_7.jpg') }}" class="width-100" alt="image">
+                <img src="{{ asset('front-end/images/about-us.png') }}" class="width-100" alt="image">
             </div>
         </div>
         <!-- <div class="row">
