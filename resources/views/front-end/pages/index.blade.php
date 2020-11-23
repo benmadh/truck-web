@@ -286,7 +286,8 @@
                         </a>
                         <div class="product-caption">
                             <h4 class="product-name">
-                                <a href="{{ route('truck.detail',[$vehicle['slud_url'],$vehicle['id'] ]) }}">Over 130 quintals</a><span class="f-18"> {{ $vehicle['number'] }}</span>
+                                {{-- <a href="{{ route('truck.detail',[$vehicle['slud_url'],$vehicle['id'] ]) }}">Over 130 quintals</a> --}}
+                                <span class="f-18"> {{ $vehicle['number'] }}</span>
                             </h4>
                         </div>
                         <ul class="absolute-caption">

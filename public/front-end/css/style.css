@@ -1163,10 +1163,10 @@ a.ht-btn-3x{
 }
 .product-grid-2 .product-caption .product-name span{
 	font-size:inherit;
-	width:40%;
+	width:100%;
 	display:block;
 	padding:12px 15px;
-	text-align:right;
+	text-align:center;
 	position:relative;
 	float:right;
 }
@@ -1543,7 +1543,7 @@ a.ht-btn-3x{
 	background-size:540%;
 }
 .banner-bg-8{
-	background-image:url('../images/car-race-438467_960_720.jpg');
+	background-image:url('../images/home.jpg');
 	background-size:cover;
 	margin-top:-305px;
 	padding:300px 100px 130px 300px;
