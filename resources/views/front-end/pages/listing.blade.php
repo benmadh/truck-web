@@ -120,11 +120,12 @@
 
 
                                 $modal = App\VehicleModel::where('id', '=', $vehicle->modal)
-                                                            where('published_at', '!=', Null)
+                                                            ->where('published_at', '!=', Null)
                                                         ->first();
 
                                 $brand = App\Brand::where('id', '=', $vehicle->brand)
-                                                    where('published_at', '!=', Null)
+
+                                                    ->where('published_at', '!=', Null)
                                                     ->first();
 
                                 
