@@ -222,7 +222,7 @@ class PageController extends Controller
     // car listing page
     public function listing(Request $request)
     {
-        $vehicles = Vehicle::where('published_at', "!=", NULL)->get();
+        $vehicles = Vehicle::latest();
         $models = VehicleModel::all();
         $brands =  Brand::all();
 
